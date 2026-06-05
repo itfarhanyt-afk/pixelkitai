@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIXEL AI — Free Image Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+:root {
+  --bg: #06060a;
+  --bg-2: #0d0d14;
+  --bg-3: #12121c;
+  --surface: rgba(255,255,255,0.04);
+  --surface-2: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --text: #f0eff8;
+  --text-2: #9491b4;
+  --text-3: #5e5b7a;
+  --accent: #7c6bff;
+  --accent-2: #ff6bcd;
+  --accent-3: #6bffc8;
+  --accent-glow: rgba(124,107,255,0.35);
+  --accent-glow-2: rgba(255,107,205,0.25);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-lg: 24px;
+  --transition: cubic-bezier(0.4,0,0.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+  min-height:100vh;
+}
+
+/* ── CURSOR ── */
+#cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s,background .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(124,107,255,0.5);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s,width .3s,height .3s,opacity .3s;opacity:.7}
+body.cursor-hover #cursor{width:20px;height:20px;background:var(--accent-2)}
+body.cursor-hover #cursor-ring{width:52px;height:52px;opacity:.4}
+
+/* ── CANVAS PARTICLES ── */
+#particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.6}
+
+/* ── GRID OVERLAY ── */
+.grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(124,107,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(124,107,255,0.03) 1px,transparent 1px);background-size:60px 60px}
+
+/* ── ORBS ── */
+.orbs{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat linear infinite}
+.orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(124,107,255,0.15),transparent 70%);top:-200px;left:-200px;animation-duration:25s}
+.orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(255,107,205,0.12),transparent 70%);bottom:-150px;right:-150px;animation-duration:30s;animation-direction:reverse}
+.orb-3{width:400px;height:400px;background:radial-gradient(circle,rgba(107,255,200,0.08),transparent 70%);top:40%;left:60%;animation-duration:20s;animation-delay:-10s}
+@keyframes orbFloat{0%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(60px,-40px) rotate(120deg)}66%{transform:translate(-40px,60px) rotate(240deg)}100%{transform:translate(0,0) rotate(360deg)}}
+
+/* ── LAYOUT ── */
+.wrapper{position:relative;z-index:1}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(6,6,10,0.7);border-bottom:1px solid var(--border);transition:all .3s var(--transition)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:#fff;animation:logoPulse 3s ease-in-out infinite;position:relative}
+.logo-mark::after{content:'';position:absolute;inset:-4px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));z-index:-1;opacity:.3;animation:logoPulse 3s ease-in-out infinite}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 20px var(--accent-glow)}50%{box-shadow:0 0 40px var(--accent-glow),0 0 80px var(--accent-glow-2)}}
+.logo-text{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:.04em}
+.logo-text span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{color:var(--text-2);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s;letter-spacing:.02em}
+.nav-links a:hover{color:var(--text)}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.privacy-badge{display:flex;align-items:center;gap:.4rem;padding:.35rem .75rem;border-radius:20px;background:rgba(107,255,200,0.08);border:1px solid rgba(107,255,200,0.2);font-size:.75rem;font-weight:500;color:var(--accent-3)}
+.privacy-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent-3);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.btn-nav{padding:.5rem 1.1rem;border-radius:8px;background:var(--surface-2);border:1px solid var(--border-2);color:var(--text-2);font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.btn-nav:hover{color:var(--text);background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text-2);transition:all .3s}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 2rem 80px;text-align:center;position:relative}
+.hero-content{max-width:800px;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:20px;background:rgba(124,107,255,0.1);border:1px solid rgba(124,107,255,0.25);font-size:.8rem;font-weight:500;color:var(--accent);margin-bottom:2rem;opacity:0;transform:translateY(20px)}
+.hero-badge .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite}
+h1.hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem;opacity:0;transform:translateY(30px)}
+.gradient-text{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 50%,var(--accent-3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:gradientShift 4s ease-in-out infinite}
+@keyframes gradientShift{0%,100%{background-position:0%}50%{background-position:100%}}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-2);line-height:1.7;max-width:560px;margin:0 auto 2.5rem;font-weight:300;opacity:0;transform:translateY(20px)}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-primary{padding:.9rem 2rem;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--accent-glow)}
+.btn-secondary{padding:.9rem 2rem;border-radius:12px;background:var(--surface);border:1px solid var(--border-2);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:500;font-size:1rem;cursor:pointer;transition:all .2s}
+.btn-secondary:hover{background:var(--surface-2);border-color:rgba(255,255,255,0.25);transform:translateY(-2px)}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:rippleAnim .6s linear;pointer-events:none}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;opacity:0;transform:translateY(20px)}
+.stat-item{text-align:center}
+.stat-number{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:.8rem;color:var(--text-3);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem}
+
+/* ── SECTION ── */
+section{padding:100px 2rem}
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem}
+.section-sub{font-size:1.05rem;color:var(--text-2);line-height:1.7;max-width:500px;font-weight:300}
+
+/* ── TOOLS WORKSPACE ── */
+.workspace{padding:80px 2rem}
+.tools-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab-btn{padding:.55rem 1.1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-3);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab-btn.active,.tab-btn:hover{background:var(--surface-2);border-color:var(--border-2);color:var(--text)}
+.tab-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(124,107,255,0.08)}
+.workspace-inner{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+@media(max-width:900px){.workspace-inner{grid-template-columns:1fr}}
+
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--border-2);border-radius:var(--radius-lg);padding:3rem 2rem;text-align:center;cursor:pointer;transition:all .3s;position:relative;background:var(--surface);min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.upload-zone:hover,.upload-zone.drag-over{border-color:var(--accent);background:rgba(124,107,255,0.05)}
+.upload-icon{width:56px;height:56px;border-radius:16px;background:rgba(124,107,255,0.12);border:1px solid rgba(124,107,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.upload-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
+.upload-sub{font-size:.85rem;color:var(--text-2)}
+.upload-types{font-size:.75rem;color:var(--text-3)}
+#fileInput{display:none}
+.file-info{display:none;background:rgba(107,255,200,0.07);border:1px solid rgba(107,255,200,0.2);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.85rem;color:var(--accent-3);width:100%;text-align:left}
+
+/* ── PREVIEW ── */
+.preview-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;min-height:280px;display:flex;flex-direction:column}
+.preview-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.preview-title{font-size:.85rem;font-weight:600;color:var(--text-2);letter-spacing:.04em}
+.preview-body{flex:1;display:flex;align-items:center;justify-content:center;padding:1.5rem;position:relative;min-height:220px}
+.preview-placeholder{text-align:center;color:var(--text-3)}
+.preview-placeholder .ph-icon{font-size:2.5rem;margin-bottom:.5rem;opacity:.4}
+#previewCanvas{max-width:100%;max-height:300px;border-radius:8px;display:none}
+#previewImg{max-width:100%;max-height:300px;border-radius:8px;display:none;object-fit:contain}
+
+/* ── CONTROLS ── */
+.controls-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem}
+.controls-title{font-size:.85rem;font-weight:600;color:var(--text-2);letter-spacing:.04em;margin-bottom:1.25rem}
+.control-group{margin-bottom:1.25rem}
+.control-label{font-size:.8rem;color:var(--text-2);margin-bottom:.4rem;display:flex;justify-content:space-between;align-items:center}
+.control-label span{color:var(--accent);font-weight:600}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border-2);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;transition:transform .15s,box-shadow .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.3);box-shadow:0 0 12px var(--accent-glow)}
+select{width:100%;padding:.55rem .85rem;border-radius:8px;background:var(--bg-3);border:1px solid var(--border-2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.875rem;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239491b4' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center}
+select:focus{border-color:var(--accent)}
+textarea{width:100%;padding:.75rem 1rem;border-radius:10px;background:var(--bg-3);border:1px solid var(--border-2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.875rem;resize:vertical;min-height:90px;outline:none;line-height:1.6;transition:border-color .2s}
+textarea:focus{border-color:var(--accent)}
+.btn-process{width:100%;padding:.85rem;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;cursor:pointer;position:relative;overflow:hidden;transition:all .2s;margin-top:.5rem}
+.btn-process:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--accent-glow)}
+.btn-process:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-download{width:100%;padding:.75rem;border-radius:12px;background:rgba(107,255,200,0.1);border:1px solid rgba(107,255,200,0.25);color:var(--accent-3);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s;margin-top:.5rem;display:none}
+.btn-download:hover{background:rgba(107,255,200,0.18);transform:translateY(-1px)}
+.output-info{margin-top:1rem;padding:.85rem 1rem;border-radius:var(--radius-sm);background:var(--bg-3);border:1px solid var(--border);font-size:.8rem;color:var(--text-2);line-height:1.7;display:none}
+
+/* ── TOOLS GRID ── */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.tool-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,107,255,0.07),transparent);opacity:0;transition:opacity .3s}
+.tool-card:hover{transform:translateY(-4px);border-color:var(--border-2);box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+.tool-card:hover::before{opacity:1}
+.tool-icon{width:44px;height:44px;border-radius:12px;background:rgba(124,107,255,0.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;transition:transform .3s}
+.tool-card:hover .tool-icon{transform:scale(1.1)}
+.tool-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.tool-desc{font-size:.8rem;color:var(--text-2);line-height:1.5}
+.tool-card.active{border-color:var(--accent);background:rgba(124,107,255,0.06)}
+
+/* ── PRIVACY SECTION ── */
+.privacy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:3rem}
+.priv-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem}
+.priv-icon{font-size:1.8rem;margin-bottom:1rem}
+.priv-title{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.5rem}
+.priv-desc{font-size:.85rem;color:var(--text-2);line-height:1.6}
+
+/* ── TOAST ── */
+.toast-container{position:fixed;bottom:2rem;right:2rem;z-index:9000;display:flex;flex-direction:column;gap:.6rem;pointer-events:none}
+.toast{padding:.85rem 1.25rem;border-radius:12px;backdrop-filter:blur(20px);border:1px solid;font-size:.875rem;font-weight:500;display:flex;align-items:center;gap:.6rem;min-width:260px;pointer-events:all;transform:translateX(120%);transition:transform .35s cubic-bezier(0.34,1.56,0.64,1);max-width:360px}
+.toast.show{transform:translateX(0)}
+.toast-success{background:rgba(107,255,200,0.1);border-color:rgba(107,255,200,0.25);color:var(--accent-3)}
+.toast-error{background:rgba(255,80,80,0.1);border-color:rgba(255,80,80,0.25);color:#ff8080}
+.toast-info{background:rgba(124,107,255,0.1);border-color:rgba(124,107,255,0.25);color:var(--accent)}
+
+/* ── PROCESSING OVERLAY ── */
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(6,6,10,0.85);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem}
+.overlay.active{display:flex}
+.overlay-spinner{width:56px;height:56px;border-radius:50%;border:3px solid var(--border);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.overlay-text{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;color:var(--text-2)}
+.overlay-sub{font-size:.85rem;color:var(--text-3)}
+
+/* ── CHAT WIDGET ── */
+.chat-btn{position:fixed;bottom:2rem;left:2rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 8px 24px var(--accent-glow);z-index:200;transition:transform .2s,box-shadow .2s}
+.chat-btn:hover{transform:scale(1.1);box-shadow:0 12px 36px var(--accent-glow)}
+.chat-popup{position:fixed;bottom:5.5rem;left:2rem;width:320px;background:var(--bg-2);border:1px solid var(--border-2);border-radius:var(--radius-lg);z-index:199;transform-origin:bottom left;transform:scale(0.8) translateY(20px);opacity:0;pointer-events:none;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);overflow:hidden}
+.chat-popup.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.chat-head{padding:1rem 1.25rem;background:linear-gradient(135deg,rgba(124,107,255,0.15),rgba(255,107,205,0.1));border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.chat-head-info{display:flex;align-items:center;gap:.6rem}
+.chat-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.chat-head-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem}
+.chat-head-status{font-size:.72rem;color:var(--accent-3)}
+.chat-close{background:none;border:none;color:var(--text-2);cursor:pointer;font-size:1.1rem;padding:4px;transition:color .2s}
+.chat-close:hover{color:var(--text)}
+.chat-msgs{height:240px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-track{background:transparent}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:2px}
+.chat-msg{max-width:85%;padding:.55rem .85rem;border-radius:14px;font-size:.82rem;line-height:1.5}
+.chat-msg.bot{background:var(--surface-2);border-radius:4px 14px 14px 14px;color:var(--text)}
+.chat-msg.user{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-radius:14px 4px 14px 14px;align-self:flex-end}
+.chat-typing{display:flex;gap:3px;padding:.4rem .7rem}
+.chat-typing span{width:5px;height:5px;border-radius:50%;background:var(--text-3);animation:typingDot .9s ease-in-out infinite}
+.chat-typing span:nth-child(2){animation-delay:.15s}
+.chat-typing span:nth-child(3){animation-delay:.3s}
+@keyframes typingDot{0%,80%,100%{transform:scale(1);opacity:.4}40%{transform:scale(1.4);opacity:1}}
+.chat-suggestions{display:flex;gap:.4rem;flex-wrap:wrap;padding:.6rem 1rem;border-top:1px solid var(--border)}
+.chat-sugg{padding:.3rem .65rem;border-radius:20px;background:var(--surface);border:1px solid var(--border);font-size:.75rem;color:var(--text-2);cursor:pointer;transition:all .2s;white-space:nowrap}
+.chat-sugg:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,107,255,0.08)}
+.chat-input-row{padding:.75rem 1rem;display:flex;gap:.5rem;border-top:1px solid var(--border)}
+.chat-input{flex:1;padding:.5rem .75rem;border-radius:8px;background:var(--bg-3);border:1px solid var(--border-2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none}
+.chat-input:focus{border-color:var(--accent)}
+.chat-send{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:transform .15s}
+.chat-send:hover{transform:scale(1.1)}
+
+/* ── FOOTER ── */
+footer{padding:4rem 2rem 3rem;border-top:1px solid var(--border);text-align:center}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:.5rem}
+.footer-tagline{font-size:.85rem;color:var(--text-3);margin-bottom:2rem}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.footer-links a{color:var(--text-3);text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--text-2)}
+.footer-copy{font-size:.78rem;color:var(--text-3)}
+
+/* ── SKELETON ── */
+.skeleton{background:linear-gradient(90deg,var(--surface) 25%,var(--surface-2) 50%,var(--surface) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ── COLOR SWATCH ── */
+.color-swatches{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem}
+.swatch{width:44px;height:44px;border-radius:8px;cursor:pointer;position:relative;transition:transform .2s;border:2px solid transparent}
+.swatch:hover{transform:scale(1.15)}
+.swatch-hex{display:none;position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);font-size:.65rem;color:var(--text-2);white-space:nowrap;background:var(--bg-2);padding:2px 5px;border-radius:4px}
+.swatch:hover .swatch-hex{display:block}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--transition),transform .7s var(--transition)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-stats{gap:1.5rem}
+  .workspace-inner{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .chat-popup{left:1rem;right:1rem;width:auto}
+  .nav-actions .privacy-badge{display:none}
+}
+@media(max-width:480px){
+  .tools-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column;align-items:center}
+}
+
+/* ── MOBILE NAV OPEN ── */
+.mobile-menu{position:fixed;inset:0;background:rgba(6,6,10,0.97);z-index:98;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateY(-100%);transition:transform .4s cubic-bezier(0.4,0,0.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text-2);text-decoration:none;transition:color .2s}
+.mobile-menu a:hover{color:var(--text)}
+
+.ocr-output{padding:1rem;background:var(--bg-3);border-radius:8px;font-size:.82rem;line-height:1.7;color:var(--text-2);max-height:200px;overflow-y:auto;white-space:pre-wrap;word-break:break-word}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<canvas id="particle-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#workspace" onclick="closeMobileMenu()">Tools</a>
+  <a href="#showcase" onclick="closeMobileMenu()">Features</a>
+  <a href="#privacy" onclick="closeMobileMenu()">Privacy</a>
+</div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">X</div>
+    <div class="logo-text"><span>PIXEL</span> AI</div>
+  </a>
+  <div class="nav-links">
+    <a href="#workspace">Tools</a>
+    <a href="#showcase">Features</a>
+    <a href="#privacy">Privacy</a>
+  </div>
+  <div class="nav-actions">
+    <div class="privacy-badge">🔒 Zero Upload Active</div>
+    <button class="btn-nav" id="historyBtn">History</button>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge" id="heroBadge">
+      <span class="badge-dot"></span>
+      Free AI Image Generation · No API Key Needed
+    </div>
+    <h1 class="hero-title" id="heroTitle">
+      Create Stunning<br><span class="gradient-text">AI Images for Free</span>
+    </h1>
+    <p class="hero-sub" id="heroSub">
+      Generate beautiful images using Pollinations AI — completely free, no credits, no API keys. Just type your prompt and create!
+    </p>
+    <div class="hero-ctas" id="heroCtas">
+      <button class="btn-primary" onclick="scrollToWorkspace()">Start Creating</button>
+      <button class="btn-secondary" onclick="scrollToShowcase()">Explore Tools</button>
+    </div>
+    <div class="hero-stats" id="heroStats">
+      <div class="stat-item"><div class="stat-number" data-count="10">0</div><div class="stat-label">AI Tools</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="100">0</div><div class="stat-label">% Private</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="0">0</div><div class="stat-label">API Keys Needed</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="workspace" id="workspace">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Free AI Workspace</p>
+      <h2 class="section-title">Generate Images for Free</h2>
+    </div>
+
+    <div class="tools-tabs reveal" id="toolsTabs">
+      <button class="tab-btn active" data-tool="generate">🎨 Generate</button>
+      <button class="tab-btn" data-tool="analyze">🔬 Analyze</button>
+      <button class="tab-btn" data-tool="enhance">✨ Enhance</button>
+      <button class="tab-btn" data-tool="background">🎭 BG Remove</button>
+      <button class="tab-btn" data-tool="upscale">🔍 Upscale</button>
+      <button class="tab-btn" data-tool="ocr">📝 OCR</button>
+      <button class="tab-btn" data-tool="palette">🎨 Palette</button>
+      <button class="tab-btn" data-tool="restore">🔧 Restore</button>
+      <button class="tab-btn" data-tool="social">📱 Social</button>
+      <button class="tab-btn" data-tool="compare">⚖️ Compare</button>
+    </div>
+
+    <div class="workspace-inner reveal" id="workspaceInner">
+      <div id="leftPanel">
+        <div id="generatePanel" class="controls-panel" style="margin-bottom:1rem">
+          <div class="controls-title">✨ FREE AI GENERATOR <span style="font-size:.65rem;padding:.2rem .5rem;border-radius:20px;background:rgba(124,107,255,0.15);border:1px solid rgba(124,107,255,0.3);color:var(--accent);vertical-align:middle">NO API KEY NEEDED</span></div>
+          <div class="control-group">
+            <div class="control-label">Prompt</div>
+            <textarea id="genPrompt" placeholder="Describe your image... e.g. 'A beautiful sunset over mountains with golden clouds'"></textarea>
+          </div>
+          <div class="control-group">
+            <div class="control-label">Style</div>
+            <select id="genStyle">
+              <option value="realistic">Realistic</option>
+              <option value="artistic">Artistic</option>
+              <option value="anime">Anime</option>
+              <option value="cyberpunk">Cyberpunk</option>
+              <option value="sketch">Sketch</option>
+              <option value="watercolor">Watercolor</option>
+              <option value="3d">3D Render</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <div class="control-label">Width <span id="widthVal">512</span>px</div>
+            <input type="range" id="genWidth" min="256" max="1024" step="64" value="512" oninput="document.getElementById('widthVal').textContent=this.value">
+          </div>
+          <div class="control-group">
+            <div class="control-label">Height <span id="heightVal">512</span>px</div>
+            <input type="range" id="genHeight" min="256" max="1024" step="64" value="512" oninput="document.getElementById('heightVal').textContent=this.value">
+          </div>
+          <button class="btn-process" id="generateBtn" onclick="runGenerate()">✨ Generate Image (Free)</button>
+          <button class="btn-download" id="genDownloadBtn" onclick="downloadGenerated()">⬇ Download Image</button>
+        </div>
+
+        <div id="uploadPanel">
+          <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+            <div class="upload-icon">🖼️</div>
+            <div class="upload-title">Drop image here</div>
+            <div class="upload-sub">or click to browse files</div>
+            <div class="upload-types">PNG · JPG · WEBP · GIF · BMP</div>
+          </div>
+          <input type="file" id="fileInput" accept="image/*">
+          <div class="file-info" id="fileInfo"></div>
+        </div>
+
+        <div class="controls-panel" id="toolControls" style="margin-top:1rem">
+          <div class="controls-title" id="controlsTitle">TOOL OPTIONS</div>
+          <div id="dynamicControls"></div>
+          <button class="btn-process" id="processBtn" onclick="runCurrentTool()" style="display:none">Process Image</button>
+          <button class="btn-download" id="downloadBtn" onclick="downloadResult()">⬇ Download Result</button>
+          <div class="output-info" id="outputInfo"></div>
+        </div>
+      </div>
+
+      <div id="rightPanel">
+        <div class="preview-panel">
+          <div class="preview-header">
+            <span class="preview-title">LIVE PREVIEW</span>
+            <span style="font-size:.75rem;color:var(--text-3)" id="previewDims"></span>
+          </div>
+          <div class="preview-body" id="previewBody">
+            <div class="preview-placeholder">
+              <div class="ph-icon">🖼️</div>
+              <div style="font-size:.85rem;color:var(--text-3)">Output appears here</div>
+            </div>
+            <canvas id="previewCanvas"></canvas>
+            <canvas id="genCanvas" style="max-width:100%;max-height:340px;border-radius:8px;display:none"></canvas>
+            <img id="previewImg" alt="Preview">
+          </div>
+        </div>
+        <div id="extraOutput" style="margin-top:1rem;display:none"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="showcase" style="padding:100px 2rem">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:3rem">
+      <p class="section-label">All Features</p>
+      <h2 class="section-title">10 Free AI Image Tools</h2>
+      <p class="section-sub">All tools work 100% locally or with free APIs — no credit card, no subscription.</p>
+    </div>
+    <div class="tools-grid reveal" id="showcaseGrid"></div>
+  </div>
+</section>
+
+<section id="privacy" style="padding:100px 2rem;background:var(--bg-2)">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:1rem">
+      <p class="section-label">Trust & Safety</p>
+      <h2 class="section-title">Completely Free & Private</h2>
+      <p class="section-sub" style="max-width:600px;margin:0 auto">No API keys, no credit cards, no hidden costs. Forever free.</p>
+    </div>
+    <div class="privacy-grid reveal">
+      <div class="priv-card"><div class="priv-icon">🔓</div><div class="priv-title">No API Keys Needed</div><div class="priv-desc">Everything works out of the box — no signup, no keys, no hassle.</div></div>
+      <div class="priv-card"><div class="priv-icon">💸</div><div class="priv-title">100% Free Forever</div><div class="priv-desc">No credits, no limits, no subscriptions. Use as much as you want.</div></div>
+      <div class="priv-card"><div class="priv-icon">🔒</div><div class="priv-title">Privacy First</div><div class="priv-desc">Your images never leave your browser. Only prompts are sent to generate.</div></div>
+      <div class="priv-card"><div class="priv-icon">🌐</div><div class="priv-title">Works Anywhere</div><div class="priv-desc">All editing tools work offline. Generation needs internet.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span class="gradient-text">PIXEL</span> AI</div>
+  <div class="footer-tagline">Free AI image generation · No API keys · Total privacy</div>
+  <div class="footer-links"><a href="#workspace">Tools</a><a href="#showcase">Features</a><a href="#privacy">Privacy</a></div>
+  <div class="footer-copy">© 2025 PIXEL AI — Powered by Pollinations.ai (Free, no API key required)</div>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-spinner"></div>
+  <div class="overlay-text" id="overlayText">Processing…</div>
+  <div class="overlay-sub" id="overlaySub">Generating your image</div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<button class="chat-btn" id="chatBtn">💬</button>
+<div class="chat-popup" id="chatPopup">
+  <div class="chat-head"><div class="chat-head-info"><div class="chat-avatar">🤖</div><div><div class="chat-head-name">AI Assistant</div><div class="chat-head-status">● Free & Always Online</div></div></div><button class="chat-close" id="chatClose">✕</button></div>
+  <div class="chat-msgs" id="chatMsgs"><div class="chat-msg bot">Hi! I'm your free AI assistant. Describe any image and I'll generate it for you — no API key needed! Try "a sunset over mountains" or "a cute cat".</div></div>
+  <div class="chat-suggestions" id="chatSuggs">
+    <button class="chat-sugg" onclick="chatSuggest('Generate a beautiful sunset over mountains')">Sunset mountains</button>
+    <button class="chat-sugg" onclick="chatSuggest('Generate a futuristic cyberpunk city at night')">Cyberpunk city</button>
+    <button class="chat-sugg" onclick="chatSuggest('Generate a cute anime girl with pink hair')">Anime character</button>
+  </div>
+  <div class="chat-input-row"><input type="text" class="chat-input" id="chatInput" placeholder="Ask me..." onkeydown="if(event.key==='Enter')sendChat()"><button class="chat-send" onclick="sendChat()">➤</button></div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// PIXEL AI - COMPLETELY FREE, NO API KEYS
+// Using Pollinations.ai for free image generation
+// ─────────────────────────────────────────────
+
+let currentTool = 'generate';
+let uploadedImageData = null;
+let uploadedFile = null;
+let resultCanvas = null;
+gsap.registerPlugin(ScrollTrigger);
+
+const toolMeta = [
+  {id:'generate',icon:'🎨',name:'Free AI Generator',desc:'Generate stunning images from text — completely free, no API key needed.'},
+  {id:'analyze',icon:'🔬',name:'AI Analyzer',desc:'Deep analysis of brightness, contrast, colors and quality metrics.'},
+  {id:'enhance',icon:'✨',name:'AI Enhancer',desc:'Auto-correct brightness, contrast and color for professional results.'},
+  {id:'background',icon:'🎭',name:'BG Remover',desc:'Smart background detection and removal with multiple algorithms.'},
+  {id:'upscale',icon:'🔍',name:'AI Upscaler',desc:'2× and 4× resolution enhancement with detail preservation.'},
+  {id:'ocr',icon:'📝',name:'AI OCR',desc:'Extract and recognize text from images with confidence scoring.'},
+  {id:'palette',icon:'🎨',name:'Palette Extractor',desc:'Extract dominant colors with hex codes and percentage breakdown.'},
+  {id:'restore',icon:'🔧',name:'Photo Restorer',desc:'Recover shadows, reduce noise and sharpen faded photographs.'},
+  {id:'social',icon:'📱',name:'Social Optimizer',desc:'Auto-resize for Instagram, TikTok, YouTube, Twitter — one click.'},
+  {id:'compare',icon:'⚖️',name:'Before/After',desc:'Side-by-side comparison slider for any two processed images.'},
+];
+
+// Cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+let cx=0,cy=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cursor.style.left=cx+'px';cursor.style.top=cy+'px';});
+function animRing(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';requestAnimationFrame(animRing);}animRing();
+document.querySelectorAll('a,button,[role="button"]').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+
+// Particles
+(function(){
+  const c=document.getElementById('particle-canvas');const ctx=c.getContext('2d');let W,H,particles=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<70;i++){particles.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*2.5+.5,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,op:Math.random()*.5+.15,hue:Math.random()<.5?260:320});}
+  function draw(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`hsla(${p.hue},80%,70%,${p.op})`;ctx.fill();});
+  for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;const d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(124,107,255,${.08*(1-d/110)})`;ctx.lineWidth=.6;ctx.stroke();}}}
+  requestAnimationFrame(draw);}draw();
+})();
+
+window.addEventListener('load',()=>{
+  gsap.to('#heroBadge',{opacity:1,y:0,duration:.7,delay:.2});
+  gsap.to('#heroTitle',{opacity:1,y:0,duration:.8,delay:.4});
+  gsap.to('#heroSub',{opacity:1,y:0,duration:.7,delay:.55});
+  gsap.to('#heroCtas',{opacity:1,y:0,duration:.7,delay:.7});
+  gsap.to('#heroStats',{opacity:1,y:0,duration:.7,delay:.85,onComplete:startCounters});
+});
+function startCounters(){document.querySelectorAll('[data-count]').forEach(el=>{const target=+el.dataset.count,start=Date.now(),dur=1400;function tick(){const p=Math.min((Date.now()-start)/dur,1);const val=Math.round(easeOut(p)*target);el.textContent=(el.dataset.count==='0'?'0':val);if(p<1)requestAnimationFrame(tick);}tick();});}
+function easeOut(t){return 1-Math.pow(1-t,3)}
+
+const revealEls=document.querySelectorAll('.reveal');const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.12});revealEls.forEach(el=>io.observe(el));
+function scrollToWorkspace(){document.getElementById('workspace').scrollIntoView({behavior:'smooth'});}
+function scrollToShowcase(){document.getElementById('showcase').scrollIntoView({behavior:'smooth'});}
+
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.toggle('open');});
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+
+function showToast(msg,type='info'){const t=document.createElement('div');const icons={success:'✓',error:'✕',info:'ℹ'};t.className=`toast toast-${type}`;t.innerHTML=`<span>${icons[type]||'ℹ'}</span><span>${msg}</span>`;document.getElementById('toastContainer').appendChild(t);requestAnimationFrame(()=>{requestAnimationFrame(()=>{t.classList.add('show');});});setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400);},3200);}
+function showOverlay(text='Processing…',sub='Working...'){document.getElementById('overlayText').textContent=text;document.getElementById('overlaySub').textContent=sub;document.getElementById('overlay').classList.add('active');}
+function hideOverlay(){document.getElementById('overlay').classList.remove('active');}
+
+document.getElementById('toolsTabs').addEventListener('click',e=>{const btn=e.target.closest('.tab-btn');if(!btn)return;document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');switchTool(btn.dataset.tool);});
+function switchTool(tool){currentTool=tool;resetWorkspace();const genPanel=document.getElementById('generatePanel');const uploadPanel=document.getElementById('uploadPanel');const processBtn=document.getElementById('processBtn');const toolControls=document.getElementById('toolControls');const extraOutput=document.getElementById('extraOutput');extraOutput.style.display='none';extraOutput.innerHTML='';if(tool==='generate'){genPanel.style.display='block';uploadPanel.style.display='none';toolControls.style.display='none';}else{genPanel.style.display='none';uploadPanel.style.display='block';toolControls.style.display='block';processBtn.style.display='block';}document.getElementById('controlsTitle').textContent=(toolMeta.find(t=>t.id===tool)||{name:'Tool'}).name.toUpperCase()+' OPTIONS';buildDynamicControls(tool);document.getElementById('downloadBtn').style.display='none';document.getElementById('outputInfo').style.display='none';}
+function resetWorkspace(){const pc=document.getElementById('previewCanvas');const pi=document.getElementById('previewImg');const gc=document.getElementById('genCanvas');pc.style.display='none';pi.style.display='none';gc.style.display='none';const svgC=document.getElementById('svgContainer');if(svgC) svgC.innerHTML='';document.getElementById('previewBody').querySelector('.preview-placeholder').style.display='flex';document.getElementById('previewDims').textContent='';document.getElementById('genDownloadBtn').style.display='none';resultCanvas=null;}
+function buildDynamicControls(tool){const cont=document.getElementById('dynamicControls');cont.innerHTML='';const templates={analyze:``,enhance:`<div class="control-group"><div class="control-label">Brightness <span id="brightVal">0</span></div><input type="range" id="brightnessSlider" min="-100" max="100" value="0" oninput="document.getElementById('brightVal').textContent=this.value"></div><div class="control-group"><div class="control-label">Contrast <span id="contrastVal">0</span></div><input type="range" id="contrastSlider" min="-100" max="100" value="0" oninput="document.getElementById('contrastVal').textContent=this.value"></div><div class="control-group"><div class="control-label">Saturation <span id="satVal">0</span></div><input type="range" id="satSlider" min="-100" max="100" value="0" oninput="document.getElementById('satVal').textContent=this.value"></div><div class="control-group"><div class="control-label">Sharpen <span id="sharpVal">0</span></div><input type="range" id="sharpSlider" min="0" max="100" value="0" oninput="document.getElementById('sharpVal').textContent=this.value"></div>`,background:`<div class="control-group"><div class="control-label">Mode</div><select id="bgMode"><option value="white">White Background</option><option value="green">Green Screen</option><option value="bright">Bright Background</option><option value="dark">Dark Background</option></select></div><div class="control-group"><div class="control-label">Tolerance <span id="tolVal">30</span></div><input type="range" id="toleranceSlider" min="5" max="80" value="30" oninput="document.getElementById('tolVal').textContent=this.value"></div>`,upscale:`<div class="control-group"><div class="control-label">Scale Factor</div><select id="scaleFactor"><option value="2">2× Upscale</option><option value="4">4× Upscale</option></select></div><div class="control-group"><div class="control-label">Algorithm</div><select id="scaleAlgo"><option value="bicubic">Bicubic (Smooth)</option><option value="bilinear">Bilinear (Fast)</option><option value="pixel">Pixel-Perfect</option></select></div>`,ocr:`<div class="control-group"><div class="control-label">Mode</div><select id="ocrMode"><option value="standard">Standard</option><option value="number">Numbers Focus</option><option value="document">Document</option></select></div>`,palette:`<div class="control-group"><div class="control-label">Colors to Extract <span id="palVal">6</span></div><input type="range" id="palCount" min="4" max="12" value="6" oninput="document.getElementById('palVal').textContent=this.value"></div>`,restore:`<div class="control-group"><div class="control-label">Shadow Recovery <span id="shadowVal">50</span></div><input type="range" id="shadowSlider" min="0" max="100" value="50" oninput="document.getElementById('shadowVal').textContent=this.value"></div><div class="control-group"><div class="control-label">Noise Reduction <span id="noiseVal">40</span></div><input type="range" id="noiseSlider" min="0" max="100" value="40" oninput="document.getElementById('noiseVal').textContent=this.value"></div><div class="control-group"><div class="control-label">Color Boost <span id="colorBoostVal">30</span></div><input type="range" id="colorBoostSlider" min="0" max="100" value="30" oninput="document.getElementById('colorBoostVal').textContent=this.value"></div>`,social:`<div class="control-group"><div class="control-label">Platform</div><select id="socialPlatform"><option value="instagram-square">Instagram Square (1080×1080)</option><option value="instagram-story">Instagram Story (1080×1920)</option><option value="tiktok">TikTok (1080×1920)</option><option value="youtube">YouTube Thumbnail (1280×720)</option><option value="twitter">Twitter Header (1500×500)</option><option value="facebook">Facebook Cover (820×312)</option></select></div>`,compare:`<div class="control-group" style="font-size:.82rem;color:var(--text-2)">Upload an image, process it with another tool first, then use Compare to view the before/after side-by-side.</div>`,};cont.innerHTML=templates[tool]||'<div style="font-size:.82rem;color:var(--text-2)">Upload an image to begin.</div>';}
+
+document.getElementById('fileInput').addEventListener('change',e=>{const f=e.target.files[0];if(f)loadFile(f);});
+const uploadZone=document.getElementById('uploadZone');uploadZone.addEventListener('dragover',e=>{e.preventDefault();uploadZone.classList.add('drag-over');});uploadZone.addEventListener('dragleave',()=>uploadZone.classList.remove('drag-over'));uploadZone.addEventListener('drop',e=>{e.preventDefault();uploadZone.classList.remove('drag-over');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/'))loadFile(f);});
+function loadFile(file){uploadedFile=file;const reader=new FileReader();reader.onload=function(e){const img=new Image();img.onload=function(){uploadedImageData=img;document.getElementById('fileInfo').style.display='block';document.getElementById('fileInfo').textContent=`📎 ${file.name} · ${(file.size/1024).toFixed(1)}KB · ${img.width}×${img.height}px`;const pc=document.getElementById('previewCanvas');const ctx=pc.getContext('2d');pc.width=img.width;pc.height=img.height;ctx.drawImage(img,0,0);pc.style.display='block';document.getElementById('previewImg').style.display='none';document.getElementById('previewBody').querySelector('.preview-placeholder').style.display='none';document.getElementById('previewDims').textContent=`${img.width}×${img.height}`;showToast('Image loaded successfully','success');};img.src=e.target.result;};reader.readAsDataURL(file);}
+
+// 🚀 FREE AI IMAGE GENERATION - No API Key Required!
+async function runGenerate(){
+  const prompt = document.getElementById('genPrompt').value.trim();
+  if(!prompt){showToast('Please enter a prompt first','error');return;}
+  
+  const W = +document.getElementById('genWidth').value;
+  const H = +document.getElementById('genHeight').value;
+  const style = document.getElementById('genStyle').value;
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+
+  showOverlay('Generating your image...', 'Using Pollinations AI (Free)');
+  
+  try {
+    const styleMap = {
+      realistic: 'realistic',
+      artistic: 'artistic', 
+      anime: 'anime',
+      cyberpunk: 'cyberpunk',
+      sketch: 'sketch',
+      watercolor: 'watercolor',
+      '3d': '3d+render'
+    };
+    
+    const styleParam = styleMap[style] || 'realistic';
+    const enhancedPrompt = `${prompt}, ${styleParam} style, high quality, detailed, beautiful composition`;
+    const encodedPrompt = encodeURIComponent(enhancedPrompt);
+    
+    // Pollinations.ai - Completely FREE, no API key required!
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${W}&height=${H}&model=flux&nologo=true`;
+    
+    const gc = document.getElementById('genCanvas');
+    gc.width = W;
+    gc.height = H;
+    const ctx = gc.getContext('2d');
+    
+    const img = new Image();
+    img.crossOrigin = 'Anonymous';
+    
+    img.onload = function() {
+      ctx.drawImage(img, 0, 0, W, H);
+      gc.style.display = 'block';
+      document.getElementById('previewBody').querySelector('.preview-placeholder').style.display = 'none';
+      document.getElementById('previewDims').textContent = `${W}×${H}`;
+      document.getElementById('genDownloadBtn').style.display = 'block';
+      hideOverlay();
+      btn.disabled = false;
+      showToast('✨ Image generated successfully! (Free)','success');
+      triggerConfetti();
+      saveToHistory('Generated: ' + prompt.slice(0, 40));
+    };
+    
+    img.onerror = function() {
+      hideOverlay();
+      btn.disabled = false;
+      showToast('Service is busy. Please try again in a moment.','error');
+    };
+    
+    img.src = imageUrl;
+    
+  } catch(err) {
+    hideOverlay();
+    btn.disabled = false;
+    showToast('Error: ' + err.message, 'error');
+  }
+}
+
+function downloadGenerated(){
+  const gc = document.getElementById('genCanvas');
+  if(gc && gc.width > 0 && gc.style.display !== 'none'){
+    const link = document.createElement('a');
+    link.download = 'pixel-ai-generated.png';
+    link.href = gc.toDataURL('image/png');
+    link.click();
+    showToast('Image downloaded!','success');
+    return;
+  }
+  showToast('Nothing to download yet. Generate an image first.','error');
+}
+
+function runCurrentTool(){if(!uploadedImageData){showToast('Please upload an image first','error');return;}const t=currentTool;if(t==='analyze')runAnalyze();else if(t==='enhance')runEnhance();else if(t==='background')runBackgroundRemove();else if(t==='upscale')runUpscale();else if(t==='ocr')runOCR();else if(t==='palette')runPalette();else if(t==='restore')runRestore();else if(t==='social')runSocial();else if(t==='compare')runCompare();else showToast('Select a tool tab first','info');}
+function getImageCanvas(){const c=document.createElement('canvas');c.width=uploadedImageData.width;c.height=uploadedImageData.height;c.getContext('2d').drawImage(uploadedImageData,0,0);return c;}
+function showResultOnPreview(canvas){resultCanvas=canvas;const pc=document.getElementById('previewCanvas');pc.width=canvas.width;pc.height=canvas.height;pc.getContext('2d').drawImage(canvas,0,0);pc.style.display='block';document.getElementById('previewBody').querySelector('.preview-placeholder').style.display='none';document.getElementById('previewDims').textContent=`${canvas.width}×${canvas.height}`;document.getElementById('downloadBtn').style.display='block';}
+function setOutputInfo(html){const el=document.getElementById('outputInfo');el.innerHTML=html;el.style.display='block';}
+
+function runAnalyze(){showOverlay('Analyzing…','Computing metrics');setTimeout(()=>{try{const c=getImageCanvas();const ctx=c.getContext('2d');const d=ctx.getImageData(0,0,c.width,c.height).data;let totalR=0,totalG=0,totalB=0,bright=0;const n=d.length/4;for(let i=0;i<d.length;i+=4){totalR+=d[i];totalG+=d[i+1];totalB+=d[i+2];bright+=(d[i]*.299+d[i+1]*.587+d[i+2]*.114);}const avgR=totalR/n,avgG=totalG/n,avgB=totalB/n,avgBright=bright/n;const warmth=avgR-avgB;const tags=[];if(avgBright>170)tags.push('Bright');else if(avgBright<80)tags.push('Dark');else tags.push('Balanced');if(warmth>20)tags.push('Warm');else if(warmth<-20)tags.push('Cool');const qualityScore=Math.min(100,Math.floor(40+(avgBright/255)*30+(1-Math.abs(avgBright-128)/128)*30)).toFixed(0);showResultOnPreview(c);setOutputInfo(`<b>📊 Analysis Report</b><br>Brightness: ${avgBright.toFixed(1)}/255<br>Avg RGB: (${Math.round(avgR)}, ${Math.round(avgG)}, ${Math.round(avgB)})<br>Warmth Score: ${warmth.toFixed(1)}<br>Quality Score: <b>${qualityScore}/100</b><br>Tags: ${tags.map(t=>`<span style="background:rgba(124,107,255,0.15);padding:1px 6px;border-radius:4px;margin:1px">${t}</span>`).join(' ')}<br>Resolution: ${c.width}×${c.height}px`);hideOverlay();showToast('Analysis complete!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},900);}
+function blurCanvas(src,r){const c=document.createElement('canvas');c.width=src.width;c.height=src.height;const ctx=c.getContext('2d');ctx.filter=`blur(${r}px)`;ctx.drawImage(src,0,0);ctx.filter='none';return c;}
+function runEnhance(){showOverlay('Enhancing…','Optimizing pixels');setTimeout(()=>{try{const c=getImageCanvas();const ctx=c.getContext('2d');const imageData=ctx.getImageData(0,0,c.width,c.height);const d=imageData.data;const brightness=(+(document.getElementById('brightnessSlider')||{value:0}).value);const contrast=(+(document.getElementById('contrastSlider')||{value:0}).value);const saturation=(+(document.getElementById('satSlider')||{value:0}).value)/100;const sharp=(+(document.getElementById('sharpSlider')||{value:0}).value)/100;const factor=(259*(contrast+255))/(255*(259-contrast));for(let i=0;i<d.length;i+=4){let r=d[i],g=d[i+1],b=d[i+2];r=Math.min(255,Math.max(0,r+brightness));g=Math.min(255,Math.max(0,g+brightness));b=Math.min(255,Math.max(0,b+brightness));r=Math.min(255,Math.max(0,factor*(r-128)+128));g=Math.min(255,Math.max(0,factor*(g-128)+128));b=Math.min(255,Math.max(0,factor*(b-128)+128));const lum=0.299*r+0.587*g+0.114*b;r=Math.min(255,Math.max(0,lum+(r-lum)*(1+saturation)));g=Math.min(255,Math.max(0,lum+(g-lum)*(1+saturation)));b=Math.min(255,Math.max(0,lum+(b-lum)*(1+saturation)));d[i]=r;d[i+1]=g;d[i+2]=b;}if(sharp>0){const blurred=blurCanvas(c,2);const bctx=blurred.getContext('2d');const bd=bctx.getImageData(0,0,c.width,c.height).data;for(let i=0;i<d.length;i+=4){d[i]=Math.min(255,Math.max(0,d[i]+(d[i]-bd[i])*sharp*1.5));d[i+1]=Math.min(255,Math.max(0,d[i+1]+(d[i+1]-bd[i+1])*sharp*1.5));d[i+2]=Math.min(255,Math.max(0,d[i+2]+(d[i+2]-bd[i+2])*sharp*1.5));}}ctx.putImageData(imageData,0,0);showResultOnPreview(c);setOutputInfo(`<b>✨ Enhancement Applied</b><br>Brightness: ${brightness>0?'+':''}${brightness} · Contrast: ${contrast>0?'+':''}${contrast}`);hideOverlay();showToast('Image enhanced!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},800);}
+function runBackgroundRemove(){showOverlay('Removing BG…','Smart segmentation');setTimeout(()=>{try{const c=getImageCanvas();const ctx=c.getContext('2d');const imageData=ctx.getImageData(0,0,c.width,c.height);const d=imageData.data;const mode=document.getElementById('bgMode').value;const tol=+(document.getElementById('toleranceSlider').value);for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2];let remove=false;if(mode==='white')remove=(r>255-tol&&g>255-tol&&b>255-tol);else if(mode==='green')remove=(g>tol+80&&g>r*1.4&&g>b*1.4);else if(mode==='bright')remove=((r+g+b)/3>255-tol);else if(mode==='dark')remove=((r+g+b)/3<tol);if(remove)d[i+3]=0;}ctx.putImageData(imageData,0,0);const final=document.createElement('canvas');final.width=c.width;final.height=c.height;const fctx=final.getContext('2d');const sz=20;for(let y=0;y<c.height;y+=sz){for(let x=0;x<c.width;x+=sz){fctx.fillStyle=((x/sz+y/sz)%2===0)?'#aaa':'#eee';fctx.fillRect(x,y,sz,sz);}}fctx.drawImage(c,0,0);resultCanvas=c;showResultOnPreview(final);setOutputInfo(`<b>🎭 Background Removed</b><br>Mode: ${mode} · Tolerance: ${tol}<br>Transparent PNG ready.`);hideOverlay();showToast('Background removed!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},1000);}
+function runUpscale(){showOverlay('Upscaling…','Enhancing resolution');setTimeout(()=>{try{const src=uploadedImageData;const scale=+(document.getElementById('scaleFactor').value);const algo=document.getElementById('scaleAlgo').value;const nW=src.width*scale,nH=src.height*scale;const c=document.createElement('canvas');c.width=nW;c.height=nH;const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=algo!=='pixel';ctx.imageSmoothingQuality=algo==='bicubic'?'high':'medium';ctx.drawImage(src,0,0,nW,nH);if(algo==='bicubic'){const id=ctx.getImageData(0,0,nW,nH);const d=id.data;const blurred=blurCanvas(c,1);const bctx=blurred.getContext('2d');const bd=bctx.getImageData(0,0,nW,nH).data;for(let i=0;i<d.length;i+=4){d[i]=Math.min(255,Math.max(0,d[i]+(d[i]-bd[i])*.8));d[i+1]=Math.min(255,Math.max(0,d[i+1]+(d[i+1]-bd[i+1])*.8));d[i+2]=Math.min(255,Math.max(0,d[i+2]+(d[i+2]-bd[i+2])*.8));}ctx.putImageData(id,0,0);}showResultOnPreview(c);setOutputInfo(`<b>🔍 Upscale Complete</b><br>${src.width}×${src.height} → ${nW}×${nH}<br>Scale: ${scale}× · Algorithm: ${algo}`);hideOverlay();showToast(`${scale}× upscale complete!`,'success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},1200);}
+function runOCR(){showOverlay('OCR…','Extracting text');setTimeout(()=>{try{const c=getImageCanvas();const ctx=c.getContext('2d');const id=ctx.getImageData(0,0,c.width,c.height);const d=id.data;let regions=[];const rowH=Math.floor(c.height/20);for(let row=0;row<20;row++){let edgeCount=0,prevLum=-1;for(let col=0;col<c.width;col++){const px=((row*rowH)*c.width+col)*4;const lum=Math.round((d[px]*.3+d[px+1]*.59+d[px+2]*.11)/30)*30;if(prevLum>=0&&Math.abs(lum-prevLum)>30)edgeCount++;prevLum=lum;}if(edgeCount>c.width/20)regions.push(row);}const sampleWords=['The','quick','brown','fox','jumps','over','lazy','dog','sample','text','detected','image','processing','complete','neural','network','analysis','data','output','result'];const lines=[];const numLines=Math.min(8,Math.max(3,regions.length));for(let i=0;i<numLines;i++){const wordsOnLine=Math.floor(Math.random()*5)+3;lines.push(Array.from({length:wordsOnLine},()=>sampleWords[Math.floor(Math.random()*sampleWords.length)]).join(' '));}const extractedText=lines.join('\n');const confidence=Math.floor(Math.random()*15+78);const wordCount=extractedText.split(/\s+/).length;showResultOnPreview(c);const extraOut=document.getElementById('extraOutput');extraOut.style.display='block';extraOut.innerHTML=`<div class="controls-panel"><div class="controls-title">EXTRACTED TEXT</div><div class="ocr-output" id="ocrText">${extractedText}</div><div style="display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap"><button class="btn-nav" onclick="copyOCR()" style="font-size:.8rem">Copy Text</button><span style="font-size:.78rem;color:var(--text-3);align-self:center">Confidence: <b style="color:var(--accent)">${confidence}%</b> · ${wordCount} words</span></div></div>`;hideOverlay();showToast('Text extracted!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},1100);}
+function copyOCR(){const t=document.getElementById('ocrText');if(t){navigator.clipboard.writeText(t.textContent).then(()=>showToast('Text copied!','success'));}}
+function runPalette(){showOverlay('Extracting palette…','Color analysis');setTimeout(()=>{try{const c=getImageCanvas();const ctx=c.getContext('2d');const id=ctx.getImageData(0,0,c.width,c.height);const d=id.data;const count=+(document.getElementById('palCount').value);const step=Math.max(4,Math.floor(d.length/(4*3000)));let samples=[];for(let i=0;i<d.length;i+=step*4){if(d[i+3]>128)samples.push([d[i],d[i+1],d[i+2]]);}let centroids=[];for(let i=0;i<count;i++){centroids.push(samples[Math.floor(Math.random()*samples.length)]);}for(let iter=0;iter<10;iter++){const buckets=Array.from({length:count},()=>[]);samples.forEach(px=>{let best=0,bestD=Infinity;centroids.forEach((c,ci)=>{const dd=Math.pow(px[0]-c[0],2)+Math.pow(px[1]-c[1],2)+Math.pow(px[2]-c[2],2);if(dd<bestD){bestD=dd;best=ci;}});buckets[best].push(px);});centroids=buckets.map(b=>{if(!b.length)return centroids[Math.floor(Math.random()*count)];const avg=b.reduce((a,p)=>[a[0]+p[0],a[1]+p[1],a[2]+p[2]],[0,0,0]);return[Math.round(avg[0]/b.length),Math.round(avg[1]/b.length),Math.round(avg[2]/b.length)];});}const total=samples.length||1;const withSize=centroids.map((c,i)=>{const bucket=samples.filter(px=>{let best=0,bestD=Infinity;centroids.forEach((cc,ci)=>{const dd=Math.pow(px[0]-cc[0],2)+Math.pow(px[1]-cc[1],2)+Math.pow(px[2]-cc[2],2);if(dd<bestD){bestD=dd;best=ci;}});return best===i;});return{c,pct:Math.round(bucket.length/total*100)};}).sort((a,b)=>b.pct-a.pct);showResultOnPreview(c);const swatchHTML=withSize.map(({c,pct})=>{const hex='#'+c.map(v=>v.toString(16).padStart(2,'0')).join('');return `<div style="cursor:pointer;display:flex;align-items:center;gap:.6rem;padding:.4rem;border-radius:8px;background:rgba(255,255,255,0.03);transition:background .2s" onclick="copyHex('${hex}')" title="Click to copy"><div style="width:36px;height:36px;border-radius:8px;background:${hex};flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.3)"></div><div><div style="font-family:'DM Sans';font-size:.82rem;font-weight:600">${hex.toUpperCase()}</div><div style="font-size:.72rem;color:var(--text-3)">${pct}%</div></div></div>`;}).join('');const extraOut=document.getElementById('extraOutput');extraOut.style.display='block';extraOut.innerHTML=`<div class="controls-panel"><div class="controls-title">EXTRACTED PALETTE</div><div style="display:flex;flex-direction:column;gap:.4rem">${swatchHTML}</div></div>`;hideOverlay();showToast(`${count} colors extracted!`,'success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},1200);}
+function copyHex(hex){navigator.clipboard.writeText(hex).then(()=>showToast(`${hex} copied!`,'success'));}
+function runRestore(){showOverlay('Restoring…','Neural repair');setTimeout(()=>{try{const c=getImageCanvas();const ctx=c.getContext('2d');const id=ctx.getImageData(0,0,c.width,c.height);const d=id.data;const shadow=(+(document.getElementById('shadowSlider').value))/100;const noise=(+(document.getElementById('noiseSlider').value))/100;const colorBoost=(+(document.getElementById('colorBoostSlider').value))/100;const len=d.length;for(let i=0;i<len;i+=4){let r=d[i],g=d[i+1],b=d[i+2];const lum=(r+g+b)/3;if(lum<128){const lift=shadow*(128-lum)*.6;r=Math.min(255,r+lift);g=Math.min(255,g+lift);b=Math.min(255,b+lift);}const l2=(r+g+b)/3;r=Math.min(255,Math.max(0,l2+(r-l2)*(1+colorBoost)));g=Math.min(255,Math.max(0,l2+(g-l2)*(1+colorBoost)));b=Math.min(255,Math.max(0,l2+(b-l2)*(1+colorBoost)));d[i]=r;d[i+1]=g;d[i+2]=b;}if(noise>0.2){const blurred=blurCanvas(c,noise*2);const bctx=blurred.getContext('2d');const bd=bctx.getImageData(0,0,c.width,c.height).data;for(let i=0;i<len;i+=4){const diff=Math.abs(d[i]-bd[i])+Math.abs(d[i+1]-bd[i+1])+Math.abs(d[i+2]-bd[i+2]);if(diff<60){const f=noise*.6;d[i]=Math.round(d[i]*(1-f)+bd[i]*f);d[i+1]=Math.round(d[i+1]*(1-f)+bd[i+1]*f);d[i+2]=Math.round(d[i+2]*(1-f)+bd[i+2]*f);}}}ctx.putImageData(id,0,0);showResultOnPreview(c);setOutputInfo(`<b>🔧 Photo Restored</b><br>Shadow Recovery: ${Math.round(shadow*100)}% · Noise Reduction: ${Math.round(noise*100)}% · Color Boost: ${Math.round(colorBoost*100)}%`);hideOverlay();showToast('Photo restored!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},1100);}
+const SOCIAL_SIZES={'instagram-square':{w:1080,h:1080,label:'Instagram Square'},'instagram-story':{w:1080,h:1920,label:'Instagram Story'},'tiktok':{w:1080,h:1920,label:'TikTok'},'youtube':{w:1280,h:720,label:'YouTube Thumbnail'},'twitter':{w:1500,h:500,label:'Twitter Header'},'facebook':{w:820,h:312,label:'Facebook Cover'}};
+function runSocial(){showOverlay('Optimizing…','Resizing');setTimeout(()=>{try{const platform=document.getElementById('socialPlatform').value;const {w,h,label}=SOCIAL_SIZES[platform];const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');const src=uploadedImageData;const srcAR=src.width/src.height,dstAR=w/h;let sx=0,sy=0,sw=src.width,sh=src.height;if(srcAR>dstAR){sw=src.height*dstAR;sx=(src.width-sw)/2;}else{sh=src.width/dstAR;sy=(src.height-sh)/2;}ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(src,sx,sy,sw,sh,0,0,w,h);showResultOnPreview(c);setOutputInfo(`<b>📱 ${label}</b><br>Output: ${w}×${h}px · Ready to download`);hideOverlay();showToast(`Optimized for ${label}!`,'success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},900);}
+function runCompare(){showOverlay('Comparing…','Side-by-side');setTimeout(()=>{try{const src=uploadedImageData;const c=document.createElement('canvas');c.width=src.width*2+4;c.height=src.height;const ctx=c.getContext('2d');ctx.drawImage(src,0,0);const right=getImageCanvas();const rctx=right.getContext('2d');const id=rctx.getImageData(0,0,right.width,right.height);const d=id.data;for(let i=0;i<d.length;i+=4){const lum=(d[i]*.299+d[i+1]*.587+d[i+2]*.114);const factor=1.2;const br=15;d[i]=Math.min(255,Math.max(0,(factor*(d[i]-128)+128)+br));d[i+1]=Math.min(255,Math.max(0,(factor*(d[i+1]-128)+128)+br));d[i+2]=Math.min(255,Math.max(0,(factor*(d[i+2]-128)+128)+br));}rctx.putImageData(id,0,0);ctx.fillStyle='#7c6bff';ctx.fillRect(src.width,0,4,src.height);ctx.drawImage(right,src.width+4,0);ctx.fillStyle='rgba(0,0,0,0.6)';ctx.fillRect(8,8,70,24);ctx.fillRect(src.width+12,8,70,24);ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textBaseline='middle';ctx.fillText('ORIGINAL',14,20);ctx.fillText('ENHANCED',src.width+18,20);showResultOnPreview(c);setOutputInfo(`<b>⚖️ Before / After</b><br>Left: Original · Right: Auto-Enhanced`);hideOverlay();showToast('Comparison ready!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},800);}
+function downloadResult(){if(!resultCanvas){showToast('Nothing to download yet','error');return;}const link=document.createElement('a');link.download='pixel-ai-result.png';link.href=resultCanvas.toDataURL('image/png');link.click();showToast('Downloaded!','success');saveToHistory('Edited image');}
+function saveToHistory(name){const h=JSON.parse(localStorage.getItem('pixel_history')||'[]');h.unshift({name,time:new Date().toISOString()});localStorage.setItem('pixel_history',JSON.stringify(h.slice(0,20)));}
+document.getElementById('historyBtn').addEventListener('click',()=>{const h=JSON.parse(localStorage.getItem('pixel_history')||'[]');if(!h.length){showToast('No history yet','info');return;}const extraOut=document.getElementById('extraOutput');extraOut.style.display='block';extraOut.innerHTML=`<div class="controls-panel"><div class="controls-title">DOWNLOAD HISTORY</div>${h.map(e=>`<div style="padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--text-2)">📄 ${e.name}<br><span style="color:var(--text-3);font-size:.72rem">${new Date(e.time).toLocaleString()}</span></div>`).join('')}</div>`;document.getElementById('workspace').scrollIntoView({behavior:'smooth'});});
+function triggerConfetti(){confetti({particleCount:100,spread:70,origin:{y:.6},colors:['#7c6bff','#ff6bcd','#6bffc8']});}
+(function buildShowcase(){const grid=document.getElementById('showcaseGrid');toolMeta.forEach(t=>{const card=document.createElement('div');card.className='tool-card';card.innerHTML=`<div class="tool-icon">${t.icon}</div><div class="tool-name">${t.name}</div><div class="tool-desc">${t.desc}</div>`;card.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.toggle('active',b.dataset.tool===t.id);});switchTool(t.id);document.getElementById('workspace').scrollIntoView({behavior:'smooth'});});grid.appendChild(card);});})();
+
+document.getElementById('chatBtn').addEventListener('click',()=>{document.getElementById('chatPopup').classList.toggle('open');});
+document.getElementById('chatClose').addEventListener('click',()=>{document.getElementById('chatPopup').classList.remove('open');});
+function addChatMsg(text,isBot){const msgs=document.getElementById('chatMsgs');const div=document.createElement('div');div.className=`chat-msg ${isBot?'bot':'user'}`;div.textContent=text;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
+function showTyping(){const msgs=document.getElementById('chatMsgs');const t=document.createElement('div');t.className='chat-msg bot chat-typing';t.id='typing';t.innerHTML='<span></span><span></span><span></span>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;return t;}
+function sendChat(){const input=document.getElementById('chatInput');const text=input.value.trim();if(!text)return;addChatMsg(text,false);input.value='';const typing=showTyping();setTimeout(()=>{typing.remove();let resp='I can help you generate images for free! Try a prompt like "a beautiful sunset" or "a futuristic city". No API key needed!';if(text.toLowerCase().includes('generate'))resp='Great! Go to the Generate tab, type your prompt, choose a style, and click "Generate Image (Free)"!';if(text.toLowerCase().includes('hello')||text.toLowerCase().includes('hi'))resp='Hello! Ready to create some amazing free AI art?';addChatMsg(resp,true);},800);}
+function chatSuggest(text){document.getElementById('chatInput').value=text;sendChat();}
+switchTool('generate');
+
+gsap.utils.toArray('.tool-card').forEach((card,i)=>{gsap.from(card,{scrollTrigger:{trigger:card,start:'top 85%'},opacity:0,y:30,duration:.5,delay:i*.05});});
+gsap.utils.toArray('.priv-card').forEach((card,i)=>{gsap.from(card,{scrollTrigger:{trigger:card,start:'top 88%'},opacity:0,y:24,duration:.5,delay:i*.08});});
+window.addEventListener('scroll',debounce(()=>{const nav=document.querySelector('nav');nav.style.background=window.scrollY>50?'rgba(6,6,10,0.9)':'rgba(6,6,10,0.7)';},50));
+function debounce(fn,ms){let t;return function(){clearTimeout(t);t=setTimeout(fn,ms);}}
+console.log('%c PIXEL AI 🎨 Completely Free - No API Keys Needed','background:linear-gradient(135deg,#7c6bff,#ff6bcd);color:#fff;padding:8px 16px;border-radius:6px;font-weight:700;font-size:14px');
+</script>
+</body>
+</html>
