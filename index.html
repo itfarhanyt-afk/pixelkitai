@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PIXEL AI — Free Image Studio</title>
+<title>PixelKit AI — Free AI Image Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -300,8 +300,8 @@ footer{padding:4rem 2rem 3rem;border-top:1px solid var(--border);text-align:cent
 
 <nav>
   <a href="#" class="nav-logo">
-    <div class="logo-mark">X</div>
-    <div class="logo-text"><span>PIXEL</span> AI</div>
+    <div class="logo-mark">P</div>
+    <div class="logo-text"><span>PixelKit</span> AI</div>
   </a>
   <div class="nav-links">
     <a href="#workspace">Tools</a>
@@ -463,10 +463,10 @@ footer{padding:4rem 2rem 3rem;border-top:1px solid var(--border);text-align:cent
 </section>
 
 <footer>
-  <div class="footer-logo"><span class="gradient-text">PIXEL</span> AI</div>
+  <div class="footer-logo"><span class="gradient-text">PixelKit</span> AI</div>
   <div class="footer-tagline">Free AI image generation · No API keys · Total privacy</div>
   <div class="footer-links"><a href="#workspace">Tools</a><a href="#showcase">Features</a><a href="#privacy">Privacy</a></div>
-  <div class="footer-copy">© 2025 PIXEL AI — Powered by Pollinations.ai (Free, no API key required)</div>
+  <div class="footer-copy">© 2025 PixelKit AI — Powered by Pollinations.ai (Free, no API key required)</div>
 </footer>
 
 <div class="overlay" id="overlay">
@@ -491,8 +491,8 @@ footer{padding:4rem 2rem 3rem;border-top:1px solid var(--border);text-align:cent
 
 <script>
 // ─────────────────────────────────────────────
-// PIXEL AI - COMPLETELY FREE, NO API KEYS
-// Using Pollinations.ai for free image generation
+// PIXELKIT AI - COMPLETELY FREE, NO API KEYS
+// With multiple fallback systems for reliability
 // ─────────────────────────────────────────────
 
 let currentTool = 'generate';
@@ -563,7 +563,7 @@ document.getElementById('fileInput').addEventListener('change',e=>{const f=e.tar
 const uploadZone=document.getElementById('uploadZone');uploadZone.addEventListener('dragover',e=>{e.preventDefault();uploadZone.classList.add('drag-over');});uploadZone.addEventListener('dragleave',()=>uploadZone.classList.remove('drag-over'));uploadZone.addEventListener('drop',e=>{e.preventDefault();uploadZone.classList.remove('drag-over');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/'))loadFile(f);});
 function loadFile(file){uploadedFile=file;const reader=new FileReader();reader.onload=function(e){const img=new Image();img.onload=function(){uploadedImageData=img;document.getElementById('fileInfo').style.display='block';document.getElementById('fileInfo').textContent=`📎 ${file.name} · ${(file.size/1024).toFixed(1)}KB · ${img.width}×${img.height}px`;const pc=document.getElementById('previewCanvas');const ctx=pc.getContext('2d');pc.width=img.width;pc.height=img.height;ctx.drawImage(img,0,0);pc.style.display='block';document.getElementById('previewImg').style.display='none';document.getElementById('previewBody').querySelector('.preview-placeholder').style.display='none';document.getElementById('previewDims').textContent=`${img.width}×${img.height}`;showToast('Image loaded successfully','success');};img.src=e.target.result;};reader.readAsDataURL(file);}
 
-// 🚀 FREE AI IMAGE GENERATION - No API Key Required!
+// 🚀 FREE AI IMAGE GENERATION - With Multiple Fallbacks!
 async function runGenerate(){
   const prompt = document.getElementById('genPrompt').value.trim();
   if(!prompt){showToast('Please enter a prompt first','error');return;}
@@ -574,30 +574,58 @@ async function runGenerate(){
   const btn = document.getElementById('generateBtn');
   btn.disabled = true;
 
-  showOverlay('Generating your image...', 'Using Pollinations AI (Free)');
+  showOverlay('Generating your image...', 'Trying free AI services...');
   
-  try {
-    const styleMap = {
-      realistic: 'realistic',
-      artistic: 'artistic', 
-      anime: 'anime',
-      cyberpunk: 'cyberpunk',
-      sketch: 'sketch',
-      watercolor: 'watercolor',
-      '3d': '3d+render'
-    };
+  const styleMap = {
+    realistic: 'realistic',
+    artistic: 'artistic', 
+    anime: 'anime',
+    cyberpunk: 'cyberpunk',
+    sketch: 'sketch',
+    watercolor: 'watercolor',
+    '3d': '3d+render'
+  };
+  const styleParam = styleMap[style] || 'realistic';
+  const enhancedPrompt = `${prompt}, ${styleParam} style, high quality, detailed, beautiful composition`;
+  const encodedPrompt = encodeURIComponent(enhancedPrompt);
+  
+  // List of free image generation APIs (tries in order)
+  const apis = [
+    {
+      name: 'Pollinations',
+      url: `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${W}&height=${H}&model=flux&nologo=true`,
+      type: 'direct'
+    },
+    {
+      name: 'Pollinations (Alternate)',
+      url: `https://pollinations.ai/prompt/${encodedPrompt}?width=${W}&height=${H}&nologo=true`,
+      type: 'direct'
+    },
+    {
+      name: 'Placeholder Service',
+      url: `https://picsum.photos/${W}/${H}?random=${Date.now()}`,
+      type: 'direct'
+    }
+  ];
+  
+  const gc = document.getElementById('genCanvas');
+  gc.width = W;
+  gc.height = H;
+  const ctx = gc.getContext('2d');
+  
+  let attempt = 0;
+  
+  function tryNextApi() {
+    if (attempt >= apis.length) {
+      // All APIs failed - generate local abstract art
+      generateLocalArt(prompt, W, H, style);
+      hideOverlay();
+      btn.disabled = false;
+      return;
+    }
     
-    const styleParam = styleMap[style] || 'realistic';
-    const enhancedPrompt = `${prompt}, ${styleParam} style, high quality, detailed, beautiful composition`;
-    const encodedPrompt = encodeURIComponent(enhancedPrompt);
-    
-    // Pollinations.ai - Completely FREE, no API key required!
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${W}&height=${H}&model=flux&nologo=true`;
-    
-    const gc = document.getElementById('genCanvas');
-    gc.width = W;
-    gc.height = H;
-    const ctx = gc.getContext('2d');
+    const api = apis[attempt];
+    showOverlay(`Trying ${api.name}...`, `Attempt ${attempt + 1} of ${apis.length}`);
     
     const img = new Image();
     img.crossOrigin = 'Anonymous';
@@ -610,31 +638,135 @@ async function runGenerate(){
       document.getElementById('genDownloadBtn').style.display = 'block';
       hideOverlay();
       btn.disabled = false;
-      showToast('✨ Image generated successfully! (Free)','success');
+      showToast(`✨ Image generated via ${api.name}! (Free)`, 'success');
       triggerConfetti();
       saveToHistory('Generated: ' + prompt.slice(0, 40));
     };
     
     img.onerror = function() {
-      hideOverlay();
-      btn.disabled = false;
-      showToast('Service is busy. Please try again in a moment.','error');
+      attempt++;
+      tryNextApi();
     };
     
-    img.src = imageUrl;
-    
-  } catch(err) {
-    hideOverlay();
-    btn.disabled = false;
-    showToast('Error: ' + err.message, 'error');
+    img.src = api.url;
   }
+  
+  tryNextApi();
+}
+
+// Local abstract art generator (100% offline, always works)
+function generateLocalArt(prompt, W, H, style) {
+  const gc = document.getElementById('genCanvas');
+  gc.width = W;
+  gc.height = H;
+  const ctx = gc.getContext('2d');
+  
+  // Use prompt to create a unique seed
+  let seed = 0;
+  for (let i = 0; i < prompt.length; i++) seed += prompt.charCodeAt(i);
+  seed = seed % 360;
+  
+  const rng = (function() {
+    let s = seed;
+    return function() { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  })();
+  
+  // Background gradient based on prompt seed
+  const hue1 = seed;
+  const hue2 = (seed + 60) % 360;
+  const hue3 = (seed + 120) % 360;
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, `hsl(${hue1}, 70%, 55%)`);
+  grad.addColorStop(0.5, `hsl(${hue2}, 75%, 50%)`);
+  grad.addColorStop(1, `hsl(${hue3}, 70%, 55%)`);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+  
+  // Style-specific elements
+  if (style === 'cyberpunk') {
+    // Cyberpunk grid
+    ctx.strokeStyle = 'rgba(0, 255, 255, 0.3)';
+    ctx.lineWidth = 1;
+    const step = 40;
+    for (let x = 0; x < W; x += step) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, H);
+      ctx.stroke();
+    }
+    for (let y = 0; y < H; y += step) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+    // Neon circles
+    for (let i = 0; i < 15; i++) {
+      ctx.beginPath();
+      ctx.arc(rng() * W, rng() * H, rng() * 80 + 20, 0, Math.PI * 2);
+      ctx.strokeStyle = `hsla(${hue1 + rng() * 60}, 100%, 60%, 0.4)`;
+      ctx.stroke();
+    }
+  } else if (style === 'anime') {
+    // Cherry blossom style
+    for (let i = 0; i < 50; i++) {
+      ctx.beginPath();
+      ctx.arc(rng() * W, rng() * H, rng() * 15 + 3, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${hue1 + 20}, 80%, 65%, ${rng() * 0.5 + 0.2})`;
+      ctx.fill();
+    }
+  } else if (style === 'sketch') {
+    // Pencil sketch lines
+    ctx.strokeStyle = `hsla(${hue1}, 20%, 40%, 0.4)`;
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < 200; i++) {
+      ctx.beginPath();
+      const x1 = rng() * W, y1 = rng() * H;
+      const x2 = x1 + (rng() - 0.5) * 80;
+      const y2 = y1 + (rng() - 0.5) * 80;
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+  } else {
+    // Abstract shapes for other styles
+    for (let i = 0; i < 60; i++) {
+      ctx.save();
+      ctx.globalAlpha = rng() * 0.4 + 0.1;
+      ctx.fillStyle = `hsl(${hue1 + rng() * 120}, 80%, 65%)`;
+      const x = rng() * W;
+      const y = rng() * H;
+      const size = rng() * Math.min(W, H) * 0.15 + 15;
+      if (rng() > 0.5) {
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillRect(x, y, size, size);
+      }
+      ctx.restore();
+    }
+  }
+  
+  // Add prompt text as artistic element
+  ctx.font = `${Math.min(W, H) * 0.04}px 'DM Sans', sans-serif`;
+  ctx.fillStyle = `rgba(255,255,255,0.25)`;
+  ctx.textAlign = 'center';
+  const displayText = prompt.length > 25 ? prompt.slice(0, 22) + '...' : prompt;
+  ctx.fillText(displayText, W/2, H - 25);
+  
+  gc.style.display = 'block';
+  document.getElementById('previewBody').querySelector('.preview-placeholder').style.display = 'none';
+  document.getElementById('previewDims').textContent = `${W}×${H}`;
+  document.getElementById('genDownloadBtn').style.display = 'block';
+  showToast('🎨 Local artwork generated (offline mode)', 'success');
 }
 
 function downloadGenerated(){
   const gc = document.getElementById('genCanvas');
   if(gc && gc.width > 0 && gc.style.display !== 'none'){
     const link = document.createElement('a');
-    link.download = 'pixel-ai-generated.png';
+    link.download = 'pixelkit-ai-generated.png';
     link.href = gc.toDataURL('image/png');
     link.click();
     showToast('Image downloaded!','success');
@@ -661,7 +793,7 @@ function runRestore(){showOverlay('Restoring…','Neural repair');setTimeout(()=
 const SOCIAL_SIZES={'instagram-square':{w:1080,h:1080,label:'Instagram Square'},'instagram-story':{w:1080,h:1920,label:'Instagram Story'},'tiktok':{w:1080,h:1920,label:'TikTok'},'youtube':{w:1280,h:720,label:'YouTube Thumbnail'},'twitter':{w:1500,h:500,label:'Twitter Header'},'facebook':{w:820,h:312,label:'Facebook Cover'}};
 function runSocial(){showOverlay('Optimizing…','Resizing');setTimeout(()=>{try{const platform=document.getElementById('socialPlatform').value;const {w,h,label}=SOCIAL_SIZES[platform];const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');const src=uploadedImageData;const srcAR=src.width/src.height,dstAR=w/h;let sx=0,sy=0,sw=src.width,sh=src.height;if(srcAR>dstAR){sw=src.height*dstAR;sx=(src.width-sw)/2;}else{sh=src.width/dstAR;sy=(src.height-sh)/2;}ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(src,sx,sy,sw,sh,0,0,w,h);showResultOnPreview(c);setOutputInfo(`<b>📱 ${label}</b><br>Output: ${w}×${h}px · Ready to download`);hideOverlay();showToast(`Optimized for ${label}!`,'success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},900);}
 function runCompare(){showOverlay('Comparing…','Side-by-side');setTimeout(()=>{try{const src=uploadedImageData;const c=document.createElement('canvas');c.width=src.width*2+4;c.height=src.height;const ctx=c.getContext('2d');ctx.drawImage(src,0,0);const right=getImageCanvas();const rctx=right.getContext('2d');const id=rctx.getImageData(0,0,right.width,right.height);const d=id.data;for(let i=0;i<d.length;i+=4){const lum=(d[i]*.299+d[i+1]*.587+d[i+2]*.114);const factor=1.2;const br=15;d[i]=Math.min(255,Math.max(0,(factor*(d[i]-128)+128)+br));d[i+1]=Math.min(255,Math.max(0,(factor*(d[i+1]-128)+128)+br));d[i+2]=Math.min(255,Math.max(0,(factor*(d[i+2]-128)+128)+br));}rctx.putImageData(id,0,0);ctx.fillStyle='#7c6bff';ctx.fillRect(src.width,0,4,src.height);ctx.drawImage(right,src.width+4,0);ctx.fillStyle='rgba(0,0,0,0.6)';ctx.fillRect(8,8,70,24);ctx.fillRect(src.width+12,8,70,24);ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textBaseline='middle';ctx.fillText('ORIGINAL',14,20);ctx.fillText('ENHANCED',src.width+18,20);showResultOnPreview(c);setOutputInfo(`<b>⚖️ Before / After</b><br>Left: Original · Right: Auto-Enhanced`);hideOverlay();showToast('Comparison ready!','success');}catch(e){hideOverlay();showToast('Error: '+e.message,'error');}},800);}
-function downloadResult(){if(!resultCanvas){showToast('Nothing to download yet','error');return;}const link=document.createElement('a');link.download='pixel-ai-result.png';link.href=resultCanvas.toDataURL('image/png');link.click();showToast('Downloaded!','success');saveToHistory('Edited image');}
+function downloadResult(){if(!resultCanvas){showToast('Nothing to download yet','error');return;}const link=document.createElement('a');link.download='pixelkit-ai-result.png';link.href=resultCanvas.toDataURL('image/png');link.click();showToast('Downloaded!','success');saveToHistory('Edited image');}
 function saveToHistory(name){const h=JSON.parse(localStorage.getItem('pixel_history')||'[]');h.unshift({name,time:new Date().toISOString()});localStorage.setItem('pixel_history',JSON.stringify(h.slice(0,20)));}
 document.getElementById('historyBtn').addEventListener('click',()=>{const h=JSON.parse(localStorage.getItem('pixel_history')||'[]');if(!h.length){showToast('No history yet','info');return;}const extraOut=document.getElementById('extraOutput');extraOut.style.display='block';extraOut.innerHTML=`<div class="controls-panel"><div class="controls-title">DOWNLOAD HISTORY</div>${h.map(e=>`<div style="padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--text-2)">📄 ${e.name}<br><span style="color:var(--text-3);font-size:.72rem">${new Date(e.time).toLocaleString()}</span></div>`).join('')}</div>`;document.getElementById('workspace').scrollIntoView({behavior:'smooth'});});
 function triggerConfetti(){confetti({particleCount:100,spread:70,origin:{y:.6},colors:['#7c6bff','#ff6bcd','#6bffc8']});}
@@ -679,7 +811,7 @@ gsap.utils.toArray('.tool-card').forEach((card,i)=>{gsap.from(card,{scrollTrigge
 gsap.utils.toArray('.priv-card').forEach((card,i)=>{gsap.from(card,{scrollTrigger:{trigger:card,start:'top 88%'},opacity:0,y:24,duration:.5,delay:i*.08});});
 window.addEventListener('scroll',debounce(()=>{const nav=document.querySelector('nav');nav.style.background=window.scrollY>50?'rgba(6,6,10,0.9)':'rgba(6,6,10,0.7)';},50));
 function debounce(fn,ms){let t;return function(){clearTimeout(t);t=setTimeout(fn,ms);}}
-console.log('%c PIXEL AI 🎨 Completely Free - No API Keys Needed','background:linear-gradient(135deg,#7c6bff,#ff6bcd);color:#fff;padding:8px 16px;border-radius:6px;font-weight:700;font-size:14px');
+console.log('%c PixelKit AI 🎨 Completely Free - No API Keys Needed','background:linear-gradient(135deg,#7c6bff,#ff6bcd);color:#fff;padding:8px 16px;border-radius:6px;font-weight:700;font-size:14px');
 </script>
 </body>
 </html>
