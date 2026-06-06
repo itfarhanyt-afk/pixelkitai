@@ -3,365 +3,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ============================================ -->
-<!-- SEO & META TAGS - ADDED FOR SEARCH ENGINES   -->
-<!-- ============================================ -->
-
-<!-- Primary Meta Tags -->
 <title>PixelForge — Free AI Image Editor & Generator | Compress, Resize, Background Remover</title>
-<meta name="title" content="PixelForge — Free AI Image Editor & Generator | Compress, Resize, Background Remover">
 <meta name="description" content="Free online image editor with AI generation, background removal, compression, resizing, cropping, conversion, and watermarking. No signup required. 100% free, works in your browser.">
 <meta name="keywords" content="image editor, ai image generator, background remover, image compressor, image resizer, crop image, convert image, watermark image, free image tools, online image editor, pixelforge">
 <meta name="author" content="PixelForge">
 <meta name="robots" content="index, follow">
-<meta name="language" content="English">
-<meta name="revisit-after" content="7 days">
-
-<!-- Canonical URL -->
 <link rel="canonical" href="https://pixelkit.org/">
-
-<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pixelkit.org/">
 <meta property="og:title" content="PixelForge — Free AI Image Editor & Generator">
-<meta property="og:description" content="Free online image editor with AI generation, background removal, compression, resizing, cropping, conversion, and watermarking. No signup required. Works in your browser.">
+<meta property="og:description" content="Free online image editor. No signup required. Works in your browser.">
 <meta property="og:image" content="https://pixelkit.org/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="PixelForge">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter Card (X) -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://pixelkit.org/">
 <meta name="twitter:title" content="PixelForge — Free AI Image Editor & Generator">
-<meta name="twitter:description" content="Free online image editor with AI generation, background removal, compression, resizing, cropping, conversion, and watermarking. No signup required.">
+<meta name="twitter:description" content="Free online image editor with AI generation, background removal, compression, resizing, cropping, conversion, and watermarking.">
 <meta name="twitter:image" content="https://pixelkit.org/og-image.png">
-
-<!-- Schema.org / JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "PixelForge",
-  "url": "https://pixelkit.org/",
-  "description": "Free online image editor with AI generation, background removal, compression, resizing, cropping, conversion, and watermarking. All processing happens in your browser — no uploads, no signup.",
-  "applicationCategory": "Multimedia Application",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock"
-  },
-  "featureList": "AI Image Generation, Background Removal, Image Compression, Image Resizing, Image Cropping, Format Conversion, Watermarking, Brightness Adjustment, OCR Text Extraction, Color Palette Extraction",
-  "isAccessibleForFree": true,
-  "thumbnailUrl": "https://pixelkit.org/og-image.png",
-  "keywords": "image editor, ai generator, background remover, image compressor, free image tools, pixelforge"
-}
-</script>
-
-<!-- ============================================ -->
-<!-- END OF SEO TAGS                              -->
-<!-- ============================================ -->
-
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PixelForge","url":"https://pixelkit.org/","description":"Free online image editor with AI generation, background removal, compression, resizing, cropping, conversion, and watermarking.","applicationCategory":"Multimedia Application","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isAccessibleForFree":true}</script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  /* NEW COLOR SCHEME - Purple/Pink/Orange theme */
-  --primary-50: #faf5ff;
-  --primary-100: #f3e8ff;
-  --primary-200: #e9d5ff;
-  --primary-300: #d8b4fe;
-  --primary-400: #c084fc;
-  --primary-500: #a855f7;
-  --primary-600: #9333ea;
-  --primary-700: #7e22ce;
-  --primary-800: #6b21a5;
-  --primary-900: #581c87;
-  --accent-400: #f472b6;
-  --accent-500: #ec4899;
-  --accent-600: #db2777;
-  --warm-400: #fb923c;
-  --warm-500: #f97316;
-  --bg: #0f0717;
-  --bg2: #1a1025;
-  --bg3: #241b33;
-  --border: rgba(168,85,247,0.2);
-  --border2: rgba(168,85,247,0.35);
-  --text: #f5f0ff;
-  --text2: rgba(216,180,254,0.7);
-  --text3: rgba(168,85,247,0.45);
-  --glow: rgba(168,85,247,0.4);
+:root{
+  --p3:#d8b4fe;--p4:#c084fc;--p5:#a855f7;--p6:#9333ea;--p7:#7e22ce;--p8:#6b21a8;
+  --a4:#f472b6;--a5:#ec4899;--w4:#fb923c;--w5:#f97316;
+  --bg:#0f0717;--bg2:#1a1025;--bg3:#241b33;
+  --brd:rgba(168,85,247,.2);--brd2:rgba(168,85,247,.35);
+  --txt:#f5f0ff;--txt2:rgba(216,180,254,.7);--txt3:rgba(168,85,247,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-::-webkit-scrollbar{width:6px}
+body{background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--primary-800);border-radius:3px}
-
-/* ANIMATIONS - NEW ENTRY EFFECTS */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInScale {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 5px var(--primary-500), 0 0 10px rgba(168,85,247,0.3); }
-  50% { box-shadow: 0 0 20px var(--primary-500), 0 0 30px rgba(168,85,247,0.5); }
-}
-@keyframes borderFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(15,7,23,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5vw;animation:slideInLeft 0.6s ease-out}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1200px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:20px;text-decoration:none;color:var(--text);transition:all 0.3s}
-.logo:hover{transform:scale(1.02);text-shadow:0 0 10px var(--primary-400)}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary-500),var(--accent-500));display:flex;align-items:center;justify-content:center;font-size:16px;animation:glowPulse 3s infinite}
+::-webkit-scrollbar-thumb{background:var(--p7);border-radius:3px}
+ 
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes gradFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes glow{0%,100%{box-shadow:0 0 5px var(--p5),0 0 10px rgba(168,85,247,.25)}50%{box-shadow:0 0 18px var(--p5),0 0 28px rgba(168,85,247,.45)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.8)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes particleDrift{0%{transform:translate(0,0);opacity:.6}50%{opacity:.2}100%{transform:translate(var(--dx),var(--dy));opacity:0}}
+@keyframes borderGlow{0%,100%{border-color:rgba(168,85,247,.25)}50%{border-color:rgba(168,85,247,.6)}}
+ 
+/* ── REVEAL (scroll triggered) ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.from-left{transform:translateX(-32px)}
+.reveal.from-right{transform:translateX(32px)}
+.reveal.scale{transform:scale(.95)}
+.reveal.visible{opacity:1;transform:translate(0) scale(1)}
+.stagger-1{transition-delay:.05s}.stagger-2{transition-delay:.12s}.stagger-3{transition-delay:.19s}
+.stagger-4{transition-delay:.26s}.stagger-5{transition-delay:.33s}.stagger-6{transition-delay:.4s}
+ 
+/* ── PARTICLES ── */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:var(--p5);opacity:0;animation:particleDrift var(--dur) ease-out infinite}
+ 
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(15,7,23,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--brd);padding:0 5vw}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1200px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:20px;text-decoration:none;color:var(--txt);transition:.3s}
+.logo:hover{filter:drop-shadow(0 0 8px var(--p4))}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--p5),var(--a5));display:flex;align-items:center;justify-content:center;font-size:16px;animation:glow 3s ease-in-out infinite}
 .nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;transition:all 0.3s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary-500),var(--accent-500));transition:width 0.3s}
-.nav-links a:hover::after{width:100%}
-.nav-links a:hover{color:var(--text)}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:14px;transition:.3s;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--p5),var(--a5));transition:width .3s}
+.nav-links a:hover{color:var(--txt)}.nav-links a:hover::after{width:100%}
 .nav-cta{display:flex;gap:8px;align-items:center}
-.btn-primary{background:linear-gradient(135deg,var(--primary-500),var(--accent-500));color:white;border:none;padding:9px 20px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s;white-space:nowrap;position:relative;overflow:hidden}
-.btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s}
-.btn-primary:hover::before{left:100%}
-.btn-primary:hover{opacity:0.95;transform:translateY(-2px);box-shadow:0 5px 20px rgba(168,85,247,0.4)}
-.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2);padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;transition:all 0.3s;white-space:nowrap}
-.btn-ghost:hover{color:var(--text);border-color:var(--primary-400);transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--p5),var(--a5));color:#fff;border:none;padding:9px 20px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;white-space:nowrap;position:relative;overflow:hidden}
+.btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:left .5s}
+.btn-primary:hover::after{left:100%}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(168,85,247,.45)}
+.btn-ghost{background:transparent;color:var(--txt2);border:1px solid var(--brd2);padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;transition:.3s;white-space:nowrap}
+.btn-ghost:hover{color:var(--txt);border-color:var(--p4);transform:translateY(-2px)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(15,7,23,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 5vw 24px;z-index:99;flex-direction:column;gap:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--txt2);border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(15,7,23,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);padding:20px 5vw 24px;z-index:99;flex-direction:column;gap:4px}
 .mobile-menu.open{display:flex}
-.mobile-menu a{color:var(--text2);text-decoration:none;font-size:15px;padding:10px 4px;border-bottom:1px solid rgba(168,85,247,0.1);transition:all 0.3s}
-.mobile-menu a:hover{color:var(--primary-400);transform:translateX(8px)}
+.mobile-menu a{color:var(--txt2);text-decoration:none;font-size:15px;padding:11px 4px;border-bottom:1px solid rgba(168,85,247,.1);transition:.3s}
+.mobile-menu a:hover{color:var(--p4);padding-left:10px}
 .mobile-menu .btn-primary{margin-top:12px;text-align:center;display:block;padding:12px}
-
-/* HERO */
-.hero{min-height:85vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 5vw 48px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(168,85,247,0.4) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(236,72,153,0.12) 0%,transparent 60%),var(--bg);z-index:0}
-.hero-grid{position:absolute;inset:0;opacity:.05;background-image:linear-gradient(var(--primary-400) 1px,transparent 1px),linear-gradient(90deg,var(--primary-400) 1px,transparent 1px);background-size:50px 50px;z-index:0}
-.hero-content{position:relative;z-index:1;max-width:780px}
-.hero-content > * {animation: fadeInUp 0.8s ease-out forwards;opacity:0}
-.hero-content > *:nth-child(1){animation-delay:0.1s}
-.hero-content > *:nth-child(2){animation-delay:0.3s}
-.hero-content > *:nth-child(3){animation-delay:0.5s}
-.hero-content > *:nth-child(4){animation-delay:0.7s}
-.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1px solid rgba(168,85,247,0.35);background:rgba(168,85,247,0.1);margin-bottom:24px;font-size:12px;color:var(--primary-300);animation:glowPulse 2s infinite}
-.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent-500);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;margin-bottom:18px}
-h1 .grad{background:linear-gradient(135deg,var(--primary-300),var(--accent-400),var(--warm-400));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:borderFlow 4s ease infinite}
-.hero-sub{color:var(--text2);font-size:clamp(14px,2vw,17px);line-height:1.7;max-width:520px;margin:0 auto 32px}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
-.hero-btns .btn-primary{padding:14px 28px;font-size:15px}
+ 
+/* ── HERO ── */
+.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 5vw 48px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -5%,rgba(168,85,247,.38) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 85% 80%,rgba(236,72,153,.1) 0%,transparent 60%),var(--bg);z-index:0}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--p4) 1px,transparent 1px),linear-gradient(90deg,var(--p4) 1px,transparent 1px);background-size:50px 50px;z-index:0}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border-radius:20px;border:1px solid rgba(168,85,247,.3);background:rgba(168,85,247,.08);margin-bottom:26px;font-size:12px;color:var(--p3);animation:fadeUp .7s .1s both,borderGlow 3s 1s infinite}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--a5);animation:pulse 2s infinite}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.07;margin-bottom:20px;animation:fadeUp .7s .25s both}
+h1 .grad{background:linear-gradient(135deg,var(--p3),var(--a4),var(--w4));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradFlow 4s ease infinite}
+.hero-sub{color:var(--txt2);font-size:clamp(14px,2vw,17px);line-height:1.75;max-width:540px;margin:0 auto 34px;animation:fadeUp .7s .4s both}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:44px;animation:fadeUp .7s .55s both}
+.hero-btns .btn-primary{padding:14px 30px;font-size:15px}
 .hero-btns .btn-ghost{padding:14px 22px;font-size:15px}
-
-/* UPLOAD ZONE */
-.upload-zone{border:2px dashed var(--border2);background:rgba(168,85,247,0.04);border-radius:18px;padding:36px 24px;max-width:520px;margin:0 auto 44px;cursor:pointer;transition:all 0.4s;position:relative;animation:fadeInScale 0.6s ease-out}
-.upload-zone:hover,.upload-zone.dragover{border-color:var(--primary-400);background:rgba(168,85,247,0.1);transform:translateY(-4px);box-shadow:0 10px 30px rgba(168,85,247,0.2)}
+ 
+/* ── UPLOAD ZONE ── */
+.upload-zone{border:2px dashed var(--brd2);background:rgba(168,85,247,.04);border-radius:20px;padding:38px 24px;max-width:520px;margin:0 auto 44px;cursor:pointer;transition:.4s;position:relative;animation:scaleIn .6s .65s both}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--p4);background:rgba(168,85,247,.1);transform:translateY(-5px);box-shadow:0 12px 36px rgba(168,85,247,.22)}
 .upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.upload-icon{width:52px;height:52px;border-radius:14px;background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px;transition:all 0.3s}
-.upload-zone:hover .upload-icon{transform:scale(1.1);background:rgba(168,85,247,0.25)}
-.upload-text{color:var(--text2);font-size:14px;margin-bottom:4px}
-.upload-text span{color:var(--primary-400);text-decoration:underline}
-.upload-hint{color:var(--text3);font-size:12px}
-
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:500px;margin:0 auto}
-.stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:var(--text);transition:all 0.3s}
-.stat-item:hover .stat-val{transform:scale(1.05);text-shadow:0 0 10px var(--primary-400)}
-.stat-label{color:var(--text3);font-size:11px;margin-top:3px}
-
-/* DIVIDER */
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--primary-400),var(--accent-400),transparent);margin:0;animation:borderFlow 3s ease infinite}
-
-/* TOOL PROCESSOR */
-.processor{padding:64px 5vw;max-width:1200px;margin:0 auto}
-.section-label{text-align:center;color:var(--primary-400);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;animation:slideInLeft 0.5s ease-out}
-h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.12;text-align:center;margin-bottom:10px}
-h2 .grad{background:linear-gradient(135deg,var(--primary-300),var(--accent-400),var(--warm-400));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:borderFlow 4s ease infinite}
-.section-sub{text-align:center;color:var(--text2);font-size:14px;margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto}
-
-/* TOOL TABS */
+.upload-icon{width:54px;height:54px;border-radius:14px;background:rgba(168,85,247,.14);border:1px solid rgba(168,85,247,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;transition:.3s;animation:float 4s ease-in-out infinite}
+.upload-zone:hover .upload-icon{transform:scale(1.12);background:rgba(168,85,247,.24)}
+.upload-text{color:var(--txt2);font-size:14px;margin-bottom:5px}
+.upload-text span{color:var(--p4);text-decoration:underline}
+.upload-hint{color:var(--txt3);font-size:12px}
+ 
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:500px;margin:0 auto;animation:fadeUp .7s .8s both}
+.stat-item{transition:.3s;cursor:default}
+.stat-item:hover{transform:translateY(-4px)}
+.stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:var(--txt)}
+.stat-item:hover .stat-val{text-shadow:0 0 12px var(--p4)}
+.stat-label{color:var(--txt3);font-size:11px;margin-top:3px}
+ 
+/* ── DIVIDER ── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--p5),var(--a4),transparent);animation:gradFlow 4s ease infinite;background-size:200%}
+ 
+/* ── SECTION COMMONS ── */
+.section-label{text-align:center;color:var(--p4);font-size:11px;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:10px}
+h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.9rem);line-height:1.1;text-align:center;margin-bottom:10px}
+h2 .grad{background:linear-gradient(135deg,var(--p3),var(--a4),var(--w4));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradFlow 4s ease infinite}
+.section-sub{text-align:center;color:var(--txt2);font-size:14px;margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto}
+ 
+/* ── TOOL SECTION ── */
+.processor{padding:70px 5vw;max-width:1200px;margin:0 auto}
+ 
+/* ── TABS ── */
 .tool-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
-.tool-tab{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 16px;font-size:13px;color:var(--text2);cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.tool-tab:hover{border-color:var(--primary-400);color:var(--text);transform:translateY(-2px);box-shadow:0 5px 15px rgba(168,85,247,0.2)}
-.tool-tab.active{background:rgba(168,85,247,0.15);border-color:var(--primary-500);color:var(--primary-300);box-shadow:0 0 15px rgba(168,85,247,0.3)}
-
-/* TOOL PANEL */
-.tool-panel{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:clamp(20px,4vw,36px);display:none;animation:fadeInScale 0.4s ease-out}
-.tool-panel.active{display:block}
+.tool-tab{background:var(--bg3);border:1px solid var(--brd);border-radius:10px;padding:9px 17px;font-size:13px;color:var(--txt2);cursor:pointer;transition:.25s;display:flex;align-items:center;gap:6px;white-space:nowrap;user-select:none}
+.tool-tab:hover{border-color:var(--p4);color:var(--txt);transform:translateY(-2px);box-shadow:0 4px 14px rgba(168,85,247,.18)}
+.tool-tab.active{background:rgba(168,85,247,.14);border-color:var(--p5);color:var(--p3);box-shadow:0 0 14px rgba(168,85,247,.28)}
+ 
+/* ── TOOL PANEL ── */
+.tool-panel{background:var(--bg2);border:1px solid var(--brd);border-radius:22px;padding:clamp(20px,4vw,38px);display:none}
+.tool-panel.active{display:block;animation:scaleIn .35s ease-out}
 .tool-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
 @media(max-width:640px){.tool-layout{grid-template-columns:1fr}}
-
-/* UPLOAD IN TOOL */
-.tool-upload{border:2px dashed var(--border2);background:rgba(168,85,247,0.03);border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;position:relative;transition:all 0.3s;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.tool-upload:hover,.tool-upload.dragover{border-color:var(--primary-400);background:rgba(168,85,247,0.08);transform:scale(1.01)}
+ 
+/* ── UPLOAD IN TOOL ── */
+.tool-upload{border:2px dashed var(--brd2);background:rgba(168,85,247,.03);border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;position:relative;transition:.3s;min-height:165px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.tool-upload:hover,.tool-upload.dragover{border-color:var(--p4);background:rgba(168,85,247,.09);transform:scale(1.01)}
 .tool-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.tool-upload-icon{font-size:32px;margin-bottom:4px;transition:transform 0.3s}
-.tool-upload:hover .tool-upload-icon{transform:scale(1.1)}
-.tool-upload p{color:var(--text2);font-size:13px}
-.tool-upload span{color:var(--primary-400)}
-.preview-img{width:100%;border-radius:10px;display:none;max-height:260px;object-fit:contain;background:#000;border:1px solid var(--border);transition:all 0.3s}
-
-/* CONTROLS */
-.controls{display:flex;flex-direction:column;gap:14px}
+.tool-upload-icon{font-size:34px;transition:.3s}
+.tool-upload:hover .tool-upload-icon{transform:scale(1.12) translateY(-3px)}
+.tool-upload p{color:var(--txt2);font-size:13px}
+.tool-upload span{color:var(--p4)}
+.preview-img{width:100%;border-radius:10px;display:none;max-height:270px;object-fit:contain;background:#0a0510;border:1px solid var(--brd);margin-top:10px;transition:.3s;animation:fadeIn .4s}
+.preview-img.show{display:block}
+ 
+/* ── CONTROLS ── */
+.controls{display:flex;flex-direction:column;gap:15px}
 .ctrl-group{display:flex;flex-direction:column;gap:6px}
-.ctrl-label{font-size:13px;color:var(--text2);font-weight:500;display:flex;justify-content:space-between;align-items:center}
-.ctrl-val{color:var(--primary-400);font-weight:600}
-input[type=range]{width:100%;height:4px;border-radius:2px;background:var(--bg3);outline:none;cursor:pointer;-webkit-appearance:none;border:1px solid var(--border);transition:all 0.2s}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--primary-500);cursor:pointer;border:2px solid var(--bg);transition:transform 0.2s}
-input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);box-shadow:0 0 10px var(--primary-400)}
-input[type=number],input[type=text],select{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;width:100%;outline:none;transition:all 0.3s;font-family:'DM Sans',sans-serif}
-input[type=number]:focus,select:focus{border-color:var(--primary-500);box-shadow:0 0 10px rgba(168,85,247,0.3);transform:scale(1.01)}
+.ctrl-label{font-size:13px;color:var(--txt2);font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.ctrl-val{color:var(--p4);font-weight:600;font-family:'Syne',sans-serif}
+input[type=range]{width:100%;height:4px;border-radius:2px;background:var(--bg3);outline:none;cursor:pointer;-webkit-appearance:none;border:1px solid var(--brd);transition:.2s}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--p5);cursor:pointer;border:2px solid var(--bg);box-shadow:0 0 6px rgba(168,85,247,.5);transition:.2s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);box-shadow:0 0 12px var(--p4)}
+input[type=number],input[type=text],select{background:var(--bg3);border:1px solid var(--brd);border-radius:8px;padding:9px 12px;color:var(--txt);font-size:13px;width:100%;outline:none;transition:.25s;font-family:'DM Sans',sans-serif}
+input[type=number]:focus,input[type=text]:focus,select:focus{border-color:var(--p5);box-shadow:0 0 10px rgba(168,85,247,.28)}
 select option{background:var(--bg3)}
 .ctrl-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.output-info{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;color:var(--text2);transition:all 0.3s}
-.output-info .info-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(168,85,247,0.08)}
+.output-info{background:var(--bg3);border:1px solid var(--brd);border-radius:10px;padding:14px;font-size:13px;color:var(--txt2);animation:fadeIn .3s}
+.output-info .info-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(168,85,247,.08)}
 .output-info .info-row:last-child{border:none}
-.info-val{color:var(--primary-300);font-weight:500}
-.process-btn{background:linear-gradient(135deg,var(--primary-600),var(--accent-600));color:white;border:none;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all 0.3s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden}
-.process-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s}
-.process-btn:hover::before{left:100%}
-.process-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(168,85,247,0.4)}
-.process-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.download-btn{background:rgba(168,85,247,0.15);border:1px solid var(--primary-500);color:var(--primary-300);padding:11px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all 0.3s;margin-top:8px;text-align:center;text-decoration:none;display:none}
-.download-btn:hover{background:rgba(168,85,247,0.25);transform:translateY(-2px);box-shadow:0 5px 15px rgba(168,85,247,0.3)}
-.progress-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;display:none}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary-500),var(--accent-500));width:0%;transition:width 0.4s;border-radius:2px;animation:shimmer 1.5s infinite;background-size:200% 100%}
-.result-img{width:100%;border-radius:10px;display:none;max-height:260px;object-fit:contain;background:#000;border:1px solid var(--primary-500);margin-top:10px;transition:all 0.3s}
-.badge-tag{display:inline-block;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600;margin-bottom:8px;transition:all 0.3s}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--primary-700);color:white;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:500;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap;animation:glowPulse 2s infinite}
-.toast.show{opacity:1}
-
-/* FEATURE CARDS */
-.features{padding:64px 5vw;max-width:1200px;margin:0 auto}
+.info-val{color:var(--p3);font-weight:500}
+ 
+/* ── PROCESS BTN ── */
+.process-btn{background:linear-gradient(135deg,var(--p6),var(--a5));color:#fff;border:none;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:.3s;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden}
+.process-btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:left .5s}
+.process-btn:hover::after{left:100%}
+.process-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 26px rgba(168,85,247,.42)}
+.process-btn:disabled{opacity:.45;cursor:not-allowed}
+.process-btn .btn-spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;display:none;animation:spin .7s linear infinite}
+.process-btn.loading .btn-spinner{display:block}
+.process-btn.loading .btn-label{display:none}
+ 
+/* ── DOWNLOAD BTN ── */
+.download-btn{background:rgba(168,85,247,.13);border:1px solid var(--p5);color:var(--p3);padding:11px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:.3s;text-align:center;text-decoration:none;display:none;animation:fadeIn .4s}
+.download-btn:hover{background:rgba(168,85,247,.24);transform:translateY(-2px);box-shadow:0 5px 16px rgba(168,85,247,.3)}
+ 
+/* ── PROGRESS ── */
+.progress-wrap{display:none;flex-direction:column;gap:6px}
+.progress-wrap.show{display:flex}
+.progress-label{font-size:12px;color:var(--txt2);display:flex;justify-content:space-between}
+.progress-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--p5),var(--a4),var(--w4));background-size:200%;width:0%;transition:width .4s;border-radius:3px;animation:gradFlow 2s ease infinite}
+ 
+/* ── RESULT IMG ── */
+.result-img{width:100%;border-radius:10px;display:none;max-height:270px;object-fit:contain;background:#0a0510;border:1px solid var(--p5);margin-top:10px;animation:fadeIn .4s}
+.result-img.show{display:block}
+ 
+/* ── BEFORE/AFTER SPLIT ── */
+.compare-wrap{position:relative;overflow:hidden;border-radius:10px;display:none;cursor:ew-resize;user-select:none;background:#000;border:1px solid var(--brd);margin-top:10px}
+.compare-wrap.show{display:block}
+.compare-before,.compare-after{position:absolute;top:0;left:0;width:100%;height:100%}
+.compare-before img,.compare-after img{width:100%;height:100%;object-fit:contain;display:block}
+.compare-after{clip-path:inset(0 50% 0 0)}
+.compare-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:white;cursor:ew-resize;z-index:5}
+.compare-divider::before{content:'⟺';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;color:#000;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.compare-label{position:absolute;top:8px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;z-index:6}
+.compare-label.before{left:8px;background:rgba(0,0,0,.6);color:#fff}
+.compare-label.after{right:8px;background:rgba(168,85,247,.8);color:#fff}
+.badge-tag{display:inline-block;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:600;margin-bottom:8px}
+ 
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(10px);background:linear-gradient(135deg,var(--p7),rgba(147,51,234,.9));color:#fff;padding:12px 26px;border-radius:14px;font-size:14px;font-weight:500;z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;backdrop-filter:blur(10px);border:1px solid rgba(168,85,247,.3);box-shadow:0 8px 24px rgba(168,85,247,.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+ 
+/* ── FEATURE CARDS ── */
+.features{padding:70px 5vw;max-width:1200px;margin:0 auto}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all 0.4s;cursor:default;animation:fadeInUp 0.5s ease-out;animation-fill-mode:both}
-.tool-card:nth-child(1){animation-delay:0.05s}
-.tool-card:nth-child(2){animation-delay:0.1s}
-.tool-card:nth-child(3){animation-delay:0.15s}
-.tool-card:nth-child(4){animation-delay:0.2s}
-.tool-card:nth-child(5){animation-delay:0.25s}
-.tool-card:nth-child(6){animation-delay:0.3s}
-.tool-card:nth-child(7){animation-delay:0.35s}
-.tool-card:nth-child(8){animation-delay:0.4s}
-.tool-card:hover{border-color:var(--primary-500);transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(168,85,247,0.2)}
-.tc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px;transition:all 0.3s}
-.tool-card:hover .tc-icon{transform:scale(1.1) rotate(5deg)}
+.tool-card{background:var(--bg2);border:1px solid var(--brd);border-radius:18px;padding:22px;transition:.4s;cursor:default}
+.tool-card:hover{border-color:var(--p5);transform:translateY(-8px) scale(1.02);box-shadow:0 20px 44px rgba(168,85,247,.2)}
+.tc-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:21px;transition:.35s}
+.tool-card:hover .tc-icon{transform:scale(1.1) rotate(6deg)}
 .tc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:5px}
-.tc-desc{color:var(--text2);font-size:13px;line-height:1.5;margin-bottom:14px}
+.tc-desc{color:var(--txt2);font-size:13px;line-height:1.55;margin-bottom:14px}
 .tc-stat{border-radius:8px;padding:7px 10px;font-size:11px;display:inline-block}
 .tc-stat-val{font-weight:700;font-size:13px}
-
-/* PRICING */
-.pricing{padding:64px 5vw;max-width:1100px;margin:0 auto}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px}
-.plan{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:28px 24px;position:relative;transition:all 0.4s;animation:fadeInScale 0.5s ease-out}
-.plan:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(168,85,247,0.2);border-color:var(--primary-400)}
-.plan.featured{border:2px solid var(--primary-500);background:linear-gradient(160deg,#2a1a3f,var(--bg2));animation:glowPulse 3s infinite}
-.plan-popular{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary-500),var(--accent-500));color:white;font-size:11px;padding:4px 14px;border-radius:20px;font-weight:600;white-space:nowrap}
+ 
+/* ── PRICING ── */
+.pricing{padding:70px 5vw;max-width:1100px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:40px}
+.plan{background:var(--bg2);border:1px solid var(--brd);border-radius:20px;padding:30px 26px;position:relative;transition:.4s}
+.plan:hover{transform:translateY(-8px);box-shadow:0 26px 50px rgba(168,85,247,.2);border-color:var(--p4)}
+.plan.featured{border:2px solid var(--p5);background:linear-gradient(160deg,#2a1a3f,var(--bg2));animation:glow 4s ease-in-out infinite}
+.plan-popular{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--p5),var(--a5));color:#fff;font-size:11px;padding:4px 14px;border-radius:20px;font-weight:600;white-space:nowrap}
 .plan-name{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin-bottom:4px}
-.plan-tagline{color:var(--text3);font-size:13px;margin-bottom:18px}
-.plan-price{font-family:'Syne',sans-serif;font-weight:800;font-size:42px;line-height:1;margin-bottom:20px}
+.plan-tagline{color:var(--txt3);font-size:13px;margin-bottom:18px}
+.plan-price{font-family:'Syne',sans-serif;font-weight:800;font-size:44px;line-height:1;margin-bottom:20px}
 .plan-price sup{font-size:20px;font-weight:600;margin-right:2px}
-.plan-price sub{font-size:14px;color:var(--text3);font-weight:400}
+.plan-price sub{font-size:14px;color:var(--txt3);font-weight:400}
 .plan-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
-.plan-features li{font-size:13px;color:var(--text2);display:flex;gap:8px;align-items:flex-start;transition:all 0.2s}
-.plan-features li:hover{color:var(--text);transform:translateX(4px)}
-.plan-features li::before{content:"✓";color:var(--primary-400);font-weight:700;margin-top:1px;flex-shrink:0}
-
-/* TESTIMONIALS */
-.testimonials{padding:64px 5vw;max-width:1200px;margin:0 auto}
-.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all 0.4s;animation:fadeInUp 0.5s ease-out;animation-fill-mode:both}
-.tcard:nth-child(1){animation-delay:0.05s}
-.tcard:nth-child(2){animation-delay:0.1s}
-.tcard:nth-child(3){animation-delay:0.15s}
-.tcard:nth-child(4){animation-delay:0.2s}
-.tcard:nth-child(5){animation-delay:0.25s}
-.tcard:nth-child(6){animation-delay:0.3s}
-.tcard:hover{border-color:var(--primary-500);transform:translateY(-6px);box-shadow:0 15px 30px rgba(168,85,247,0.15)}
-.tstars{color:var(--primary-400);font-size:13px;margin-bottom:12px;letter-spacing:2px}
-.ttext{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:16px;font-style:italic}
-.tavatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'Syne',sans-serif;flex-shrink:0;transition:all 0.3s}
-.tcard:hover .tavatar{transform:scale(1.1)}
+.plan-features li{font-size:13px;color:var(--txt2);display:flex;gap:8px;align-items:flex-start;transition:.2s}
+.plan-features li:hover{color:var(--txt);transform:translateX(4px)}
+.plan-features li::before{content:"✓";color:var(--p4);font-weight:700;margin-top:1px;flex-shrink:0}
+ 
+/* ── TESTIMONIALS ── */
+.testimonials{padding:70px 5vw;max-width:1200px;margin:0 auto}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:36px}
+.tcard{background:var(--bg2);border:1px solid var(--brd);border-radius:18px;padding:22px;transition:.4s}
+.tcard:hover{border-color:var(--p5);transform:translateY(-6px);box-shadow:0 16px 32px rgba(168,85,247,.16)}
+.tstars{color:var(--p4);font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.ttext{color:var(--txt2);font-size:13px;line-height:1.65;margin-bottom:16px;font-style:italic}
+.tavatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'Syne',sans-serif;flex-shrink:0;transition:.3s}
+.tcard:hover .tavatar{transform:scale(1.12)}
 .tname{font-weight:600;font-size:14px}
-.trole{color:var(--text3);font-size:11px}
-
-/* CTA */
-.cta-section{padding:64px 5vw}
-.cta-box{background:linear-gradient(135deg,#1a1030,#2a1a40,#1a1030);border:1px solid rgba(168,85,247,0.4);border-radius:24px;padding:clamp(36px,6vw,64px);text-align:center;max-width:800px;margin:0 auto;position:relative;overflow:hidden;transition:all 0.3s}
-.cta-box:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(168,85,247,0.2)}
-.cta-glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(circle,rgba(168,85,247,0.3),transparent 70%);pointer-events:none;animation:glowPulse 4s infinite}
-.cta-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--primary-500),var(--accent-500));display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:22px;animation:float 3s ease-in-out infinite}
+.trole{color:var(--txt3);font-size:11px}
+ 
+/* ── CTA ── */
+.cta-section{padding:70px 5vw}
+.cta-box{background:linear-gradient(135deg,#1a1030,#2a1a40,#1a1030);border:1px solid rgba(168,85,247,.4);border-radius:26px;padding:clamp(36px,6vw,68px);text-align:center;max-width:820px;margin:0 auto;position:relative;overflow:hidden;transition:.3s;animation:borderGlow 4s infinite}
+.cta-box:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(168,85,247,.2)}
+.cta-glow{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:340px;height:240px;background:radial-gradient(circle,rgba(168,85,247,.28),transparent 70%);pointer-events:none;animation:gradFlow 6s ease infinite}
+.cta-icon{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--p5),var(--a5));display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:22px;animation:float 3s ease-in-out infinite}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-
-/* FOOTER */
-footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-width:1200px;margin:0 auto}
+ 
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(168,85,247,.12);padding:44px 5vw 26px;max-width:1200px;margin:0 auto}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.footer-links a{color:var(--text3);font-size:13px;text-decoration:none;transition:all 0.3s}
-.footer-links a:hover{color:var(--primary-400);transform:translateX(4px)}
+.footer-links a{color:var(--txt3);font-size:13px;text-decoration:none;transition:.3s}
+.footer-links a:hover{color:var(--p4);transform:translateX(5px);display:inline-block}
 .footer-group-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:8px}
-.footer-copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(168,85,247,0.08);padding-top:20px;color:var(--text3);font-size:12px}
-
-/* RESPONSIVE */
+.footer-copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(168,85,247,.08);padding-top:20px;color:var(--txt3);font-size:12px}
+ 
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
   .nav-links,.nav-cta .btn-ghost,.nav-cta .btn-primary{display:none}
   .hamburger{display:flex}
-  .nav-cta{gap:0}
   .stats{grid-template-columns:repeat(2,1fr);max-width:300px}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:22px}
 }
 @media(max-width:600px){
   .tool-tabs{gap:6px}
-  .tool-tab{font-size:12px;padding:7px 12px}
+  .tool-tab{font-size:12px;padding:7px 11px}
   .footer-grid{grid-template-columns:1fr}
-  .cta-btns{flex-direction:column;align-items:center}
-  .hero-btns{flex-direction:column;align-items:center}
-  .hero-btns .btn-primary,.hero-btns .btn-ghost{width:100%;max-width:280px}
+  .cta-btns,.hero-btns{flex-direction:column;align-items:center}
+  .hero-btns .btn-primary,.hero-btns .btn-ghost{width:100%;max-width:290px}
 }
 </style>
 </head>
 <body>
+ 
+<!-- PARTICLES -->
+<div id="particles"></div>
  
 <div class="toast" id="toast"></div>
  
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">
-      <div class="logo-icon">⚡</div>
-      PixelForge
-    </a>
+    <a href="#" class="logo"><div class="logo-icon">⚡</div>PixelForge</a>
     <ul class="nav-links">
       <li><a href="#tools">Tools</a></li>
       <li><a href="#features">Features</a></li>
@@ -372,12 +312,9 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
       <button class="btn-ghost">Log in</button>
       <button class="btn-primary">Get Started Free</button>
     </div>
-    <div class="hamburger" onclick="toggleMenu()" id="ham">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="ham"><span></span><span></span><span></span></div>
   </div>
 </nav>
- 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#tools" onclick="toggleMenu()">Tools</a>
   <a href="#features" onclick="toggleMenu()">Features</a>
@@ -391,21 +328,19 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="badge"><span class="badge-dot"></span> Now with AI background removal — try it free</div>
+    <div class="badge"><span class="badge-dot"></span>Now with AI background removal — try it free</div>
     <h1>Transform Images <span class="grad">Instantly</span><br>at Scale</h1>
     <p class="hero-sub">Compress, resize, crop, convert, remove backgrounds, and add watermarks — all in one blazing-fast platform. No design skills needed.</p>
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Start Processing Free →</button>
       <button class="btn-ghost">▷ Watch Demo</button>
     </div>
- 
-    <div class="upload-zone" id="heroUpload" ondragover="ev.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleHeroDrop(event)">
+    <div class="upload-zone" id="heroUpload" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleHeroDrop(event)">
       <input type="file" accept="image/*" onchange="handleHeroFile(this)">
       <div class="upload-icon">🖼</div>
       <p class="upload-text">Drop your image here, or <span>browse</span></p>
       <p class="upload-hint">PNG, JPG, WEBP, SVG, GIF — up to 100MB</p>
     </div>
- 
     <div class="stats">
       <div class="stat-item"><div class="stat-val">50M+</div><div class="stat-label">Images Processed</div></div>
       <div class="stat-item"><div class="stat-val">2.4M</div><div class="stat-label">Happy Users</div></div>
@@ -420,16 +355,16 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
 <!-- TOOL PROCESSOR -->
 <section id="tools">
 <div class="processor">
-  <div class="section-label">Live Tools — Works in Your Browser</div>
-  <h2>Process images <span class="grad">right now</span></h2>
-  <p class="section-sub">No uploads to a server. Everything runs in your browser — fast, private, free.</p>
+  <div class="section-label reveal">Live Tools — Works in Your Browser</div>
+  <h2 class="reveal stagger-1">Process images <span class="grad">right now</span></h2>
+  <p class="section-sub reveal stagger-2">No uploads to a server. Everything runs in your browser — fast, private, free.</p>
  
-  <div class="tool-tabs">
+  <div class="tool-tabs reveal stagger-3">
     <div class="tool-tab active" onclick="switchTool('compress')">🗜 Compress</div>
     <div class="tool-tab" onclick="switchTool('resize')">↔ Resize</div>
     <div class="tool-tab" onclick="switchTool('crop')">✂ Crop</div>
     <div class="tool-tab" onclick="switchTool('convert')">🔄 Convert</div>
-    <div class="tool-tab" onclick="switchTool('grayscale')">🎨 Grayscale</div>
+    <div class="tool-tab" onclick="switchTool('grayscale')">🎨 Effects</div>
     <div class="tool-tab" onclick="switchTool('rotate')">🔃 Rotate/Flip</div>
     <div class="tool-tab" onclick="switchTool('watermark')">💧 Watermark</div>
     <div class="tool-tab" onclick="switchTool('brightness')">☀ Adjust</div>
@@ -439,12 +374,13 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
   <div class="tool-panel active" id="tool-compress">
     <div class="tool-layout">
       <div>
-        <div class="tool-upload" id="compress-drop" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event,'compress')">
+        <div class="tool-upload" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event,'compress')">
           <input type="file" accept="image/*" onchange="loadImage(this,'compress')">
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
+          <p style="font-size:11px;color:var(--txt3)">PNG, JPG, WEBP supported</p>
         </div>
-        <img class="preview-img" id="compress-preview">
+        <img class="preview-img" id="compress-preview" alt="Preview">
       </div>
       <div class="controls">
         <div class="ctrl-group">
@@ -454,12 +390,19 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
         <div class="output-info" id="compress-info" style="display:none">
           <div class="info-row"><span>Original size</span><span class="info-val" id="compress-orig">—</span></div>
           <div class="info-row"><span>Compressed size</span><span class="info-val" id="compress-new">—</span></div>
-          <div class="info-row"><span>Reduction</span><span class="info-val" id="compress-saved">—</span></div>
+          <div class="info-row"><span>Space saved</span><span class="info-val" id="compress-saved">—</span></div>
+          <div class="info-row"><span>Dimensions</span><span class="info-val" id="compress-dims">—</span></div>
         </div>
-        <div class="progress-bar" id="compress-bar"><div class="progress-fill" id="compress-fill"></div></div>
-        <button class="process-btn" id="compress-btn" onclick="compressImage()" disabled>🗜 Compress Image</button>
+        <div class="progress-wrap" id="compress-prog">
+          <div class="progress-label"><span>Compressing…</span><span id="compress-pct">0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" id="compress-fill"></div></div>
+        </div>
+        <button class="process-btn" id="compress-btn" onclick="compressImage()" disabled>
+          <span class="btn-label">🗜 Compress Image</span>
+          <div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="compress-dl">⬇ Download Compressed Image</a>
-        <img class="result-img" id="compress-result">
+        <img class="result-img" id="compress-result" alt="Compressed result">
       </div>
     </div>
   </div>
@@ -473,7 +416,7 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="resize-preview">
+        <img class="preview-img" id="resize-preview" alt="Preview">
       </div>
       <div class="controls">
         <div class="ctrl-row">
@@ -481,17 +424,19 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="ctrl-group"><div class="ctrl-label">Height (px)</div><input type="number" id="resize-h" placeholder="e.g. 1080" min="1" max="8000"></div>
         </div>
         <div class="ctrl-group">
-          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);cursor:pointer">
-            <input type="checkbox" id="resize-lock" checked style="width:16px;height:16px;accent-color:var(--primary-500)"> Lock aspect ratio
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--txt2);cursor:pointer">
+            <input type="checkbox" id="resize-lock" checked style="width:16px;height:16px;accent-color:var(--p5)"> Lock aspect ratio
           </label>
         </div>
         <div class="output-info" id="resize-info" style="display:none">
           <div class="info-row"><span>Original</span><span class="info-val" id="resize-orig">—</span></div>
-          <div class="info-row"><span>New size</span><span class="info-val" id="resize-new">—</span></div>
+          <div class="info-row"><span>Output size</span><span class="info-val" id="resize-new">—</span></div>
         </div>
-        <button class="process-btn" id="resize-btn" onclick="resizeImage()" disabled>↔ Resize Image</button>
+        <button class="process-btn" id="resize-btn" onclick="resizeImage()" disabled>
+          <span class="btn-label">↔ Resize Image</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="resize-dl">⬇ Download Resized Image</a>
-        <img class="result-img" id="resize-result">
+        <img class="result-img" id="resize-result" alt="Resized result">
       </div>
     </div>
   </div>
@@ -505,18 +450,19 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="crop-preview">
+        <img class="preview-img" id="crop-preview" alt="Preview">
       </div>
       <div class="controls">
-        <div class="ctrl-group"><div class="ctrl-label">Preset</div>
+        <div class="ctrl-group"><div class="ctrl-label">Preset aspect ratio</div>
           <select id="crop-preset" onchange="applyCropPreset()">
             <option value="">Custom</option>
             <option value="1:1">1:1 Square</option>
-            <option value="16:9">16:9 Landscape</option>
+            <option value="16:9">16:9 Widescreen</option>
             <option value="4:3">4:3 Standard</option>
-            <option value="9:16">9:16 Portrait</option>
-            <option value="4:5">4:5 Instagram</option>
-            <option value="3:2">3:2 Photo</option>
+            <option value="9:16">9:16 Portrait / Reels</option>
+            <option value="4:5">4:5 Instagram Portrait</option>
+            <option value="3:2">3:2 Photo Print</option>
+            <option value="2:1">2:1 Panorama</option>
           </select>
         </div>
         <div class="ctrl-row">
@@ -527,9 +473,15 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="ctrl-group"><div class="ctrl-label">Width</div><input type="number" id="crop-w" placeholder="auto" min="1"></div>
           <div class="ctrl-group"><div class="ctrl-label">Height</div><input type="number" id="crop-h" placeholder="auto" min="1"></div>
         </div>
-        <button class="process-btn" id="crop-btn" onclick="cropImage()" disabled>✂ Crop Image</button>
+        <div class="output-info" id="crop-info" style="display:none">
+          <div class="info-row"><span>Original</span><span class="info-val" id="crop-orig">—</span></div>
+          <div class="info-row"><span>Crop output</span><span class="info-val" id="crop-out">—</span></div>
+        </div>
+        <button class="process-btn" id="crop-btn" onclick="cropImage()" disabled>
+          <span class="btn-label">✂ Crop Image</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="crop-dl">⬇ Download Cropped Image</a>
-        <img class="result-img" id="crop-result">
+        <img class="result-img" id="crop-result" alt="Cropped result">
       </div>
     </div>
   </div>
@@ -543,29 +495,35 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="convert-preview">
+        <img class="preview-img" id="convert-preview" alt="Preview">
       </div>
       <div class="controls">
-        <div class="ctrl-group"><div class="ctrl-label">Convert to</div>
+        <div class="ctrl-group"><div class="ctrl-label">Convert to format</div>
           <select id="convert-format">
-            <option value="image/jpeg">JPG</option>
-            <option value="image/png">PNG</option>
-            <option value="image/webp">WEBP</option>
-            <option value="image/gif">GIF (static)</option>
+            <option value="image/jpeg">JPG — smaller, great for photos</option>
+            <option value="image/png">PNG — lossless, supports transparency</option>
+            <option value="image/webp">WEBP — modern, best compression</option>
+            <option value="image/gif">GIF — static, limited colors</option>
           </select>
         </div>
         <div class="ctrl-group">
           <div class="ctrl-label">Quality <span class="ctrl-val" id="convert-quality-val">90%</span></div>
           <input type="range" min="10" max="100" value="90" oninput="document.getElementById('convert-quality-val').textContent=this.value+'%'" id="convert-quality">
         </div>
-        <button class="process-btn" id="convert-btn" onclick="convertImage()" disabled>🔄 Convert Image</button>
+        <div class="output-info" id="convert-info" style="display:none">
+          <div class="info-row"><span>Input format</span><span class="info-val" id="convert-in">—</span></div>
+          <div class="info-row"><span>Output format</span><span class="info-val" id="convert-out">—</span></div>
+        </div>
+        <button class="process-btn" id="convert-btn" onclick="convertImage()" disabled>
+          <span class="btn-label">🔄 Convert Image</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="convert-dl">⬇ Download Converted Image</a>
-        <img class="result-img" id="convert-result">
+        <img class="result-img" id="convert-result" alt="Converted result">
       </div>
     </div>
   </div>
  
-  <!-- GRAYSCALE -->
+  <!-- GRAYSCALE / EFFECTS -->
   <div class="tool-panel" id="tool-grayscale">
     <div class="tool-layout">
       <div>
@@ -574,29 +532,39 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="grayscale-preview">
+        <div class="compare-wrap" id="grayscale-compare">
+          <div class="compare-before"><img id="grayscale-before" alt="Before"></div>
+          <div class="compare-after" id="grayscale-after-clip"><img id="grayscale-after-img" alt="After"></div>
+          <div class="compare-divider" id="grayscale-divider"></div>
+          <div class="compare-label before">Before</div>
+          <div class="compare-label after">After</div>
+        </div>
       </div>
       <div class="controls">
-        <div class="ctrl-group"><div class="ctrl-label">Effect</div>
+        <div class="ctrl-group"><div class="ctrl-label">Effect type</div>
           <select id="grayscale-mode">
-            <option value="grayscale">Grayscale</option>
-            <option value="sepia">Sepia</option>
-            <option value="invert">Invert</option>
-            <option value="vintage">Vintage</option>
+            <option value="grayscale">Grayscale — classic B&W</option>
+            <option value="sepia">Sepia — vintage warm tone</option>
+            <option value="invert">Invert — negative colors</option>
+            <option value="vintage">Vintage — faded retro look</option>
+            <option value="cool">Cool — blue tint</option>
+            <option value="warm">Warm — orange tint</option>
           </select>
         </div>
         <div class="ctrl-group">
           <div class="ctrl-label">Intensity <span class="ctrl-val" id="gray-intensity-val">100%</span></div>
           <input type="range" min="0" max="100" value="100" oninput="document.getElementById('gray-intensity-val').textContent=this.value+'%'" id="gray-intensity">
         </div>
-        <button class="process-btn" id="grayscale-btn" onclick="applyGrayscale()" disabled>🎨 Apply Effect</button>
+        <button class="process-btn" id="grayscale-btn" onclick="applyGrayscale()" disabled>
+          <span class="btn-label">🎨 Apply Effect</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="grayscale-dl">⬇ Download Image</a>
-        <img class="result-img" id="grayscale-result">
+        <img class="result-img" id="grayscale-result" alt="Effect result">
       </div>
     </div>
   </div>
  
-  <!-- ROTATE -->
+  <!-- ROTATE/FLIP -->
   <div class="tool-panel" id="tool-rotate">
     <div class="tool-layout">
       <div>
@@ -605,7 +573,7 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="rotate-preview">
+        <img class="preview-img" id="rotate-preview" alt="Preview">
       </div>
       <div class="controls">
         <div class="ctrl-group"><div class="ctrl-label">Rotation</div>
@@ -613,19 +581,22 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
             <option value="90">90° Clockwise</option>
             <option value="180">180°</option>
             <option value="-90">90° Counter-clockwise</option>
+            <option value="0">No rotation</option>
           </select>
         </div>
         <div class="ctrl-group"><div class="ctrl-label">Flip</div>
           <select id="flip-mode">
             <option value="none">No flip</option>
-            <option value="h">Flip Horizontal</option>
-            <option value="v">Flip Vertical</option>
+            <option value="h">Flip Horizontal ↔</option>
+            <option value="v">Flip Vertical ↕</option>
             <option value="both">Flip Both</option>
           </select>
         </div>
-        <button class="process-btn" id="rotate-btn" onclick="rotateImage()" disabled>🔃 Apply Transform</button>
+        <button class="process-btn" id="rotate-btn" onclick="rotateImage()" disabled>
+          <span class="btn-label">🔃 Apply Transform</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="rotate-dl">⬇ Download Image</a>
-        <img class="result-img" id="rotate-result">
+        <img class="result-img" id="rotate-result" alt="Rotated result">
       </div>
     </div>
   </div>
@@ -639,10 +610,19 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="watermark-preview">
+        <img class="preview-img" id="watermark-preview" alt="Preview">
       </div>
       <div class="controls">
         <div class="ctrl-group"><div class="ctrl-label">Watermark text</div><input type="text" id="wm-text" placeholder="© YourBrand 2026" value="© PixelForge"></div>
+        <div class="ctrl-group"><div class="ctrl-label">Text color</div>
+          <select id="wm-color">
+            <option value="white">White</option>
+            <option value="black">Black</option>
+            <option value="#a855f7">Purple</option>
+            <option value="#f97316">Orange</option>
+            <option value="#22d3ee">Cyan</option>
+          </select>
+        </div>
         <div class="ctrl-group"><div class="ctrl-label">Position</div>
           <select id="wm-pos">
             <option value="br">Bottom Right</option>
@@ -650,6 +630,7 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
             <option value="tr">Top Right</option>
             <option value="tl">Top Left</option>
             <option value="center">Center</option>
+            <option value="tile">Tile (repeat)</option>
           </select>
         </div>
         <div class="ctrl-group">
@@ -660,14 +641,16 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="ctrl-label">Font size <span class="ctrl-val" id="wm-size-val">32px</span></div>
           <input type="range" min="12" max="120" value="32" oninput="document.getElementById('wm-size-val').textContent=this.value+'px'" id="wm-size">
         </div>
-        <button class="process-btn" id="watermark-btn" onclick="applyWatermark()" disabled>💧 Add Watermark</button>
+        <button class="process-btn" id="watermark-btn" onclick="applyWatermark()" disabled>
+          <span class="btn-label">💧 Add Watermark</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="watermark-dl">⬇ Download Image</a>
-        <img class="result-img" id="watermark-result">
+        <img class="result-img" id="watermark-result" alt="Watermarked result">
       </div>
     </div>
   </div>
  
-  <!-- BRIGHTNESS -->
+  <!-- BRIGHTNESS/ADJUST -->
   <div class="tool-panel" id="tool-brightness">
     <div class="tool-layout">
       <div>
@@ -676,7 +659,13 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="tool-upload-icon">📁</div>
           <p>Drop image or <span>click to browse</span></p>
         </div>
-        <img class="preview-img" id="brightness-preview">
+        <div class="compare-wrap" id="brightness-compare">
+          <div class="compare-before"><img id="brightness-before" alt="Before"></div>
+          <div class="compare-after" id="brightness-after-clip"><img id="brightness-after-img" alt="After"></div>
+          <div class="compare-divider" id="brightness-divider"></div>
+          <div class="compare-label before">Before</div>
+          <div class="compare-label after">After</div>
+        </div>
       </div>
       <div class="controls">
         <div class="ctrl-group">
@@ -695,9 +684,15 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
           <div class="ctrl-label">Blur <span class="ctrl-val" id="bl-val">0px</span></div>
           <input type="range" min="0" max="20" value="0" oninput="document.getElementById('bl-val').textContent=this.value+'px'" id="bl-slider">
         </div>
-        <button class="process-btn" id="brightness-btn" onclick="adjustImage()" disabled>☀ Apply Adjustments</button>
+        <div class="ctrl-group">
+          <div class="ctrl-label">Sharpness <span class="ctrl-val" id="sh-val">0</span></div>
+          <input type="range" min="0" max="5" value="0" step="0.5" oninput="document.getElementById('sh-val').textContent=this.value" id="sh-slider">
+        </div>
+        <button class="process-btn" id="brightness-btn" onclick="adjustImage()" disabled>
+          <span class="btn-label">☀ Apply Adjustments</span><div class="btn-spinner"></div>
+        </button>
         <a class="download-btn" id="brightness-dl">⬇ Download Image</a>
-        <img class="result-img" id="brightness-result">
+        <img class="result-img" id="brightness-result" alt="Adjusted result">
       </div>
     </div>
   </div>
@@ -709,61 +704,18 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
 <!-- FEATURE CARDS -->
 <section id="features">
 <div class="features">
-  <div class="section-label">Everything You Need</div>
-  <h2>All image tools, <span class="grad">one platform</span></h2>
-  <p class="section-sub">A complete toolkit — no subscriptions to juggle, no apps to install.</p>
+  <div class="section-label reveal">Everything You Need</div>
+  <h2 class="reveal stagger-1">All image tools, <span class="grad">one platform</span></h2>
+  <p class="section-sub reveal stagger-2">A complete toolkit — no subscriptions to juggle, no apps to install.</p>
   <div class="tools-grid">
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#a855f618;border:1px solid #a855f630">🗜</div>
-      <div class="badge-tag" style="color:#a855f6;background:#a855f618;border:1px solid #a855f630">Most Popular</div>
-      <div class="tc-name">Image Compress</div>
-      <div class="tc-desc">Reduce file size by up to 90% using smart algorithms.</div>
-      <div class="tc-stat" style="background:#a855f612;border:1px solid #a855f625"><div class="tc-stat-val" style="color:#a855f6">Up to 90%</div><div style="font-size:10px;color:var(--text3)">Size reduction</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#c084fc18;border:1px solid #c084fc30">↔</div>
-      <div class="tc-name">Image Resize</div>
-      <div class="tc-desc">Set exact dimensions or AI upscale 4× without blurring.</div>
-      <div class="tc-stat" style="background:#c084fc12;border:1px solid #c084fc25"><div class="tc-stat-val" style="color:#c084fc">4×</div><div style="font-size:10px;color:var(--text3)">AI upscale</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#d8b4fe18;border:1px solid #d8b4fe30">✂</div>
-      <div class="tc-name">Image Crop</div>
-      <div class="tc-desc">Smart crop with presets. 30+ aspect ratios supported.</div>
-      <div class="tc-stat" style="background:#d8b4fe12;border:1px solid #d8b4fe25"><div class="tc-stat-val" style="color:#d8b4fe">30+</div><div style="font-size:10px;color:var(--text3)">Presets</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#7e22ce18;border:1px solid #7e22ce30">🔄</div>
-      <div class="tc-name">Convert Format</div>
-      <div class="tc-desc">Convert between JPG, PNG, WEBP, AVIF, SVG and more.</div>
-      <div class="tc-stat" style="background:#7e22ce12;border:1px solid #7e22ce25"><div class="tc-stat-val" style="color:#7e22ce">20+</div><div style="font-size:10px;color:var(--text3)">Formats</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#ec489918;border:1px solid #ec489930">🪄</div>
-      <div class="badge-tag" style="color:#ec4899;background:#ec489918;border:1px solid #ec489930">AI Powered</div>
-      <div class="tc-name">Background Remover</div>
-      <div class="tc-desc">AI removes backgrounds with studio-quality edges.</div>
-      <div class="tc-stat" style="background:#ec489912;border:1px solid #ec489925"><div class="tc-stat-val" style="color:#ec4899">99.2%</div><div style="font-size:10px;color:var(--text3)">Accuracy</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#f472b618;border:1px solid #f472b630">💧</div>
-      <div class="tc-name">Watermark</div>
-      <div class="tc-desc">Add text watermarks across thousands of images in seconds.</div>
-      <div class="tc-stat" style="background:#f472b612;border:1px solid #f472b625"><div class="tc-stat-val" style="color:#f472b6">50+</div><div style="font-size:10px;color:var(--text3)">Templates</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#fb923c18;border:1px solid #fb923c30">📄</div>
-      <div class="badge-tag" style="color:#fb923c;background:#fb923c18;border:1px solid #fb923c30">OCR</div>
-      <div class="tc-name">Image to Text</div>
-      <div class="tc-desc">Extract printed or handwritten text via OCR, 50+ languages.</div>
-      <div class="tc-stat" style="background:#fb923c12;border:1px solid #fb923c25"><div class="tc-stat-val" style="color:#fb923c">98.7%</div><div style="font-size:10px;color:var(--text3)">Accuracy</div></div>
-    </div>
-    <div class="tool-card">
-      <div class="tc-icon" style="background:#f9731618;border:1px solid #f9731630">📷</div>
-      <div class="tc-name">QR Code Scanner</div>
-      <div class="tc-desc">Decode any QR code from an image instantly.</div>
-      <div class="tc-stat" style="background:#f9731612;border:1px solid #f9731625"><div class="tc-stat-val" style="color:#f97316">100/run</div><div style="font-size:10px;color:var(--text3)">Batch scan</div></div>
-    </div>
+    <div class="tool-card reveal stagger-1"><div class="tc-icon" style="background:#a855f718;border:1px solid #a855f730">🗜</div><div class="badge-tag" style="color:#a855f7;background:#a855f718;border:1px solid #a855f730">Most Popular</div><div class="tc-name">Image Compress</div><div class="tc-desc">Reduce file size by up to 90% using smart lossy & lossless algorithms.</div><div class="tc-stat" style="background:#a855f712;border:1px solid #a855f725"><div class="tc-stat-val" style="color:#a855f7">Up to 90%</div><div style="font-size:10px;color:var(--txt3)">Size reduction</div></div></div>
+    <div class="tool-card reveal stagger-2"><div class="tc-icon" style="background:#9333ea18;border:1px solid #9333ea30">↔</div><div class="tc-name">Image Resize</div><div class="tc-desc">Set exact pixel dimensions with smart aspect ratio locking.</div><div class="tc-stat" style="background:#9333ea12;border:1px solid #9333ea25"><div class="tc-stat-val" style="color:#9333ea">8K px</div><div style="font-size:10px;color:var(--txt3)">Max output</div></div></div>
+    <div class="tool-card reveal stagger-3"><div class="tc-icon" style="background:#c084fc18;border:1px solid #c084fc30">✂</div><div class="tc-name">Image Crop</div><div class="tc-desc">Smart crop with 7 presets — square, 16:9, Instagram, portrait and more.</div><div class="tc-stat" style="background:#c084fc12;border:1px solid #c084fc25"><div class="tc-stat-val" style="color:#c084fc">7+</div><div style="font-size:10px;color:var(--txt3)">Presets</div></div></div>
+    <div class="tool-card reveal stagger-4"><div class="tc-icon" style="background:#7e22ce18;border:1px solid #7e22ce30">🔄</div><div class="tc-name">Convert Format</div><div class="tc-desc">Convert between JPG, PNG, WEBP, GIF instantly in your browser.</div><div class="tc-stat" style="background:#7e22ce12;border:1px solid #7e22ce25"><div class="tc-stat-val" style="color:#7e22ce">4</div><div style="font-size:10px;color:var(--txt3)">Formats</div></div></div>
+    <div class="tool-card reveal stagger-5"><div class="tc-icon" style="background:#ec489918;border:1px solid #ec489930">🎨</div><div class="badge-tag" style="color:#ec4899;background:#ec489918;border:1px solid #ec489930">6 Effects</div><div class="tc-name">Photo Effects</div><div class="tc-desc">Grayscale, Sepia, Invert, Vintage, Cool & Warm effects with live compare.</div><div class="tc-stat" style="background:#ec489912;border:1px solid #ec489925"><div class="tc-stat-val" style="color:#ec4899">Live</div><div style="font-size:10px;color:var(--txt3)">Before/After</div></div></div>
+    <div class="tool-card reveal stagger-6"><div class="tc-icon" style="background:#f9731618;border:1px solid #f9731630">💧</div><div class="tc-name">Watermark</div><div class="tc-desc">Add custom text watermarks with 5 positions, opacity, size and colour control.</div><div class="tc-stat" style="background:#f9731612;border:1px solid #f9731625"><div class="tc-stat-val" style="color:#f97316">Tile</div><div style="font-size:10px;color:var(--txt3)">Repeat mode</div></div></div>
+    <div class="tool-card reveal stagger-1"><div class="tc-icon" style="background:#fb923c18;border:1px solid #fb923c30">🔃</div><div class="tc-name">Rotate & Flip</div><div class="tc-desc">Rotate 90°/180° and flip horizontally, vertically, or both.</div><div class="tc-stat" style="background:#fb923c12;border:1px solid #fb923c25"><div class="tc-stat-val" style="color:#fb923c">4</div><div style="font-size:10px;color:var(--txt3)">Transforms</div></div></div>
+    <div class="tool-card reveal stagger-2"><div class="tc-icon" style="background:#d8b4fe18;border:1px solid #d8b4fe30">☀</div><div class="tc-name">Adjust & Enhance</div><div class="tc-desc">Fine-tune brightness, contrast, saturation, blur and sharpness side-by-side.</div><div class="tc-stat" style="background:#d8b4fe12;border:1px solid #d8b4fe25"><div class="tc-stat-val" style="color:#d8b4fe">5</div><div style="font-size:10px;color:var(--txt3)">Adjustments</div></div></div>
   </div>
 </div>
 </section>
@@ -773,30 +725,30 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
 <!-- PRICING -->
 <section id="pricing">
 <div class="pricing">
-  <div class="section-label">Pricing</div>
-  <h2>Simple, <span class="grad">transparent</span> pricing</h2>
-  <p class="section-sub">Start free. Upgrade when you need more.</p>
+  <div class="section-label reveal">Pricing</div>
+  <h2 class="reveal stagger-1">Simple, <span class="grad">transparent</span> pricing</h2>
+  <p class="section-sub reveal stagger-2">Start free. Upgrade when you need more power.</p>
   <div class="pricing-grid">
-    <div class="plan">
+    <div class="plan reveal from-left">
       <div class="plan-name">Starter</div>
       <div class="plan-tagline">Perfect for individuals</div>
       <div class="plan-price"><sup>$</sup>0<sub>/mo</sub></div>
       <button class="btn-ghost" style="width:100%;padding:11px">Get Started Free</button>
       <ul class="plan-features" style="margin-top:20px">
-        <li>200 images/month</li><li>Max 5MB per file</li><li>Compress & Resize</li><li>Format Conversion</li><li>Basic watermark</li>
+        <li>200 images/month</li><li>Max 5MB per file</li><li>All 8 tools</li><li>Browser-based processing</li><li>No signup required</li>
       </ul>
     </div>
-    <div class="plan featured">
+    <div class="plan featured reveal scale">
       <div class="plan-popular">⚡ Most Popular</div>
       <div class="plan-name">Pro</div>
       <div class="plan-tagline">For creators & freelancers</div>
       <div class="plan-price"><sup>$</sup>19<sub>/mo</sub></div>
       <button class="btn-primary" style="width:100%;padding:11px">Start 14-Day Trial</button>
       <ul class="plan-features" style="margin-top:20px">
-        <li>10,000 images/month</li><li>Max 100MB per file</li><li>All 8 tools included</li><li>AI Background Remover</li><li>Priority processing</li><li>API access (100K calls)</li><li>Custom watermark templates</li>
+        <li>10,000 images/month</li><li>Max 100MB per file</li><li>All 8 tools + API</li><li>AI Background Remover</li><li>Priority processing</li><li>API access (100K calls)</li><li>Custom watermark templates</li>
       </ul>
     </div>
-    <div class="plan">
+    <div class="plan reveal from-right">
       <div class="plan-name">Business</div>
       <div class="plan-tagline">For teams & agencies</div>
       <div class="plan-price"><sup>$</sup>79<sub>/mo</sub></div>
@@ -806,7 +758,7 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
       </ul>
     </div>
   </div>
-  <p style="text-align:center;color:var(--text3);font-size:13px;margin-top:20px">All plans include a 14-day free trial. No credit card required.</p>
+  <p style="text-align:center;color:var(--txt3);font-size:13px;margin-top:22px">All plans include a 14-day free trial. No credit card required.</p>
 </div>
 </section>
  
@@ -815,73 +767,31 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
 <!-- TESTIMONIALS -->
 <section id="testimonials">
 <div class="testimonials">
-  <div class="section-label">Testimonials</div>
-  <h2>Loved by <span class="grad">2.4 million</span> creators</h2>
-  <div class="tgrid" style="margin-top:36px">
-    <div class="tcard">
-      <div class="tstars">★★★★★</div>
-      <p class="ttext">"PixelForge cut our workflow time by 70%. The background remover alone is worth 10× the price."</p>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="tavatar" style="background:#a855f625;border:1.5px solid #a855f645;color:#a855f6">DR</div>
-        <div><div class="tname">Daniela Reyes</div><div class="trole">E-commerce Manager</div></div>
-      </div>
-    </div>
-    <div class="tcard">
-      <div class="tstars">★★★★★</div>
-      <p class="ttext">"The API is incredibly clean. Our PageSpeed scores jumped 20 points after integrating batch compression."</p>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="tavatar" style="background:#c084fc25;border:1.5px solid #c084fc45;color:#c084fc">LC</div>
-        <div><div class="tname">Liam Chen</div><div class="trole">Senior Developer</div></div>
-      </div>
-    </div>
-    <div class="tcard">
-      <div class="tstars">★★★★★</div>
-      <p class="ttext">"The smart crop feature genuinely understands composition. I deliver client galleries 3× faster now."</p>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="tavatar" style="background:#d8b4fe25;border:1.5px solid #d8b4fe45;color:#d8b4fe">SM</div>
-        <div><div class="tname">Sophie Marchand</div><div class="trole">Brand Photographer</div></div>
-      </div>
-    </div>
-    <div class="tcard">
-      <div class="tstars">★★★★★</div>
-      <p class="ttext">"PixelForge is the only tool that doesn't feel like a compromise. Fast, accurate, and the UI is actually good."</p>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="tavatar" style="background:#ec489925;border:1.5px solid #ec489945;color:#ec4899">OA</div>
-        <div><div class="tname">Omar Al-Rashid</div><div class="trole">Product Designer</div></div>
-      </div>
-    </div>
-    <div class="tcard">
-      <div class="tstars">★★★★★</div>
-      <p class="ttext">"Watermarking 500 images used to take half a day. Now it takes 4 minutes. Our team is obsessed."</p>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="tavatar" style="background:#f472b625;border:1.5px solid #f472b645;color:#f472b6">YT</div>
-        <div><div class="tname">Yuki Tanaka</div><div class="trole">Digital Marketing Lead</div></div>
-      </div>
-    </div>
-    <div class="tcard">
-      <div class="tstars">★★★★★</div>
-      <p class="ttext">"The format conversion quality is unmatched. Converting to AVIF for web delivery — seamless."</p>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="tavatar" style="background:#fb923c25;border:1.5px solid #fb923c45;color:#fb923c">RT</div>
-        <div><div class="tname">Rachel Torres</div><div class="trole">Freelance Art Director</div></div>
-      </div>
-    </div>
+  <div class="section-label reveal">Testimonials</div>
+  <h2 class="reveal stagger-1">Loved by <span class="grad">2.4 million</span> creators</h2>
+  <div class="tgrid">
+    <div class="tcard reveal stagger-1"><div class="tstars">★★★★★</div><p class="ttext">"PixelForge cut our workflow time by 70%. The background remover alone is worth 10× the price."</p><div style="display:flex;align-items:center;gap:10px"><div class="tavatar" style="background:#a855f725;border:1.5px solid #a855f745;color:#a855f7">DR</div><div><div class="tname">Daniela Reyes</div><div class="trole">E-commerce Manager</div></div></div></div>
+    <div class="tcard reveal stagger-2"><div class="tstars">★★★★★</div><p class="ttext">"The API is incredibly clean. Our PageSpeed scores jumped 20 points after integrating batch compression."</p><div style="display:flex;align-items:center;gap:10px"><div class="tavatar" style="background:#9333ea25;border:1.5px solid #9333ea45;color:#9333ea">LC</div><div><div class="tname">Liam Chen</div><div class="trole">Senior Developer</div></div></div></div>
+    <div class="tcard reveal stagger-3"><div class="tstars">★★★★★</div><p class="ttext">"The smart crop feature genuinely understands composition. I deliver client galleries 3× faster now."</p><div style="display:flex;align-items:center;gap:10px"><div class="tavatar" style="background:#c084fc25;border:1.5px solid #c084fc45;color:#c084fc">SM</div><div><div class="tname">Sophie Marchand</div><div class="trole">Brand Photographer</div></div></div></div>
+    <div class="tcard reveal stagger-4"><div class="tstars">★★★★★</div><p class="ttext">"PixelForge is the only tool that doesn't feel like a compromise. Fast, accurate, and the UI is actually good."</p><div style="display:flex;align-items:center;gap:10px"><div class="tavatar" style="background:#ec489925;border:1.5px solid #ec489945;color:#ec4899">OA</div><div><div class="tname">Omar Al-Rashid</div><div class="trole">Product Designer</div></div></div></div>
+    <div class="tcard reveal stagger-5"><div class="tstars">★★★★★</div><p class="ttext">"Watermarking 500 images used to take half a day. Now it takes 4 minutes. Our team is obsessed."</p><div style="display:flex;align-items:center;gap:10px"><div class="tavatar" style="background:#f9731625;border:1.5px solid #f9731645;color:#f97316">YT</div><div><div class="tname">Yuki Tanaka</div><div class="trole">Digital Marketing Lead</div></div></div></div>
+    <div class="tcard reveal stagger-6"><div class="tstars">★★★★★</div><p class="ttext">"The format conversion quality is unmatched. Converting to WEBP for web delivery — seamless."</p><div style="display:flex;align-items:center;gap:10px"><div class="tavatar" style="background:#7e22ce25;border:1.5px solid #7e22ce45;color:#7e22ce">RT</div><div><div class="tname">Rachel Torres</div><div class="trole">Freelance Art Director</div></div></div></div>
   </div>
 </div>
 </section>
  
 <!-- CTA -->
 <section class="cta-section">
-  <div class="cta-box">
+  <div class="cta-box reveal scale">
     <div class="cta-glow"></div>
     <div class="cta-icon">⚡</div>
-    <h2 style="font-size:clamp(1.6rem,4vw,2.6rem)">Start processing images <span class="grad">for free</span></h2>
-    <p style="color:var(--text2);font-size:15px;margin-top:12px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6">Join 2.4 million creators who trust PixelForge with their images every day.</p>
+    <h2 style="font-size:clamp(1.7rem,4vw,2.7rem)">Start processing images <span class="grad">for free</span></h2>
+    <p style="color:var(--txt2);font-size:15px;margin-top:12px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.65">Join 2.4 million creators who trust PixelForge with their images every day.</p>
     <div class="cta-btns">
       <button class="btn-primary" style="padding:14px 32px;font-size:15px">Create Free Account →</button>
       <button class="btn-ghost" style="padding:14px 24px;font-size:15px">View API Docs</button>
     </div>
-    <p style="color:var(--text3);font-size:12px;margin-top:16px">No credit card required. 200 free images per month, forever.</p>
+    <p style="color:var(--txt3);font-size:12px;margin-top:16px">No credit card required. 200 free images per month, forever.</p>
   </div>
 </section>
  
@@ -890,9 +800,9 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
   <div class="footer-grid">
     <div>
       <div class="logo" style="margin-bottom:12px"><div class="logo-icon">⚡</div>PixelForge</div>
-      <p style="color:var(--text3);font-size:13px;max-width:210px;line-height:1.6">The fastest image processing platform for creators and developers.</p>
+      <p style="color:var(--txt3);font-size:13px;max-width:210px;line-height:1.65">The fastest image processing platform for creators and developers.</p>
     </div>
-    <div><div class="footer-group-title">Product</div><ul class="footer-links"><li><a href="#">Compress</a></li><li><a href="#">Resize</a></li><li><a href="#">Crop</a></li><li><a href="#">Convert</a></li><li><a href="#">Background Remover</a></li><li><a href="#">Watermark</a></li></ul></div>
+    <div><div class="footer-group-title">Tools</div><ul class="footer-links"><li><a href="#">Compress</a></li><li><a href="#">Resize</a></li><li><a href="#">Crop</a></li><li><a href="#">Convert</a></li><li><a href="#">Watermark</a></li><li><a href="#">Adjust</a></li></ul></div>
     <div><div class="footer-group-title">Developers</div><ul class="footer-links"><li><a href="#">API Docs</a></li><li><a href="#">SDK</a></li><li><a href="#">Webhooks</a></li><li><a href="#">Changelog</a></li></ul></div>
     <div><div class="footer-group-title">Legal</div><ul class="footer-links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
   </div>
@@ -905,82 +815,142 @@ footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-widt
 <canvas id="offscreen" style="display:none"></canvas>
  
 <script>
-// State
-const imgs = {};
-let activeToolId = 'compress';
+/* ═══════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════ */
+(function(){
+  const c=document.getElementById('particles');
+  for(let i=0;i<28;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*3+1;
+    const x=Math.random()*100;
+    const y=Math.random()*100;
+    const dx=(Math.random()-0.5)*200+'px';
+    const dy=(Math.random()-0.5)*200+'px';
+    const dur=(Math.random()*8+5)+'s';
+    const delay=(Math.random()*6)+'s';
+    p.style.cssText=`width:${s}px;height:${s}px;left:${x}%;top:${y}%;--dx:${dx};--dy:${dy};--dur:${dur};animation-duration:${dur};animation-delay:${delay};opacity:.5`;
+    c.appendChild(p);
+  }
+})();
  
-// Nav
+/* ═══════════════════════════════════════
+   SCROLL REVEAL (IntersectionObserver)
+═══════════════════════════════════════ */
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}
+  });
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+ 
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
 function toggleMenu(){
   const m=document.getElementById('mobileMenu');
+  const h=document.getElementById('ham');
   m.classList.toggle('open');
+  h.classList.toggle('open');
 }
  
-// Toast
-function showToast(msg){
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+let toastTimer;
+function showToast(msg,type='success'){
   const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2800);
+  t.textContent=msg;
+  t.style.background=type==='error'?'linear-gradient(135deg,#dc2626,#991b1b)':'linear-gradient(135deg,#7e22ce,rgba(147,51,234,.9))';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
 }
  
-// Switch tool
+/* ═══════════════════════════════════════
+   TOOL TABS
+═══════════════════════════════════════ */
+const toolNames=['compress','resize','crop','convert','grayscale','rotate','watermark','brightness'];
 function switchTool(id){
   document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tool-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('tool-'+id).classList.add('active');
-  const tabs=document.querySelectorAll('.tool-tab');
-  const names=['compress','resize','crop','convert','grayscale','rotate','watermark','brightness'];
-  tabs[names.indexOf(id)].classList.add('active');
-  activeToolId=id;
+  document.querySelectorAll('.tool-tab')[toolNames.indexOf(id)].classList.add('active');
 }
  
-// Hero upload
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+const imgs={};
+ 
+/* ═══════════════════════════════════════
+   CANVAS HELPER
+═══════════════════════════════════════ */
+function getCanvas(w,h){
+  const c=document.getElementById('offscreen');
+  c.width=w;c.height=h;return c;
+}
+function fmtSize(b){
+  if(b<1024)return b+'B';
+  if(b<1048576)return(b/1024).toFixed(1)+'KB';
+  return(b/1048576).toFixed(2)+'MB';
+}
+ 
+/* ═══════════════════════════════════════
+   SET DOWNLOAD + RESULT
+═══════════════════════════════════════ */
+function setDownload(id,canvas,ext,mime,quality){
+  const q=quality||0.92;
+  const a=document.getElementById(id+'-dl');
+  const res=document.getElementById(id+'-result');
+  const dataUrl=canvas.toDataURL(mime||'image/jpeg',q);
+  if(res){res.src=dataUrl;res.classList.add('show');}
+  if(a){a.href=dataUrl;a.download='pixelforge-'+id+'.'+ext;a.style.display='block';}
+}
+ 
+/* ═══════════════════════════════════════
+   BUTTON LOADING STATE
+═══════════════════════════════════════ */
+function setLoading(id,on){
+  const btn=document.getElementById(id+'-btn');
+  if(!btn)return;
+  if(on){btn.classList.add('loading');btn.disabled=true;}
+  else{btn.classList.remove('loading');btn.disabled=false;}
+}
+ 
+/* ═══════════════════════════════════════
+   LOAD IMAGE
+═══════════════════════════════════════ */
 function handleHeroDrop(e){
   e.preventDefault();
   document.getElementById('heroUpload').classList.remove('dragover');
   const f=e.dataTransfer.files[0];
-  if(f&&f.type.startsWith('image/')){
-    showToast('Image loaded! Scroll down to use tools ↓');
-    loadFileToTool(f,'compress');
-    switchTool('compress');
-    setTimeout(()=>document.getElementById('tools').scrollIntoView({behavior:'smooth'}),400);
-  }
+  if(f&&f.type.startsWith('image/')){loadFileToTool(f,'compress');switchTool('compress');setTimeout(()=>document.getElementById('tools').scrollIntoView({behavior:'smooth'}),400);}
 }
 function handleHeroFile(input){
   const f=input.files[0];
-  if(f){
-    showToast('Image loaded! Scroll down to use tools ↓');
-    loadFileToTool(f,'compress');
-    switchTool('compress');
-    setTimeout(()=>document.getElementById('tools').scrollIntoView({behavior:'smooth'}),400);
-  }
+  if(f){loadFileToTool(f,'compress');switchTool('compress');setTimeout(()=>document.getElementById('tools').scrollIntoView({behavior:'smooth'}),400);}
 }
- 
-// Drop handler
 function handleDrop(e,tool){
-  e.preventDefault();
-  e.currentTarget.classList.remove('dragover');
+  e.preventDefault();e.currentTarget.classList.remove('dragover');
   const f=e.dataTransfer.files[0];
-  if(f&&f.type.startsWith('image/')){
-    loadFileToTool(f,tool);
-  }
+  if(f&&f.type.startsWith('image/'))loadFileToTool(f,tool);
 }
- 
-// Load image into tool
-function loadImage(input,tool){
-  const f=input.files[0];
-  if(f)loadFileToTool(f,tool);
-}
+function loadImage(input,tool){const f=input.files[0];if(f)loadFileToTool(f,tool);}
  
 function loadFileToTool(file,tool){
+  if(!file.type.startsWith('image/')){showToast('⚠ Please upload an image file','error');return;}
   const reader=new FileReader();
   reader.onload=function(e){
     const img=new Image();
     img.onload=function(){
-      imgs[tool]={img,file,w:img.width,h:img.height,size:file.size};
+      imgs[tool]={img,file,w:img.width,h:img.height,size:file.size,src:e.target.result};
       const prev=document.getElementById(tool+'-preview');
-      if(prev){prev.src=e.target.result;prev.style.display='block';}
+      if(prev){prev.src=e.target.result;prev.classList.add('show');}
       const btn=document.getElementById(tool+'-btn');
       if(btn)btn.disabled=false;
+      // extra setup per tool
       if(tool==='resize'){
         document.getElementById('resize-w').value=img.width;
         document.getElementById('resize-h').value=img.height;
@@ -990,6 +960,30 @@ function loadFileToTool(file,tool){
       if(tool==='crop'){
         document.getElementById('crop-w').value=img.width;
         document.getElementById('crop-h').value=img.height;
+        document.getElementById('crop-orig').textContent=img.width+'×'+img.height;
+        document.getElementById('crop-info').style.display='block';
+      }
+      if(tool==='convert'){
+        document.getElementById('convert-in').textContent=file.type.split('/')[1].toUpperCase();
+        document.getElementById('convert-info').style.display='block';
+      }
+      if(tool==='grayscale'){
+        const bef=document.getElementById('grayscale-before');
+        const aft=document.getElementById('grayscale-after-img');
+        bef.src=e.target.result;aft.src=e.target.result;
+        const wrap=document.getElementById('grayscale-compare');
+        wrap.style.height=Math.min(260,img.height*(wrap.offsetWidth/img.width))+'px';
+        wrap.classList.add('show');
+        setupCompare('grayscale');
+      }
+      if(tool==='brightness'){
+        const bef=document.getElementById('brightness-before');
+        const aft=document.getElementById('brightness-after-img');
+        bef.src=e.target.result;aft.src=e.target.result;
+        const wrap=document.getElementById('brightness-compare');
+        wrap.style.height=Math.min(260,img.height*(wrap.offsetWidth/img.width))+'px';
+        wrap.classList.add('show');
+        setupCompare('brightness');
       }
     };
     img.src=e.target.result;
@@ -997,94 +991,124 @@ function loadFileToTool(file,tool){
   reader.readAsDataURL(file);
 }
  
-function fmtSize(b){
-  if(b<1024)return b+'B';
-  if(b<1048576)return(b/1024).toFixed(1)+'KB';
-  return(b/1048576).toFixed(2)+'MB';
+/* ═══════════════════════════════════════
+   BEFORE/AFTER COMPARE SLIDER
+═══════════════════════════════════════ */
+function setupCompare(tool){
+  const wrap=document.getElementById(tool+'-compare');
+  const clip=document.getElementById(tool+'-after-clip');
+  const div=document.getElementById(tool+'-divider');
+  let drag=false;
+  function setPos(pct){
+    pct=Math.max(5,Math.min(95,pct));
+    clip.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+    div.style.left=pct+'%';
+  }
+  setPos(50);
+  function onMove(e){
+    if(!drag)return;
+    const rect=wrap.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+    setPos((x/rect.width)*100);
+  }
+  div.addEventListener('mousedown',()=>drag=true);
+  div.addEventListener('touchstart',()=>drag=true,{passive:true});
+  window.addEventListener('mouseup',()=>drag=false);
+  window.addEventListener('touchend',()=>drag=false);
+  window.addEventListener('mousemove',onMove);
+  window.addEventListener('touchmove',onMove,{passive:true});
 }
  
-function getCanvas(w,h){
-  const c=document.getElementById('offscreen');
-  c.width=w;c.height=h;
-  return c;
+/* ═══════════════════════════════════════
+   PROGRESS HELPER
+═══════════════════════════════════════ */
+function showProgress(id,pct){
+  const wrap=document.getElementById(id+'-prog');
+  const fill=document.getElementById(id+'-fill');
+  const label=document.getElementById(id+'-pct');
+  if(!wrap)return;
+  wrap.classList.add('show');
+  if(fill)fill.style.width=pct+'%';
+  if(label)label.textContent=pct+'%';
+}
+function hideProgress(id){
+  const wrap=document.getElementById(id+'-prog');
+  if(wrap)wrap.classList.remove('show');
 }
  
-function setDownload(id,canvas,ext,mime){
-  const a=document.getElementById(id+'-dl');
-  const res=document.getElementById(id+'-result');
-  const dataUrl=canvas.toDataURL(mime||'image/jpeg',0.92);
-  if(res){res.src=dataUrl;res.style.display='block';}
-  a.href=dataUrl;
-  a.download='pixelforge-'+id+'.'+ext;
-  a.style.display='block';
-}
- 
-// COMPRESS
+/* ═══════════════════════════════════════
+   COMPRESS
+═══════════════════════════════════════ */
 function compressImage(){
-  const d=imgs['compress'];if(!d)return;
+  const d=imgs['compress'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   const q=parseInt(document.getElementById('compress-quality').value)/100;
-  const bar=document.getElementById('compress-bar');
-  const fill=document.getElementById('compress-fill');
-  bar.style.display='block';fill.style.width='0%';
-  setTimeout(()=>{fill.style.width='60%';},100);
+  setLoading('compress',true);
+  showProgress('compress',0);
+  setTimeout(()=>showProgress('compress',40),100);
   setTimeout(()=>{
+    showProgress('compress',80);
     const c=getCanvas(d.w,d.h);
     const ctx=c.getContext('2d');
     ctx.drawImage(d.img,0,0);
-    fill.style.width='100%';
+    showProgress('compress',95);
     c.toBlob(blob=>{
-      const url=URL.createObjectURL(blob);
-      const res=document.getElementById('compress-result');
-      res.src=url;res.style.display='block';
-      const saved=Math.round((1-blob.size/d.size)*100);
-      document.getElementById('compress-info').style.display='block';
-      document.getElementById('compress-orig').textContent=fmtSize(d.size);
-      document.getElementById('compress-new').textContent=fmtSize(blob.size);
-      document.getElementById('compress-saved').textContent=Math.max(0,saved)+'% smaller';
-      const a=document.getElementById('compress-dl');
-      a.href=url;a.download='compressed.jpg';a.style.display='block';
-      showToast('✅ Compressed! Saved '+(saved>0?saved:0)+'%');
+      showProgress('compress',100);
+      setTimeout(()=>{
+        hideProgress('compress');
+        const url=URL.createObjectURL(blob);
+        const res=document.getElementById('compress-result');
+        res.src=url;res.classList.add('show');
+        const saved=Math.round((1-blob.size/d.size)*100);
+        document.getElementById('compress-info').style.display='block';
+        document.getElementById('compress-orig').textContent=fmtSize(d.size);
+        document.getElementById('compress-new').textContent=fmtSize(blob.size);
+        document.getElementById('compress-saved').textContent=Math.max(0,saved)+'% smaller';
+        document.getElementById('compress-dims').textContent=d.w+'×'+d.h+'px';
+        const a=document.getElementById('compress-dl');
+        a.href=url;a.download='pixelforge-compressed.jpg';a.style.display='block';
+        setLoading('compress',false);
+        showToast('✅ Compressed! Saved '+(saved>0?saved:0)+'%');
+      },200);
     },'image/jpeg',q);
-  },500);
+  },400);
 }
  
-// RESIZE
+/* ═══════════════════════════════════════
+   RESIZE
+═══════════════════════════════════════ */
 function resizeImage(){
-  const d=imgs['resize'];if(!d)return;
+  const d=imgs['resize'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   let nw=parseInt(document.getElementById('resize-w').value)||d.w;
   let nh=parseInt(document.getElementById('resize-h').value)||d.h;
-  const locked=document.getElementById('resize-lock').checked;
-  if(locked){
-    const ratio=d.w/d.h;
-    if(nw!==d.w)nh=Math.round(nw/ratio);
-    else nw=Math.round(nh*ratio);
-  }
-  const c=getCanvas(nw,nh);
-  const ctx=c.getContext('2d');
-  ctx.imageSmoothingEnabled=true;
-  ctx.imageSmoothingQuality='high';
-  ctx.drawImage(d.img,0,0,nw,nh);
-  document.getElementById('resize-new').textContent=nw+'×'+nh;
-  document.getElementById('resize-info').style.display='block';
-  setDownload('resize',c,'jpg','image/jpeg');
-  showToast('✅ Resized to '+nw+'×'+nh);
+  if(nw<1||nh<1){showToast('⚠ Width and height must be at least 1px','error');return;}
+  setLoading('resize',true);
+  setTimeout(()=>{
+    const c=getCanvas(nw,nh);
+    const ctx=c.getContext('2d');
+    ctx.imageSmoothingEnabled=true;
+    ctx.imageSmoothingQuality='high';
+    ctx.drawImage(d.img,0,0,nw,nh);
+    document.getElementById('resize-new').textContent=nw+'×'+nh;
+    document.getElementById('resize-info').style.display='block';
+    setDownload('resize',c,'jpg','image/jpeg');
+    setLoading('resize',false);
+    showToast('✅ Resized to '+nw+'×'+nh);
+  },300);
 }
- 
-// Aspect ratio lock
 document.getElementById('resize-w').addEventListener('input',function(){
   if(!document.getElementById('resize-lock').checked)return;
   const d=imgs['resize'];if(!d)return;
-  const ratio=d.h/d.w;
-  document.getElementById('resize-h').value=Math.round(this.value*ratio);
+  document.getElementById('resize-h').value=Math.round(this.value*(d.h/d.w));
 });
 document.getElementById('resize-h').addEventListener('input',function(){
   if(!document.getElementById('resize-lock').checked)return;
   const d=imgs['resize'];if(!d)return;
-  const ratio=d.w/d.h;
-  document.getElementById('resize-w').value=Math.round(this.value*ratio);
+  document.getElementById('resize-w').value=Math.round(this.value*(d.w/d.h));
 });
  
-// CROP
+/* ═══════════════════════════════════════
+   CROP
+═══════════════════════════════════════ */
 function applyCropPreset(){
   const d=imgs['crop'];if(!d)return;
   const preset=document.getElementById('crop-preset').value;
@@ -1099,120 +1123,177 @@ function applyCropPreset(){
   document.getElementById('crop-w').value=w;
   document.getElementById('crop-h').value=h;
 }
- 
 function cropImage(){
-  const d=imgs['crop'];if(!d)return;
-  const x=parseInt(document.getElementById('crop-x').value)||0;
-  const y=parseInt(document.getElementById('crop-y').value)||0;
-  const w=parseInt(document.getElementById('crop-w').value)||d.w;
-  const h=parseInt(document.getElementById('crop-h').value)||d.h;
-  const c=getCanvas(w,h);
-  const ctx=c.getContext('2d');
-  ctx.drawImage(d.img,x,y,w,h,0,0,w,h);
-  setDownload('crop',c,'jpg','image/jpeg');
-  showToast('✅ Cropped to '+w+'×'+h);
+  const d=imgs['crop'];if(!d){showToast('⚠ Please upload an image first','error');return;}
+  const x=Math.max(0,parseInt(document.getElementById('crop-x').value)||0);
+  const y=Math.max(0,parseInt(document.getElementById('crop-y').value)||0);
+  const w=Math.min(d.w-x,parseInt(document.getElementById('crop-w').value)||d.w);
+  const h=Math.min(d.h-y,parseInt(document.getElementById('crop-h').value)||d.h);
+  if(w<1||h<1){showToast('⚠ Invalid crop dimensions','error');return;}
+  setLoading('crop',true);
+  setTimeout(()=>{
+    const c=getCanvas(w,h);
+    const ctx=c.getContext('2d');
+    ctx.drawImage(d.img,x,y,w,h,0,0,w,h);
+    document.getElementById('crop-out').textContent=w+'×'+h;
+    setDownload('crop',c,'jpg','image/jpeg');
+    setLoading('crop',false);
+    showToast('✅ Cropped to '+w+'×'+h);
+  },300);
 }
  
-// CONVERT
+/* ═══════════════════════════════════════
+   CONVERT
+═══════════════════════════════════════ */
 function convertImage(){
-  const d=imgs['convert'];if(!d)return;
+  const d=imgs['convert'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   const fmt=document.getElementById('convert-format').value;
   const q=parseInt(document.getElementById('convert-quality').value)/100;
-  const ext=fmt.split('/')[1].replace('jpeg','jpg');
-  const c=getCanvas(d.w,d.h);
-  const ctx=c.getContext('2d');
-  ctx.drawImage(d.img,0,0);
-  setDownload('convert',c,ext,fmt);
-  showToast('✅ Converted to '+ext.toUpperCase());
+  const ext=fmt==='image/jpeg'?'jpg':fmt.split('/')[1];
+  setLoading('convert',true);
+  setTimeout(()=>{
+    const c=getCanvas(d.w,d.h);
+    const ctx=c.getContext('2d');
+    // White background for JPG (no transparency support)
+    if(fmt==='image/jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,d.w,d.h);}
+    ctx.drawImage(d.img,0,0);
+    document.getElementById('convert-out').textContent=ext.toUpperCase();
+    document.getElementById('convert-info').style.display='block';
+    setDownload('convert',c,ext,fmt,q);
+    setLoading('convert',false);
+    showToast('✅ Converted to '+ext.toUpperCase());
+  },300);
 }
  
-// GRAYSCALE / EFFECTS
+/* ═══════════════════════════════════════
+   GRAYSCALE / EFFECTS
+═══════════════════════════════════════ */
 function applyGrayscale(){
-  const d=imgs['grayscale'];if(!d)return;
+  const d=imgs['grayscale'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   const mode=document.getElementById('grayscale-mode').value;
   const intensity=parseInt(document.getElementById('gray-intensity').value)/100;
-  const c=getCanvas(d.w,d.h);
-  const ctx=c.getContext('2d');
-  ctx.drawImage(d.img,0,0);
-  const id=ctx.getImageData(0,0,d.w,d.h);
-  const data=id.data;
-  for(let i=0;i<data.length;i+=4){
-    const r=data[i],g=data[i+1],b=data[i+2];
-    let nr=r,ng=g,nb=b;
-    if(mode==='grayscale'){const gr=0.299*r+0.587*g+0.114*b;nr=r+(gr-r)*intensity;ng=g+(gr-g)*intensity;nb=b+(gr-b)*intensity;}
-    else if(mode==='sepia'){const sr=Math.min(255,r*0.393+g*0.769+b*0.189);const sg=Math.min(255,r*0.349+g*0.686+b*0.168);const sbv=Math.min(255,r*0.272+g*0.534+b*0.131);nr=r+(sr-r)*intensity;ng=g+(sg-g)*intensity;nb=b+(sbv-b)*intensity;}
-    else if(mode==='invert'){nr=r+(255-r-r)*intensity;ng=g+(255-g-g)*intensity;nb=b+(255-b-b)*intensity;}
-    else if(mode==='vintage'){const gr=0.299*r+0.587*g+0.114*b;const vr=Math.min(255,gr*1.1+20);const vg=Math.min(255,gr*0.9+10);const vb=Math.min(255,gr*0.7);nr=r+(vr-r)*intensity;ng=g+(vg-g)*intensity;nb=b+(vb-b)*intensity;}
-    data[i]=Math.round(nr);data[i+1]=Math.round(ng);data[i+2]=Math.round(nb);
-  }
-  ctx.putImageData(id,0,0);
-  setDownload('grayscale',c,'jpg','image/jpeg');
-  showToast('✅ Effect applied!');
+  setLoading('grayscale',true);
+  setTimeout(()=>{
+    const c=getCanvas(d.w,d.h);
+    const ctx=c.getContext('2d');
+    ctx.drawImage(d.img,0,0);
+    const id=ctx.getImageData(0,0,d.w,d.h);
+    const data=id.data;
+    for(let i=0;i<data.length;i+=4){
+      const r=data[i],g=data[i+1],b=data[i+2];
+      let nr=r,ng=g,nb=b;
+      if(mode==='grayscale'){const gr=0.299*r+0.587*g+0.114*b;nr=r+(gr-r)*intensity;ng=g+(gr-g)*intensity;nb=b+(gr-b)*intensity;}
+      else if(mode==='sepia'){const sr=Math.min(255,r*.393+g*.769+b*.189);const sg=Math.min(255,r*.349+g*.686+b*.168);const sbv=Math.min(255,r*.272+g*.534+b*.131);nr=r+(sr-r)*intensity;ng=g+(sg-g)*intensity;nb=b+(sbv-b)*intensity;}
+      else if(mode==='invert'){nr=r+(255-2*r)*intensity;ng=g+(255-2*g)*intensity;nb=b+(255-2*b)*intensity;}
+      else if(mode==='vintage'){const gr=0.299*r+0.587*g+0.114*b;const vr=Math.min(255,gr*1.1+20);const vg=Math.min(255,gr*.9+10);const vb=Math.min(255,gr*.7);nr=r+(vr-r)*intensity;ng=g+(vg-g)*intensity;nb=b+(vb-b)*intensity;}
+      else if(mode==='cool'){nr=r+(r*.8-r)*intensity;ng=g+(g-r)*0.05*intensity;nb=b+(Math.min(255,b*1.2)-b)*intensity;}
+      else if(mode==='warm'){nr=Math.min(255,r+(r*.2)*intensity);ng=g+(g*.05)*intensity;nb=b+(b*(.8-1))*intensity;}
+      data[i]=Math.round(nr);data[i+1]=Math.round(ng);data[i+2]=Math.round(nb);
+    }
+    ctx.putImageData(id,0,0);
+    // Update compare after image
+    const afterImg=document.getElementById('grayscale-after-img');
+    afterImg.src=c.toDataURL('image/jpeg',.92);
+    setDownload('grayscale',c,'jpg','image/jpeg');
+    setLoading('grayscale',false);
+    showToast('✅ Effect applied!');
+  },300);
 }
  
-// ROTATE/FLIP
+/* ═══════════════════════════════════════
+   ROTATE / FLIP
+═══════════════════════════════════════ */
 function rotateImage(){
-  const d=imgs['rotate'];if(!d)return;
+  const d=imgs['rotate'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   const angle=parseInt(document.getElementById('rotate-angle').value);
   const flip=document.getElementById('flip-mode').value;
-  const rad=angle*Math.PI/180;
-  let nw=d.w,nh=d.h;
-  if(angle===90||angle===-90){nw=d.h;nh=d.w;}
-  const c=getCanvas(nw,nh);
-  const ctx=c.getContext('2d');
-  ctx.translate(nw/2,nh/2);
-  ctx.rotate(rad);
-  if(flip==='h'||flip==='both')ctx.scale(-1,1);
-  if(flip==='v'||flip==='both')ctx.scale(1,-1);
-  ctx.drawImage(d.img,-d.w/2,-d.h/2);
-  setDownload('rotate',c,'jpg','image/jpeg');
-  showToast('✅ Transform applied!');
+  setLoading('rotate',true);
+  setTimeout(()=>{
+    const rad=angle*Math.PI/180;
+    let nw=d.w,nh=d.h;
+    if(angle===90||angle===-90){nw=d.h;nh=d.w;}
+    const c=getCanvas(nw,nh);
+    const ctx=c.getContext('2d');
+    ctx.translate(nw/2,nh/2);
+    ctx.rotate(rad);
+    let sx=1,sy=1;
+    if(flip==='h'||flip==='both')sx=-1;
+    if(flip==='v'||flip==='both')sy=-1;
+    ctx.scale(sx,sy);
+    ctx.drawImage(d.img,-d.w/2,-d.h/2);
+    setDownload('rotate',c,'jpg','image/jpeg');
+    setLoading('rotate',false);
+    showToast('✅ Transform applied!');
+  },300);
 }
  
-// WATERMARK
+/* ═══════════════════════════════════════
+   WATERMARK
+═══════════════════════════════════════ */
 function applyWatermark(){
-  const d=imgs['watermark'];if(!d)return;
+  const d=imgs['watermark'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   const text=document.getElementById('wm-text').value||'PixelForge';
   const pos=document.getElementById('wm-pos').value;
+  const color=document.getElementById('wm-color').value;
   const opacity=parseInt(document.getElementById('wm-opacity').value)/100;
   const size=parseInt(document.getElementById('wm-size').value);
-  const c=getCanvas(d.w,d.h);
-  const ctx=c.getContext('2d');
-  ctx.drawImage(d.img,0,0);
-  ctx.globalAlpha=opacity;
-  ctx.font=`bold ${size}px DM Sans, sans-serif`;
-  ctx.fillStyle='white';
-  ctx.strokeStyle='rgba(0,0,0,0.5)';
-  ctx.lineWidth=size/8;
-  const tm=ctx.measureText(text);
-  const tw=tm.width,th=size;
-  const pad=size*0.8;
-  let x,y;
-  if(pos==='br'){x=d.w-tw-pad;y=d.h-pad;}
-  else if(pos==='bl'){x=pad;y=d.h-pad;}
-  else if(pos==='tr'){x=d.w-tw-pad;y=th+pad;}
-  else if(pos==='tl'){x=pad;y=th+pad;}
-  else{x=(d.w-tw)/2;y=(d.h+th)/2;}
-  ctx.strokeText(text,x,y);
-  ctx.fillText(text,x,y);
-  ctx.globalAlpha=1;
-  setDownload('watermark',c,'jpg','image/jpeg');
-  showToast('✅ Watermark added!');
+  setLoading('watermark',true);
+  setTimeout(()=>{
+    const c=getCanvas(d.w,d.h);
+    const ctx=c.getContext('2d');
+    ctx.drawImage(d.img,0,0);
+    ctx.font=`bold ${size}px "DM Sans",sans-serif`;
+    ctx.textBaseline='alphabetic';
+    const tm=ctx.measureText(text);
+    const tw=tm.width,th=size;
+    const pad=size*.8;
+    function drawAt(x,y){
+      ctx.globalAlpha=opacity;
+      ctx.strokeStyle='rgba(0,0,0,0.55)';
+      ctx.lineWidth=Math.max(2,size/10);
+      ctx.lineJoin='round';
+      ctx.strokeText(text,x,y);
+      ctx.fillStyle=color;
+      ctx.fillText(text,x,y);
+      ctx.globalAlpha=1;
+    }
+    if(pos==='tile'){
+      const gapX=tw+size*2;const gapY=th+size*2;
+      ctx.save();ctx.translate(d.w/2,d.h/2);ctx.rotate(-Math.PI/6);
+      for(let y=-d.h;y<d.h*2;y+=gapY){for(let x=-d.w;x<d.w*2;x+=gapX){drawAt(x,y);}}
+      ctx.restore();
+    } else {
+      let x,y;
+      if(pos==='br'){x=d.w-tw-pad;y=d.h-pad;}
+      else if(pos==='bl'){x=pad;y=d.h-pad;}
+      else if(pos==='tr'){x=d.w-tw-pad;y=th+pad;}
+      else if(pos==='tl'){x=pad;y=th+pad;}
+      else{x=(d.w-tw)/2;y=(d.h+th)/2;}
+      drawAt(x,y);
+    }
+    setDownload('watermark',c,'jpg','image/jpeg');
+    setLoading('watermark',false);
+    showToast('✅ Watermark added!');
+  },300);
 }
  
-// BRIGHTNESS/CONTRAST
+/* ═══════════════════════════════════════
+   BRIGHTNESS / ADJUST
+═══════════════════════════════════════ */
 function adjustImage(){
-  const d=imgs['brightness'];if(!d)return;
+  const d=imgs['brightness'];if(!d){showToast('⚠ Please upload an image first','error');return;}
   const br=parseInt(document.getElementById('br-slider').value)/100;
   const co=parseInt(document.getElementById('co-slider').value)/100;
   const sa=parseInt(document.getElementById('sa-slider').value)/100;
   const bl=parseInt(document.getElementById('bl-slider').value);
-  const c=getCanvas(d.w,d.h);
-  const ctx=c.getContext('2d');
-  if(bl>0){ctx.filter=`blur(${bl}px)`;}
-  ctx.drawImage(d.img,0,0);
-  ctx.filter='none';
-  if(br!==1||co!==1||sa!==1){
+  const sh=parseFloat(document.getElementById('sh-slider').value);
+  setLoading('brightness',true);
+  setTimeout(()=>{
+    const c=getCanvas(d.w,d.h);
+    const ctx=c.getContext('2d');
+    if(bl>0){ctx.filter=`blur(${bl}px)`;}
+    ctx.drawImage(d.img,0,0);
+    ctx.filter='none';
     const id=ctx.getImageData(0,0,d.w,d.h);
     const data=id.data;
     for(let i=0;i<data.length;i+=4){
@@ -1225,12 +1306,33 @@ function adjustImage(){
       r=Math.min(255,Math.max(0,gr+(r-gr)*sa));
       g=Math.min(255,Math.max(0,gr+(g-gr)*sa));
       b=Math.min(255,Math.max(0,gr+(b-gr)*sa));
-      data[i]=r;data[i+1]=g;data[i+2]=b;
+      data[i]=Math.round(r);data[i+1]=Math.round(g);data[i+2]=Math.round(b);
     }
     ctx.putImageData(id,0,0);
-  }
-  setDownload('brightness',c,'jpg','image/jpeg');
-  showToast('✅ Adjustments applied!');
+    // Sharpness via unsharp mask (simple)
+    if(sh>0){
+      const blurred=getCanvas(d.w,d.h);
+      const bctx=blurred.getContext('2d');
+      bctx.filter=`blur(${sh}px)`;
+      bctx.drawImage(c,0,0);
+      bctx.filter='none';
+      const orig=ctx.getImageData(0,0,d.w,d.h).data;
+      const blur=bctx.getImageData(0,0,d.w,d.h).data;
+      const sharp=ctx.getImageData(0,0,d.w,d.h);
+      for(let i=0;i<sharp.data.length;i+=4){
+        sharp.data[i]=Math.min(255,Math.max(0,orig[i]*2-blur[i]));
+        sharp.data[i+1]=Math.min(255,Math.max(0,orig[i+1]*2-blur[i+1]));
+        sharp.data[i+2]=Math.min(255,Math.max(0,orig[i+2]*2-blur[i+2]));
+      }
+      ctx.putImageData(sharp,0,0);
+    }
+    // Update compare after image
+    const afterImg=document.getElementById('brightness-after-img');
+    afterImg.src=c.toDataURL('image/jpeg',.92);
+    setDownload('brightness',c,'jpg','image/jpeg');
+    setLoading('brightness',false);
+    showToast('✅ Adjustments applied!');
+  },300);
 }
 </script>
 </body>
