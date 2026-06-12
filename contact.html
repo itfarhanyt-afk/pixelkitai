@@ -1,74 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Contact Us - PixelForge</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  background: #0f0717;
-  color: #f5f0ff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 40px 20px;
-  line-height: 1.6;
-}
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #1a1025;
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(168,85,247,0.2);
-}
-h1 { color: #a855f7; margin-bottom: 20px; text-align: center; }
-p { color: #d8b4fe; margin-bottom: 15px; text-align: center; }
-.info-box {
-  background: #241b33;
-  padding: 25px;
-  border-radius: 12px;
-  margin: 25px 0;
-  text-align: center;
-}
-.email {
-  font-size: 1.3rem;
-  color: #ec4899;
-  font-weight: bold;
-}
-.back-link {
-  display: inline-block;
-  margin-top: 20px;
-  background: #a855f7;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  text-align: center;
-}
-.back-link:hover { background: #c084fc; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PixelForge | Free Image Tools</title>
+    <meta name="description" content="Contact PixelForge support team. Get help with image to text, QR scanner, compression, and other free image editing tools.">
+    <link rel="canonical" href="https://pixelkit.org/contact.html">
+    <link rel="icon" href="pixel.png" type="image/png">
+    <style>
+        :root {
+            --primary-400: #c084fc;
+            --primary-500: #a855f7;
+            --bg: #0f0717;
+            --bg2: #1a1025;
+            --text: #f5f0ff;
+            --text2: rgba(216,180,254,0.7);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-400), var(--primary-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact-form {
+            background: var(--bg2);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text2);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background: var(--bg);
+            border: 1px solid rgba(168,85,247,0.3);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+        }
+        button {
+            background: linear-gradient(135deg, var(--primary-500), #ec4899);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--primary-400);
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<h1>Contact Us</h1>
-
-<p>Have a question, suggestion, or found a bug? We'd love to hear from you.</p>
-
-<div class="info-box">
-<p><strong>📧 Email us at:</strong></p>
-<p class="email">pixelkit.org@gmail.com</p>
-</div>
-
-<p>📌 <strong>Before emailing:</strong><br>
-- Check if your question is answered in our FAQ (coming soon)<br>
-- Describe your issue in detail if reporting a bug<br>
-- Include screenshots if possible</p>
-
-<p>⏱️ <strong>Response time:</strong><br>
-We typically reply within 24-48 hours.</p>
-
-<div style="text-align: center;">
-<a href="/" class="back-link">← Back to Home</a>
-</div>
-</div>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>Have questions, suggestions, or feedback about PixelForge? We'd love to hear from you!</p>
+        
+        <div class="contact-form">
+            <form action="#" method="post">
+                <label>Your Name</label>
+                <input type="text" placeholder="Enter your name" required>
+                
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+                
+                <label>Subject</label>
+                <input type="text" placeholder="What is this regarding?">
+                
+                <label>Message</label>
+                <textarea rows="5" placeholder="Tell us how we can help..."></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        
+        <a href="/" class="back-link">← Back to PixelForge</a>
+    </div>
 </body>
 </html>
