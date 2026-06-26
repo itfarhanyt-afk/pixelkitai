@@ -1,278 +1,2396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Website DP / Favicon -->
-<link rel="icon" type="image/png" sizes="any" href="pixel.png">
-<link rel="shortcut icon" href="pixel.png" type="image/png">
-<link rel="apple-touch-icon" href="pixel.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelKit – Free Online Image Tools | OCR, Compress, Convert & More</title>
+    <meta name="description" content="PixelKit offers 100% private, browser-based image tools. Free online OCR (image to text), QR scanner, compressor, converter, resizer, background remover, and more. No uploads, no servers.">
+    <meta name="keywords" content="image to text, OCR, free online OCR, image tools, image compressor, image converter, background remover, QR scanner, crop, rotate, base64, metadata, color picker, AI background removal">
+    <link rel="canonical" href="https://pixelkit.app/">
 
-<!-- ========== PRIMARY SEO TAGS (UPDATED TITLE) ========== -->
-<title>Image to Text Generator and QR Code Scanner — Free | PixelForge</title>
-<meta name="description" content="Free online image to text converter and QR code scanner. Also includes compression, resizing, cropping, conversion, watermarking, and effects. No signup required. 100% browser-based.">
-<meta name="keywords" content="image to text, qr code scanner, ocr, qr scanner, image editor, free image tools, compress image, resize image, crop image, convert image">
-<meta name="author" content="PixelForge">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
-<link rel="canonical" href="https://www.pixelforge.app/">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pixelkit.app/">
+    <meta property="og:title" content="PixelKit – Free Online Image Tools">
+    <meta property="og:description" content="Transform, optimize, and enhance your images directly in the browser. 100% private & free. Try the OCR (image to text) tool now.">
+    <meta property="og:image" content="https://pixelkit.app/og-image.png">
 
-<!-- ========== OPEN GRAPH (SOCIAL MEDIA) ========== -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Image to Text Generator and QR Code Scanner — Free | PixelForge">
-<meta property="og:description" content="Free online image to text converter and QR code scanner. Also includes compression, resizing, cropping, conversion, and watermarking. No signup.">
-<meta property="og:image" content="https://www.pixelforge.app/og-image.jpg">
-<meta property="og:image:alt" content="PixelForge Image to Text and QR Scanner Interface">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://www.pixelforge.app/">
-<meta property="og:site_name" content="PixelForge">
-<meta property="og:locale" content="en_US">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pixelkit.app/">
+    <meta property="twitter:title" content="PixelKit – Free Online Image Tools">
+    <meta property="twitter:description" content="100% private image processing in your browser. Free OCR, compressor, converter & more.">
+    <meta property="twitter:image" content="https://pixelkit.app/og-image.png">
 
-<!-- ========== TWITTER CARD ========== -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image to Text Generator and QR Code Scanner — Free | PixelForge">
-<meta name="twitter:description" content="Free online image to text converter and QR code scanner. Also includes compression, resizing, cropping, conversion, and watermarking.">
-<meta name="twitter:image" content="https://www.pixelforge.app/twitter-image.jpg">
-<meta name="twitter:site" content="@pixelforge">
-<meta name="twitter:creator" content="@pixelforge">
+    <!-- Structured Data (JSON-LD) – focus on OCR tool -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PixelKit",
+      "url": "https://pixelkit.app/",
+      "description": "Free online image tools including OCR (image to text), image compression, conversion, resizing, cropping, watermarking, and more. All processing happens in your browser – no uploads to any server.",
+      "applicationCategory": "Multimedia",
+      "operatingSystem": "All",
+      "featureList": [
+        "OCR – Image to Text",
+        "QR Code Scanner",
+        "Image Compressor",
+        "Image Converter",
+        "Image Resizer",
+        "Background Remover",
+        "Watermark Tool",
+        "Crop Tool",
+        "Rotate & Flip",
+        "Image Filters",
+        "Image to Base64",
+        "Metadata Viewer",
+        "Color Picker",
+        "AI Background Removal"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 
-<!-- ========== JSON-LD STRUCTURED DATA ========== -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "PixelForge",
-  "alternateName": "Image to Text & QR Scanner",
-  "url": "https://www.pixelforge.app/",
-  "description": "Free online image to text generator, QR code scanner, and image editor. Extract text from images, scan QR codes, compress, resize, crop, convert, watermark, and apply effects.",
-  "applicationCategory": "Multimedia",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock"
-  },
-  "featureList": "Image to Text (OCR), QR Code Scanner, Image compression, Image resize, Image crop, Format conversion, Watermark, Brightness/contrast adjustment, Rotate and flip, Grayscale/Sepia effects",
-  "softwareVersion": "2.0"
-}
-</script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google AdSense placeholder – replace with your own ad unit code -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+    <style>
+    /* ======================== CSS Variables & Theming ======================== */
+    :root {
+      --bg: #f8fafc; --bg2: #ffffff; --bg3: #f1f5f9;
+      --text: #0f172a; --text2: #475569; --text3: #94a3b8;
+      --primary: #6366f1; --primary-dark: #4f46e5; --primary-light: #a5b4fc;
+      --accent: #06b6d4; --accent2: #8b5cf6;
+      --success: #10b981; --error: #ef4444; --warning: #f59e0b;
+      --border: #e2e8f0; --glass-bg: rgba(255,255,255,0.7);
+      --glass-border: rgba(255,255,255,0.3); --shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    [data-theme="dark"] {
+      --bg: #0f172a; --bg2: #1e293b; --bg3: #334155;
+      --text: #f1f5f9; --text2: #cbd5e1; --text3: #64748b;
+      --border: #334155; --glass-bg: rgba(30,41,59,0.7);
+      --glass-border: rgba(71,85,105,0.3); --shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      transition: background 0.3s, color 0.3s; overflow-x: hidden;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    /* ======================== Loading Screen ======================== */
+    #loading-screen {
+      position: fixed; inset:0; z-index:9999; background: var(--bg);
+      display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem;
+      transition: opacity 0.5s;
+    }
+    #loading-screen.hidden { opacity:0; pointer-events:none; }
+    .spinner {
+      width:48px; height:48px; border:4px solid var(--border);
+      border-top-color: var(--primary); border-radius:50%; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-<style>
-:root {
-  --primary-400: #c084fc;
-  --primary-500: #a855f7;
-  --primary-600: #9333ea;
-  --accent-400: #f472b6;
-  --accent-500: #ec4899;
-  --bg: #0f0717;
-  --bg2: #1a1025;
-  --bg3: #241b33;
-  --border: rgba(168,85,247,0.2);
-  --border2: rgba(168,85,247,0.35);
-  --text: #f5f0ff;
-  --text2: rgba(216,180,254,0.7);
-  --text3: rgba(168,85,247,0.45);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--primary-600);border-radius:3px}
+    /* ======================== Glass Card ======================== */
+    .glass {
+      background: var(--glass-bg); backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border); border-radius: 16px;
+      box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .glass:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(99,102,241,0.15); }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInScale {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 5px var(--primary-500), 0 0 10px rgba(168,85,247,0.3); }
-  50% { box-shadow: 0 0 20px var(--primary-500), 0 0 30px rgba(168,85,247,0.5); }
-}
-@keyframes borderFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes rotateSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+    /* ======================== Reveal Animation ======================== */
+    .reveal {
+      opacity:0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity:1; transform: translateY(0); }
 
-nav{position:sticky;top:0;z-index:100;background:rgba(15,7,23,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5vw}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1200px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:800;font-size:20px;text-decoration:none;color:var(--text);transition:all 0.3s}
-.logo:hover{transform:scale(1.02);text-shadow:0 0 10px var(--primary-400)}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary-500),var(--accent-500));display:flex;align-items:center;justify-content:center;font-size:16px;animation:glowPulse 3s infinite}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;transition:all 0.3s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary-500),var(--accent-500));transition:width 0.3s}
-.nav-links a:hover::after{width:100%}
-.nav-links a:hover{color:var(--text)}
-.btn-primary{background:linear-gradient(135deg,var(--primary-500),var(--accent-500));color:white;border:none;padding:9px 20px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.3s}
-.btn-primary:hover{opacity:0.95;transform:translateY(-2px);box-shadow:0 5px 20px rgba(168,85,247,0.4)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(15,7,23,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 5vw 24px;z-index:99;flex-direction:column;gap:4px}
-.mobile-menu.open{display:flex}
-.mobile-menu a{color:var(--text2);text-decoration:none;font-size:15px;padding:10px 4px;border-bottom:1px solid rgba(168,85,247,0.1)}
-.mobile-menu a:hover{color:var(--primary-400)}
+    /* ======================== Toast ======================== */
+    #toast-container {
+      position:fixed; top:80px; right:20px; z-index:10000;
+      display:flex; flex-direction:column; gap:8px;
+      pointer-events: none; /* clicks pass through container, but toasts can have buttons if needed */
+    }
+    .toast {
+      padding: 12px 20px; border-radius:10px; color:#fff;
+      font-size:14px; font-weight:500; animation: slideIn 0.3s ease;
+      display:flex; align-items:center; gap:8px; max-width:350px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      pointer-events: auto;
+    }
+    .toast.success { background: var(--success); }
+    .toast.error { background: var(--error); }
+    .toast.info { background: var(--primary); }
+    @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
 
-.hero{min-height:85vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 5vw 48px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(168,85,247,0.4) 0%,transparent 65%),var(--bg);z-index:0}
-.hero-content{position:relative;z-index:1;max-width:780px}
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;margin-bottom:18px}
-h1 .grad{background:linear-gradient(135deg,var(--primary-400),var(--accent-500));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{color:var(--text2);font-size:clamp(14px,2vw,17px);line-height:1.7;max-width:520px;margin:0 auto 32px}
-.upload-zone{border:2px dashed var(--border2);background:rgba(168,85,247,0.04);border-radius:18px;padding:36px 24px;max-width:520px;margin:0 auto 44px;cursor:pointer;transition:all 0.4s;position:relative}
-.upload-zone:hover{border-color:var(--primary-400);background:rgba(168,85,247,0.1);transform:translateY(-4px)}
-.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.upload-icon{width:52px;height:52px;border-radius:14px;background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:22px}
-.upload-text{color:var(--text2);font-size:14px}
-.upload-text span{color:var(--primary-400);text-decoration:underline}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:500px;margin:0 auto}
-.stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:var(--text)}
-.stat-label{color:var(--text3);font-size:11px}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--primary-400),var(--accent-400),transparent);margin:0}
-.processor{padding:64px 5vw;max-width:1200px;margin:0 auto}
-.section-label{text-align:center;color:var(--primary-400);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
-h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.7rem,4vw,2.8rem);text-align:center;margin-bottom:10px}
-.section-sub{text-align:center;color:var(--text2);font-size:14px;margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto}
-.tool-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
-.tool-tab{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 16px;font-size:13px;color:var(--text2);cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:6px}
-.tool-tab:hover{border-color:var(--primary-400);color:var(--text);transform:translateY(-2px)}
-.tool-tab.active{background:rgba(168,85,247,0.15);border-color:var(--primary-500);color:var(--primary-300)}
-.tool-panel{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:clamp(20px,4vw,36px);display:none;animation:fadeInScale 0.4s ease-out}
-.tool-panel.active{display:block}
-.tool-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-@media(max-width:640px){.tool-layout{grid-template-columns:1fr}}
-.tool-upload{border:2px dashed var(--border2);background:rgba(168,85,247,0.03);border-radius:14px;padding:28px 16px;text-align:center;cursor:pointer;position:relative;transition:all 0.3s;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.tool-upload:hover{border-color:var(--primary-400);background:rgba(168,85,247,0.08);transform:scale(1.01)}
-.tool-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.tool-upload-icon{font-size:32px}
-.preview-img{width:100%;border-radius:10px;display:none;max-height:260px;object-fit:contain;background:#000;border:1px solid var(--border)}
-.controls{display:flex;flex-direction:column;gap:14px}
-.ctrl-group{display:flex;flex-direction:column;gap:6px}
-.ctrl-label{font-size:13px;color:var(--text2);font-weight:500;display:flex;justify-content:space-between}
-.ctrl-val{color:var(--primary-400);font-weight:600}
-input[type=range]{width:100%;height:4px;background:var(--bg3);outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--primary-500);cursor:pointer}
-input[type=number],input[type=text],select{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;width:100%;outline:none}
-.ctrl-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.output-info{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:13px;color:var(--text2)}
-.output-info .info-row{display:flex;justify-content:space-between;padding:4px 0}
-.process-btn{background:linear-gradient(135deg,var(--primary-600),var(--accent-600));color:white;border:none;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px}
-.process-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(168,85,247,0.4)}
-.process-btn:disabled{opacity:.5;cursor:not-allowed}
-.download-btn{background:rgba(168,85,247,0.15);border:1px solid var(--primary-500);color:var(--primary-300);padding:11px 20px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all 0.3s;margin-top:8px;text-align:center;text-decoration:none;display:none}
-.result-img{width:100%;border-radius:10px;display:none;max-height:260px;object-fit:contain;background:#000;border:1px solid var(--primary-500);margin-top:10px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--primary-600);color:white;padding:12px 24px;border-radius:12px;font-size:14px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
-.toast.show{opacity:1}
-textarea{background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px;width:100%;min-height:150px;font-size:13px;font-family:'Courier New',monospace;resize:vertical}
-.features{padding:64px 5vw;max-width:1200px;margin:0 auto}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all 0.4s}
-.tool-card:hover{border-color:var(--primary-500);transform:translateY(-8px);box-shadow:0 20px 40px rgba(168,85,247,0.2)}
-.tc-icon{width:44px;height:44px;border-radius:12px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px}
-.tc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:5px}
-.tc-desc{color:var(--text2);font-size:13px;line-height:1.5}
-.testimonials{padding:64px 5vw;max-width:1200px;margin:0 auto}
-.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px}
-.tstars{color:var(--primary-400);font-size:13px;margin-bottom:12px}
-.ttext{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:16px;font-style:italic}
-.cta-section{padding:64px 5vw}
-.cta-box{background:linear-gradient(135deg,#1a1030,#2a1a40);border:1px solid rgba(168,85,247,0.4);border-radius:24px;padding:clamp(36px,6vw,64px);text-align:center;max-width:800px;margin:0 auto}
-footer{border-top:1px solid rgba(168,85,247,0.12);padding:40px 5vw 24px;max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{color:var(--text3);font-size:13px;text-decoration:none}
-.footer-links a:hover{color:var(--primary-400)}
-.footer-group-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:8px}
-.footer-copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(168,85,247,0.08);padding-top:20px;color:var(--text3);font-size:12px}
-@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}.stats{grid-template-columns:repeat(2,1fr);max-width:300px}.footer-grid{grid-template-columns:1fr 1fr}}
-</style>
+    /* ======================== Header ======================== */
+    #header {
+      position:sticky; top:0; z-index:1000; background: var(--glass-bg);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-link {
+      color: var(--text2); font-weight:500; padding:8px 12px; border-radius:8px;
+      transition: color 0.2s, background 0.2s; cursor:pointer; font-size:14px;
+    }
+    .nav-link:hover { color: var(--primary); background: rgba(99,102,241,0.1); }
+
+    /* ======================== Hero ======================== */
+    #hero {
+      min-height:90vh; display:flex; align-items:center; position:relative;
+      overflow:hidden; padding: 2rem 0;
+    }
+    #hero::before {
+      content:''; position:absolute; top:-50%; right:-30%; width:800px; height:800px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      border-radius:50%;
+    }
+    .typing-cursor { display:inline-block; width:3px; height:1.2em; background:var(--primary); animation: blink 0.7s infinite; vertical-align:text-bottom; margin-left:2px; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+    .float-anim { animation: floatY 4s ease-in-out infinite; }
+    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+
+    /* ======================== Upload Zones ======================== */
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius:12px; padding:2rem;
+      text-align:center; cursor:pointer; transition: border-color 0.3s, background 0.3s;
+      background: var(--bg3); position:relative;
+    }
+    .upload-zone:hover, .upload-zone.dragover {
+      border-color: var(--primary); background: rgba(99,102,241,0.05);
+    }
+    .upload-zone input[type="file"] {
+      position:absolute; inset:0; opacity:0; cursor:pointer;
+    }
+
+    /* ======================== Buttons ======================== */
+    .btn {
+      padding: 10px 20px; border-radius:10px; font-weight:600; font-size:14px;
+      cursor:pointer; border:none; transition: all 0.3s; display:inline-flex;
+      align-items:center; gap:8px;
+    }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .btn-primary:hover { background:var(--primary-dark); transform:translateY(-2px); }
+    .btn-secondary { background:var(--bg3); color:var(--text); border:1px solid var(--border); }
+    .btn-secondary:hover { border-color:var(--primary); color:var(--primary); }
+    .btn-success { background:var(--success); color:#fff; }
+    .btn-danger { background:var(--error); color:#fff; }
+    .btn:disabled { opacity:0.5; cursor:not-allowed; transform:none!important; }
+
+    /* ======================== Form Controls ======================== */
+    .form-input {
+      width:100%; padding:10px 14px; border-radius:10px; border:1px solid var(--border);
+      background:var(--bg); color:var(--text); font-size:14px; outline:none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus { border-color:var(--primary); }
+    select.form-input { cursor:pointer; }
+    textarea.form-input { resize:vertical; min-height:80px; font-family:monospace; }
+
+    /* ======================== Progress Bar ======================== */
+    .progress-bar {
+      width:100%; height:8px; background:var(--bg3); border-radius:99px; overflow:hidden;
+    }
+    .progress-bar-fill {
+      height:100%; background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius:99px; transition: width 0.3s;
+    }
+
+    /* ======================== Modal ======================== */
+    .modal-overlay {
+      position:fixed; inset:0; z-index:5000; background:rgba(0,0,0,0.5);
+      display:none; align-items:center; justify-content:center; padding:1rem;
+    }
+    .modal-overlay.active { display:flex; }
+    .modal-box {
+      background:var(--bg2); border-radius:16px; padding:2rem; width:100%;
+      max-width:600px; max-height:80vh; overflow-y:auto; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    /* ======================== Cookie Consent ======================== */
+    #cookie-consent {
+      position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 11000;
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1rem 1.5rem; display: none; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap; box-shadow: var(--shadow);
+    }
+    #cookie-consent.visible { display: flex; }
+
+    /* ======================== FAQ Accordion ======================== */
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-question {
+      padding:16px 0; cursor:pointer; display:flex; justify-content:space-between;
+      align-items:center; font-weight:600; color:var(--text);
+    }
+    .faq-answer {
+      max-height:0; overflow:hidden; transition: max-height 0.4s ease, padding 0.4s;
+      color:var(--text2); line-height:1.7;
+    }
+    .faq-item.open .faq-answer { max-height:300px; padding-bottom:16px; }
+    .faq-item.open .faq-arrow { transform:rotate(180deg); }
+    .faq-arrow { transition:transform 0.3s; font-size:1.2em; }
+
+    /* ======================== Carousel ======================== */
+    .carousel-track { display:flex; transition: transform 0.5s ease; }
+    .carousel-slide { min-width:100%; padding:0 1rem; }
+
+    /* ======================== Back to Top / Floating ======================== */
+    #back-to-top, #floating-contact {
+      position:fixed; z-index:2000; width:48px; height:48px; border-radius:50%;
+      border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      font-size:20px; transition: opacity 0.3s, transform 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    #back-to-top { bottom:20px; right:20px; background:var(--primary); color:#fff; opacity:0; pointer-events:none; }
+    #back-to-top.visible { opacity:1; pointer-events:auto; }
+    #floating-contact { bottom:80px; right:20px; background:var(--success); color:#fff; }
+
+    /* ======================== Misc ======================== */
+    .tool-card { overflow:hidden; }
+    .tool-card .tool-demo { background:var(--bg); border-radius:12px; padding:1rem; margin-top:1rem; }
+    .color-swatch { width:60px; height:60px; border-radius:12px; border:2px solid var(--border); }
+    .stat-number { font-size:2.5rem; font-weight:800; color:var(--primary); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; }
+    .hamburger span { width:24px; height:2px; background:var(--text); transition:0.3s; border-radius:2px; }
+    @media(max-width:768px) {
+      .hamburger { display:flex; }
+      .nav-links { display:none!important; position:absolute; top:100%; left:0; right:0;
+        background:var(--bg2); flex-direction:column; padding:1rem; border-bottom:1px solid var(--border); }
+      .nav-links.open { display:flex!important; }
+    }
+    .section-title { font-size:2rem; font-weight:800; text-align:center; margin-bottom:0.5rem; }
+    .section-subtitle { text-align:center; color:var(--text2); margin-bottom:2.5rem; max-width:600px; margin-left:auto; margin-right:auto; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:99px; font-size:11px; font-weight:700; }
+    .badge-pro { background:linear-gradient(135deg,var(--primary),var(--accent2)); color:#fff; }
+    canvas { max-width:100%; border-radius:8px; }
+    img { max-width:100%; }
+    </style>
 </head>
 <body>
-<div class="toast" id="toast"></div>
-<nav><div class="nav-inner"><a href="#" class="logo"><div class="logo-icon">⚡</div>PixelForge</a><ul class="nav-links"><li><a href="#tools">Tools</a></li><li><a href="#features">Features</a></li><li><a href="#testimonials">Reviews</a></li></ul><div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div></div></nav>
-<div class="mobile-menu" id="mobileMenu"><a href="#tools" onclick="toggleMenu()">Tools</a><a href="#features" onclick="toggleMenu()">Features</a><a href="#testimonials" onclick="toggleMenu()">Reviews</a></div>
-<section class="hero"><div class="hero-bg"></div><div class="hero-content"><h1>Transform Images <span class="grad">Instantly</span></h1><p class="hero-sub">Extract text from images, scan QR codes, compress, resize, crop, convert — all free, all in your browser.</p><div class="upload-zone" id="heroUpload"><input type="file" accept="image/*" onchange="handleHeroFile(this)"><div class="upload-icon">🖼</div><p class="upload-text">Drop your image here, or <span>browse</span></p></div><div class="stats"><div class="stat-item"><div class="stat-val">50M+</div><div class="stat-label">Images Processed</div></div><div class="stat-item"><div class="stat-val">2.4M</div><div class="stat-label">Happy Users</div></div><div class="stat-item"><div class="stat-val">100%</div><div class="stat-label">Free</div></div><div class="stat-item"><div class="stat-val">&lt;2s</div><div class="stat-label">Processing</div></div></div></div></section>
-<div class="divider"></div>
-<section id="tools"><div class="processor"><div class="section-label">Live Tools — Works in Your Browser</div><h2>Process images <span class="grad">right now</span></h2><p class="section-sub">No uploads to a server. Everything runs in your browser — fast, private, free.</p>
-<div class="tool-tabs"><div class="tool-tab active" onclick="switchTool('ocr')">📝 Image to Text</div><div class="tool-tab" onclick="switchTool('qr')">📱 QR Scanner</div><div class="tool-tab" onclick="switchTool('compress')">🗜 Compress</div><div class="tool-tab" onclick="switchTool('resize')">↔ Resize</div><div class="tool-tab" onclick="switchTool('crop')">✂ Crop</div><div class="tool-tab" onclick="switchTool('convert')">🔄 Convert</div><div class="tool-tab" onclick="switchTool('grayscale')">🎨 Effects</div><div class="tool-tab" onclick="switchTool('rotate')">🔃 Rotate</div><div class="tool-tab" onclick="switchTool('watermark')">💧 Watermark</div><div class="tool-tab" onclick="switchTool('brightness')">☀ Adjust</div></div>
-<!-- Image to Text Panel -->
-<div class="tool-panel active" id="tool-ocr"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadOCRImage(this)"><div class="tool-upload-icon">📁</div><p>Drop image with text or <span>click to browse</span></p></div><img class="preview-img" id="ocr-preview" alt="Preview"></div><div class="controls"><select id="ocr-lang"><option value="eng">English</option><option value="fra">French</option><option value="deu">German</option><option value="spa">Spanish</option></select><button class="process-btn" id="ocr-btn" onclick="extractTextWithOCR()" disabled>📝 Extract Text</button><div class="output-info" id="ocr-output" style="display:none"><textarea id="ocr-text" rows="6" placeholder="Extracted text will appear here..." readonly></textarea></div><button class="process-btn" id="ocr-copy" onclick="copyOCRText()" style="display:none">📋 Copy</button><div id="ocr-progress" style="display:none;text-align:center;padding:10px">Processing... <span id="ocr-status"></span></div></div></div></div>
-<!-- QR Scanner Panel -->
-<div class="tool-panel" id="tool-qr"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadQRImage(this)"><div class="tool-upload-icon">📷</div><p>Upload QR code image</p></div><img class="preview-img" id="qr-preview" alt="QR Preview"></div><div class="controls"><button class="process-btn" id="qr-btn" onclick="scanQRFromImage()" disabled>📱 Scan QR Code</button><div class="output-info" id="qr-output" style="display:none"><textarea id="qr-result-text" rows="4" readonly placeholder="QR data..."></textarea></div><button class="process-btn" id="qr-open" onclick="openQRUrl()" style="display:none">🔗 Open URL</button><div id="qr-progress" style="display:none;text-align:center">Scanning...</div></div></div></div>
-<!-- Compress Panel -->
-<div class="tool-panel" id="tool-compress"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'compress')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="compress-preview" alt="Preview"></div><div class="controls"><div class="ctrl-group"><div class="ctrl-label">Quality <span id="compress-quality-val">80%</span></div><input type="range" min="10" max="100" value="80" oninput="document.getElementById('compress-quality-val').innerText=this.value+'%'" id="compress-quality"></div><button class="process-btn" id="compress-btn" onclick="compressImage()" disabled>🗜 Compress</button><a class="download-btn" id="compress-dl">⬇ Download</a><img class="result-img" id="compress-result" alt="Result"></div></div></div>
-<!-- Resize Panel -->
-<div class="tool-panel" id="tool-resize"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'resize')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="resize-preview" alt="Preview"></div><div class="controls"><div class="ctrl-row"><input type="number" id="resize-w" placeholder="Width"><input type="number" id="resize-h" placeholder="Height"></div><label><input type="checkbox" id="resize-lock" checked> Lock ratio</label><button class="process-btn" id="resize-btn" onclick="resizeImage()" disabled>↔ Resize</button><a class="download-btn" id="resize-dl">⬇ Download</a><img class="result-img" id="resize-result" alt="Result"></div></div></div>
-<!-- Crop Panel -->
-<div class="tool-panel" id="tool-crop"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'crop')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="crop-preview" alt="Preview"></div><div class="controls"><div class="ctrl-row"><input type="number" id="crop-x" placeholder="X"><input type="number" id="crop-y" placeholder="Y"></div><div class="ctrl-row"><input type="number" id="crop-w" placeholder="Width"><input type="number" id="crop-h" placeholder="Height"></div><button class="process-btn" id="crop-btn" onclick="cropImage()" disabled>✂ Crop</button><a class="download-btn" id="crop-dl">⬇ Download</a><img class="result-img" id="crop-result" alt="Result"></div></div></div>
-<!-- Convert, Effects, Rotate, Watermark, Brightness panels exist similarly (full code in <script>) -->
-<div class="tool-panel" id="tool-convert"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'convert')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="convert-preview" alt="Preview"></div><div class="controls"><select id="convert-format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select><button class="process-btn" id="convert-btn" onclick="convertImage()" disabled>🔄 Convert</button><a class="download-btn" id="convert-dl">⬇ Download</a><img class="result-img" id="convert-result" alt="Result"></div></div></div>
-<div class="tool-panel" id="tool-grayscale"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'grayscale')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="grayscale-preview" alt="Preview"></div><div class="controls"><select id="grayscale-mode"><option value="grayscale">Grayscale</option><option value="sepia">Sepia</option><option value="invert">Invert</option></select><button class="process-btn" id="grayscale-btn" onclick="applyGrayscale()" disabled>🎨 Apply</button><a class="download-btn" id="grayscale-dl">⬇ Download</a><img class="result-img" id="grayscale-result" alt="Result"></div></div></div>
-<div class="tool-panel" id="tool-rotate"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'rotate')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="rotate-preview" alt="Preview"></div><div class="controls"><select id="rotate-angle"><option value="90">90°</option><option value="180">180°</option><option value="-90">-90°</option></select><select id="flip-mode"><option value="none">None</option><option value="h">Flip H</option><option value="v">Flip V</option></select><button class="process-btn" id="rotate-btn" onclick="rotateImage()" disabled>🔄 Rotate</button><a class="download-btn" id="rotate-dl">⬇ Download</a><img class="result-img" id="rotate-result" alt="Result"></div></div></div>
-<div class="tool-panel" id="tool-watermark"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'watermark')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="watermark-preview" alt="Preview"></div><div class="controls"><input type="text" id="wm-text" placeholder="Text" value="PixelForge"><select id="wm-pos"><option value="br">Bottom Right</option><option value="bl">Bottom Left</option></select><button class="process-btn" id="watermark-btn" onclick="applyWatermark()" disabled>💧 Add</button><a class="download-btn" id="watermark-dl">⬇ Download</a><img class="result-img" id="watermark-result" alt="Result"></div></div></div>
-<div class="tool-panel" id="tool-brightness"><div class="tool-layout"><div><div class="tool-upload"><input type="file" accept="image/*" onchange="loadImage(this,'brightness')"><div class="tool-upload-icon">📁</div><p>Upload Image</p></div><img class="preview-img" id="brightness-preview" alt="Preview"></div><div class="controls"><div class="ctrl-group"><div class="ctrl-label">Brightness <span id="br-val">100%</span></div><input type="range" id="br-slider" min="0" max="200" value="100" oninput="document.getElementById('br-val').innerText=this.value+'%'"></div><div class="ctrl-group"><div class="ctrl-label">Contrast <span id="co-val">100%</span></div><input type="range" id="co-slider" min="0" max="200" value="100" oninput="document.getElementById('co-val').innerText=this.value+'%'"></div><button class="process-btn" id="brightness-btn" onclick="adjustImage()" disabled>☀ Apply</button><a class="download-btn" id="brightness-dl">⬇ Download</a><img class="result-img" id="brightness-result" alt="Result"></div></div></div>
-</div></section>
-<footer><div class="footer-grid"><div><div class="logo">⚡PixelForge</div><p style="color:var(--text3);font-size:13px">Free image editing tools that work entirely in your browser.</p></div><div><div class="footer-group-title">Tools</div><ul class="footer-links"><li><a href="#" onclick="switchTool('ocr')">Image to Text</a></li><li><a href="#" onclick="switchTool('qr')">QR Scanner</a></li></ul></div></div><div class="footer-copy"><span>© 2026 PixelForge</span></div></footer>
-<canvas id="offscreen" style="display:none"></canvas>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ======================== LOADING SCREEN ======================== -->
+<div id="loading-screen">
+  <div class="spinner"></div>
+  <p style="color:var(--text2);font-weight:600;" data-i18n="loading">Loading PixelKit...</p>
+</div>
+
+<!-- ======================== TOAST CONTAINER ======================== -->
+<div id="toast-container" role="alert"></div>
+
+<!-- ======================== AUTH MODAL ======================== -->
+<div class="modal-overlay" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+  <div class="modal-box" style="max-width:420px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.5rem;font-weight:800;" id="auth-title" data-i18n="login">Login</h2>
+      <button onclick="closeAuthModal()" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);" aria-label="Close">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <input class="form-input" type="email" id="auth-email" placeholder="Email" autocomplete="email" />
+      <input class="form-input" type="password" id="auth-password" placeholder="Password" autocomplete="current-password" />
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="handleAuth()" id="auth-submit-btn" data-i18n="login">Login</button>
+      <p style="text-align:center;color:var(--text2);font-size:13px;">
+        <span id="auth-toggle-text" data-i18n="noAccount">Don't have an account?</span>
+        <a href="#" onclick="toggleAuthMode(event)" id="auth-toggle-link" data-i18n="signUp">Sign Up</a>
+      </p>
+      <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:8px;">
+        ⚠️ Demo accounts only – passwords are hashed locally, but this is not real security.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== PRIVACY POLICY MODAL ======================== -->
+<div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.5rem;font-weight:800;" id="privacy-title">Privacy Policy</h2>
+      <button onclick="document.getElementById('privacy-modal').classList.remove('active')" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);" aria-label="Close">✕</button>
+    </div>
+    <div style="color:var(--text2);line-height:1.7;font-size:14px;">
+      <p><strong>Effective Date:</strong> 2026-06-26</p>
+      <p><strong>1. Information We Collect</strong><br>
+      PixelKit operates entirely in your browser. We do <strong>not</strong> collect, store, or transmit any personal data. The only data stored are your preferences (language, theme, and login status) using your browser's local storage. No personal information is required to use our tools.</p>
+      <p><strong>2. Usage Data</strong><br>
+      We anonymously track which tools are used and how many files are processed, but this information is stored only on your device (in local storage) and is never sent to any server. It is used solely to display your session dashboard.</p>
+      <p><strong>3. Third-Party Libraries</strong><br>
+      To provide OCR, QR scanning, and AI background removal, we load scripts from trusted CDNs (jsDelivr, unpkg). These scripts may set their own technical cookies essential for their functionality. We do not control these cookies; please refer to the respective privacy policies of the library providers if concerned.</p>
+      <p><strong>4. Cookies</strong><br>
+      PixelKit does not use cookies for tracking or advertising. Functional cookies (e.g., for maintaining your login state within the simulated account system) may be stored in local storage, not HTTP cookies. You can clear your browser's local storage at any time to remove all data.</p>
+      <p><strong>5. Data Security</strong><br>
+      Since all processing occurs client-side, your images never leave your device. We implement best practices to ensure the security of the local processing environment.</p>
+      <p><strong>6. Children's Privacy</strong><br>
+      Our service is not directed to children under 13, and we do not knowingly collect personal information from children.</p>
+      <p><strong>7. Changes to This Policy</strong><br>
+      We may update this Privacy Policy from time to time. The latest version will always be available on this page.</p>
+      <p><strong>8. Contact Us</strong><br>
+      If you have questions, please use the <a href="#contact">contact form</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== TERMS MODAL ======================== -->
+<div class="modal-overlay" id="terms-modal" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.5rem;font-weight:800;" id="terms-title">Terms of Service</h2>
+      <button onclick="document.getElementById('terms-modal').classList.remove('active')" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);" aria-label="Close">✕</button>
+    </div>
+    <div style="color:var(--text2);line-height:1.7;font-size:14px;">
+      <p><strong>1. Acceptance of Terms</strong><br>
+      By using PixelKit, you agree to these Terms of Service. If you do not agree, please do not use the service.</p>
+      <p><strong>2. Description of Service</strong><br>
+      PixelKit provides a suite of browser‑based image processing tools. All processing is performed locally on your device; no images or data are uploaded to any server.</p>
+      <p><strong>3. User Responsibilities</strong><br>
+      You are responsible for the files you process. Do not use the service for any illegal or unauthorized purpose. You must own the rights to any image you process.</p>
+      <p><strong>4. Intellectual Property</strong><br>
+      The PixelKit name, logo, and code are proprietary. The tools are provided for personal and commercial use, but you may not redistribute or resell the software itself.</p>
+      <p><strong>5. Disclaimer of Warranties</strong><br>
+      The service is provided "as is" without warranty of any kind. We do not guarantee that the tools will meet your requirements or that they will be error‑free.</p>
+      <p><strong>6. Limitation of Liability</strong><br>
+      In no event shall PixelKit be liable for any damages arising out of the use or inability to use the service, even if we have been advised of the possibility of such damages.</p>
+      <p><strong>7. Modifications</strong><br>
+      We reserve the right to modify these terms at any time. Continued use of the service after changes constitutes acceptance of the new terms.</p>
+      <p><strong>8. Contact</strong><br>
+      For any legal inquiries, please use the <a href="#contact">contact form</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== COOKIE CONSENT BANNER ======================== -->
+<div id="cookie-consent">
+  <p style="font-size:14px; color:var(--text2); margin:0;">
+    PixelKit uses local storage for preferences and simulated accounts. By continuing, you consent to this. No tracking cookies are used. 
+    <a href="#" onclick="document.getElementById('privacy-modal').classList.add('active'); return false;">Privacy Policy</a>
+  </p>
+  <button class="btn btn-primary" style="padding:8px 18px; font-size:13px;" onclick="acceptCookies()">Got it</button>
+</div>
+
+<!-- ======================== HEADER ======================== -->
+<header id="header">
+  <div style="max-width:1280px;margin:0 auto;padding:0.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;">
+    <a href="#" style="font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;" aria-label="PixelKit Home">
+      🎨 PixelKit
+    </a>
+    <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" role="button" aria-label="Menu" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <nav class="nav-links" style="display:flex;align-items:center;gap:4px;">
+      <a class="nav-link" href="#hero" data-i18n="navHome">Home</a>
+      <a class="nav-link" href="#tools" data-i18n="navTools">Tools</a>
+      <a class="nav-link" href="#features" data-i18n="navFeatures">Features</a>
+      <a class="nav-link" href="#faq" data-i18n="navFAQ">FAQ</a>
+      <a class="nav-link" href="#contact" data-i18n="navContact">Contact</a>
+      <div style="display:flex;gap:4px;margin-left:8px;">
+        <button class="btn btn-secondary" style="padding:6px 10px;font-size:12px;" onclick="switchLang('en')">EN</button>
+        <button class="btn btn-secondary" style="padding:6px 10px;font-size:12px;" onclick="switchLang('es')">ES</button>
+      </div>
+      <button class="btn btn-secondary" style="padding:6px 10px;font-size:18px;margin-left:4px;" onclick="toggleDarkMode()" id="dark-toggle" title="Toggle Dark Mode" aria-label="Toggle dark mode">🌙</button>
+      <button class="btn btn-primary" style="margin-left:8px;" onclick="openAuthModal()" id="auth-btn" data-i18n="login">Login</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================== HERO SECTION ======================== -->
+<section id="hero" style="padding:4rem 1.5rem;">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:3rem;">
+    <div style="flex:1;min-width:300px;" class="reveal">
+      <span class="badge badge-pro" data-i18n="heroBadge">✨ All-in-One Image Platform</span>
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin:1rem 0;line-height:1.15;">
+        <span data-i18n="heroTitle">Professional Image Tools</span><br>
+        <span style="background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;" id="typing-text" data-i18n-dynamic></span>
+        <span class="typing-cursor"></span>
+      </h1>
+      <p style="color:var(--text2);font-size:1.1rem;line-height:1.7;max-width:500px;" data-i18n="heroSubtitle">
+        Transform, optimize, and enhance your images directly in the browser. No uploads to any server. 100% private & free.
+      </p>
+      <div style="display:flex;gap:12px;margin-top:2rem;flex-wrap:wrap;">
+        <a href="#tools" class="btn btn-primary" style="font-size:1rem;padding:14px 28px;" data-i18n="heroStart">🚀 Get Started</a>
+        <a href="#features" class="btn btn-secondary" style="font-size:1rem;padding:14px 28px;" data-i18n="heroLearn">Learn More</a>
+      </div>
+    </div>
+    <div style="flex:1;min-width:280px;display:flex;justify-content:center;" class="reveal">
+      <div class="float-anim" style="width:100%;max-width:420px;aspect-ratio:4/3;background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(6,182,212,0.2));border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:5rem;">
+        🖼️
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== AD PLACEHOLDER (commented out) ======================== -->
+<!--
+<div style="max-width:1280px; margin:0 auto; padding:1rem;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+-->
+
+<!-- ======================== TOOLS SECTION ======================== -->
+<section id="tools" style="padding:4rem 1.5rem;background:var(--bg3);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <h2 class="section-title reveal" data-i18n="toolsTitle">🛠️ Image Tools</h2>
+    <p class="section-subtitle reveal" data-i18n="toolsSubtitle">Everything you need for image processing, right in your browser.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem;">
+
+      <!-- TOOL 1: OCR – emphasized for SEO -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-ocr">
+        <h3 style="font-weight:700;font-size:1.2rem;">🔍 <span data-i18n="ocrTitle">OCR – Image to Text</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="ocrDesc">Extract text from images using Tesseract.js</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="ocr-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleOCRUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="ocr-preview" style="display:none;margin-top:1rem;max-height:200px;border-radius:8px;" alt="OCR preview" />
+          <div class="progress-bar" style="margin-top:1rem;display:none;" id="ocr-progress-wrap">
+            <div class="progress-bar-fill" id="ocr-progress" style="width:0%;"></div>
+          </div>
+          <p id="ocr-status" style="font-size:12px;color:var(--text3);margin-top:4px;"></p>
+          <textarea class="form-input" id="ocr-result" style="margin-top:1rem;display:none;min-height:120px;" readonly aria-label="Extracted text"></textarea>
+          <div style="display:flex;gap:8px;margin-top:0.75rem;flex-wrap:wrap;" id="ocr-actions" class="hidden">
+            <button class="btn btn-primary" onclick="copyText('ocr-result')" data-i18n="copyText">📋 Copy Text</button>
+            <button class="btn btn-secondary" onclick="downloadText('ocr-result')" data-i18n="downloadTxt">💾 Download .txt</button>
+            <button class="btn btn-danger" onclick="resetOCR()" data-i18n="reset">🔄 Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 2: QR Scanner -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-qr">
+        <h3 style="font-weight:700;font-size:1.2rem;">📱 <span data-i18n="qrTitle">QR Code Scanner</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="qrDesc">Scan QR codes from images or camera</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="qr-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleQRUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:0.75rem;">
+            <button class="btn btn-secondary" onclick="startQRCamera()" id="qr-cam-btn" data-i18n="startCamera">📷 Start Camera</button>
+            <button class="btn btn-danger" onclick="stopQRCamera()" id="qr-cam-stop" style="display:none;" data-i18n="stopCamera">⏹ Stop Camera</button>
+          </div>
+          <div id="qr-reader" style="margin-top:1rem;display:none;width:100%;max-width:400px;"></div>
+          <input class="form-input" id="qr-result" style="margin-top:1rem;display:none;" readonly placeholder="QR Result" />
+          <div style="display:flex;gap:8px;margin-top:0.75rem;flex-wrap:wrap;" id="qr-actions" class="hidden">
+            <button class="btn btn-primary" onclick="copyText('qr-result')" data-i18n="copyResult">📋 Copy</button>
+            <button class="btn btn-success" onclick="openQRUrl()" data-i18n="openUrl">🔗 Open URL</button>
+          </div>
+          <div id="qr-history" style="margin-top:1rem;"></div>
+        </div>
+      </div>
+
+      <!-- TOOL 3: Image Compressor -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-compressor">
+        <h3 style="font-weight:700;font-size:1.2rem;">📦 <span data-i18n="compressorTitle">Image Compressor</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="compressorDesc">Reduce image file size with quality control</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="comp-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleCompUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="comp-preview" style="display:none;margin-top:1rem;max-height:200px;border-radius:8px;" alt="Compressor preview" />
+          <div style="margin-top:1rem;display:none;" id="comp-controls">
+            <label style="font-size:13px;font-weight:600;" data-i18n="quality">Quality: <span id="comp-quality-val">75</span>%</label>
+            <input type="range" min="10" max="95" value="75" style="width:100%;" id="comp-quality" oninput="document.getElementById('comp-quality-val').textContent=this.value" />
+            <button class="btn btn-primary" onclick="compressImage()" style="margin-top:8px;" data-i18n="compress">📦 Compress & Download</button>
+            <p id="comp-status" style="font-size:12px;color:var(--text3);margin-top:4px;"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 4: Image Converter -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-converter">
+        <h3 style="font-weight:700;font-size:1.2rem;">🔄 <span data-i18n="converterTitle">Image Converter</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="converterDesc">Convert images between PNG, JPEG, WEBP</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="conv-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleConvUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="conv-preview" style="display:none;margin-top:1rem;max-height:200px;border-radius:8px;" alt="Converter preview" />
+          <div style="margin-top:1rem;display:none;" id="conv-controls">
+            <label style="font-size:13px;font-weight:600;" data-i18n="outputFormat">Output Format:</label>
+            <select class="form-input" id="conv-format" style="margin-top:4px;">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/webp">WEBP</option>
+            </select>
+            <button class="btn btn-primary" onclick="convertImage()" style="margin-top:8px;" data-i18n="convertDownload">🔄 Convert & Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 5: Image Resizer -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-resizer">
+        <h3 style="font-weight:700;font-size:1.2rem;">📐 <span data-i18n="resizerTitle">Image Resizer</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="resizerDesc">Resize images to custom or preset dimensions</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="resize-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleResizeUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="resize-preview" style="display:none;margin-top:1rem;max-height:200px;border-radius:8px;" alt="Resizer preview" />
+          <div style="margin-top:1rem;display:none;" id="resize-controls">
+            <div style="display:flex;gap:8px;">
+              <div style="flex:1;"><label style="font-size:12px;font-weight:600;">Width</label><input class="form-input" type="number" id="resize-w" /></div>
+              <div style="flex:1;"><label style="font-size:12px;font-weight:600;">Height</label><input class="form-input" type="number" id="resize-h" /></div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+              <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;" onclick="setResizePreset(800,800)">Square 800²</button>
+              <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;" onclick="setResizePreset(1080,1080)">IG 1080²</button>
+              <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;" onclick="setResizePreset(1200,630)">FB Cover</button>
+            </div>
+            <button class="btn btn-primary" onclick="resizeImage()" style="margin-top:8px;" data-i18n="resizeDownload">📐 Resize & Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 6: Background Remover (Color-Based) -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-bgremove">
+        <h3 style="font-weight:700;font-size:1.2rem;">🎨 <span data-i18n="bgRemoveTitle">Background Remover</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="bgRemoveDesc">Remove a specific background color</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="bgr-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleBGRUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <canvas id="bgr-canvas" style="display:none;margin-top:1rem;" aria-label="Background removal preview"></canvas>
+          <div style="margin-top:1rem;display:none;" id="bgr-controls">
+            <div style="display:flex;gap:1rem;align-items:center;">
+              <div><label style="font-size:12px;font-weight:600;" data-i18n="colorToRemove">Color to Remove</label><br>
+                <input type="color" id="bgr-color" value="#ffffff" style="width:50px;height:36px;border:none;cursor:pointer;" /></div>
+              <div style="flex:1;"><label style="font-size:12px;font-weight:600;" data-i18n="tolerance">Tolerance: <span id="bgr-tol-val">30</span></label>
+                <input type="range" min="0" max="100" value="30" style="width:100%;" id="bgr-tolerance" oninput="document.getElementById('bgr-tol-val').textContent=this.value" /></div>
+            </div>
+            <button class="btn btn-primary" onclick="removeBG()" style="margin-top:8px;" data-i18n="removeDownload">🎨 Remove & Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 7: Watermark -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-watermark">
+        <h3 style="font-weight:700;font-size:1.2rem;">💧 <span data-i18n="watermarkTitle">Watermark Tool</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="watermarkDesc">Add text watermark to your images</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="wm-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleWMUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <canvas id="wm-canvas" style="display:none;margin-top:1rem;" aria-label="Watermark preview"></canvas>
+          <div style="margin-top:1rem;display:none;" id="wm-controls">
+            <input class="form-input" type="text" id="wm-text" placeholder="Watermark text" value="PixelKit" />
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <div style="flex:1;"><label style="font-size:12px;font-weight:600;" data-i18n="position">Position</label>
+                <select class="form-input" id="wm-position">
+                  <option value="top-left">Top Left</option><option value="top-center">Top Center</option><option value="top-right">Top Right</option>
+                  <option value="center">Center</option>
+                  <option value="bottom-left">Bottom Left</option><option value="bottom-center" selected>Bottom Center</option><option value="bottom-right">Bottom Right</option>
+                </select>
+              </div>
+              <div style="flex:1;"><label style="font-size:12px;font-weight:600;" data-i18n="opacity">Opacity: <span id="wm-opacity-val">50</span>%</label>
+                <input type="range" min="10" max="100" value="50" style="width:100%;" id="wm-opacity" oninput="document.getElementById('wm-opacity-val').textContent=this.value" />
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="applyWatermark()" style="margin-top:8px;" data-i18n="applyDownload">💧 Apply & Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 8: Crop -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-crop">
+        <h3 style="font-weight:700;font-size:1.2rem;">✂️ <span data-i18n="cropTitle">Crop Tool</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="cropDesc">Crop images to custom or preset dimensions</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="crop-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleCropUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="crop-preview" style="display:none;margin-top:1rem;max-height:200px;border-radius:8px;" alt="Crop preview" />
+          <div style="margin-top:1rem;display:none;" id="crop-controls">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <div><label style="font-size:11px;font-weight:600;">X</label><input class="form-input" type="number" id="crop-x" value="0" /></div>
+              <div><label style="font-size:11px;font-weight:600;">Y</label><input class="form-input" type="number" id="crop-y" value="0" /></div>
+              <div><label style="font-size:11px;font-weight:600;">Width</label><input class="form-input" type="number" id="crop-w" value="200" /></div>
+              <div><label style="font-size:11px;font-weight:600;">Height</label><input class="form-input" type="number" id="crop-h" value="200" /></div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+              <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;" onclick="setCropPreset(200,200)">1:1 200²</button>
+              <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;" onclick="setCropPreset(1080,1080)">IG 1080²</button>
+              <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;" onclick="setCropPreset(1280,720)">YT 1280×720</button>
+            </div>
+            <button class="btn btn-primary" onclick="cropImage()" style="margin-top:8px;" data-i18n="cropDownload">✂️ Crop & Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 9: Rotate & Flip -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-rotate">
+        <h3 style="font-weight:700;font-size:1.2rem;">🔃 <span data-i18n="rotateTitle">Rotate & Flip</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="rotateDesc">Rotate and flip images with live preview</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="rot-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleRotUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <canvas id="rot-canvas" style="display:none;margin-top:1rem;" aria-label="Rotate & flip preview"></canvas>
+          <div style="margin-top:1rem;display:none;" id="rot-controls">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="rotateImg(-90)" data-i18n="rotLeft">↶ Left 90°</button>
+              <button class="btn btn-secondary" onclick="rotateImg(90)" data-i18n="rotRight">↷ Right 90°</button>
+              <button class="btn btn-secondary" onclick="flipImg('h')" data-i18n="flipH">↔ Flip H</button>
+              <button class="btn btn-secondary" onclick="flipImg('v')" data-i18n="flipV">↕ Flip V</button>
+            </div>
+            <button class="btn btn-primary" onclick="downloadRotated()" style="margin-top:8px;" data-i18n="download">💾 Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 10: Image Filters -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-filters">
+        <h3 style="font-weight:700;font-size:1.2rem;">🎭 <span data-i18n="filtersTitle">Image Filters</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="filtersDesc">Apply brightness, contrast, blur, and more</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="filter-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleFilterUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <canvas id="filter-canvas" style="display:none;margin-top:1rem;" aria-label="Filter preview"></canvas>
+          <div style="margin-top:1rem;display:none;" id="filter-controls">
+            <div style="display:grid;gap:6px;">
+              <label style="font-size:12px;font-weight:600;">Brightness: <span id="f-bright-val">100</span>%</label>
+              <input type="range" min="0" max="200" value="100" id="f-brightness" oninput="updateFilterVal(this,'f-bright-val');applyFilters()" />
+              <label style="font-size:12px;font-weight:600;">Contrast: <span id="f-contrast-val">100</span></label>
+              <input type="range" min="0" max="200" value="100" id="f-contrast" oninput="updateFilterVal(this,'f-contrast-val');applyFilters()" />
+              <label style="font-size:12px;font-weight:600;">Saturation: <span id="f-sat-val">100</span></label>
+              <input type="range" min="0" max="200" value="100" id="f-saturate" oninput="updateFilterVal(this,'f-sat-val');applyFilters()" />
+              <label style="font-size:12px;font-weight:600;">Blur: <span id="f-blur-val">0</span>px</label>
+              <input type="range" min="0" max="10" value="0" step="0.1" id="f-blur" oninput="updateFilterVal(this,'f-blur-val');applyFilters()" />
+              <div style="display:flex;gap:1rem;">
+                <label style="font-size:12px;font-weight:600;display:flex;align-items:center;gap:4px;">
+                  <input type="checkbox" id="f-grayscale" onchange="applyFilters()" /> Grayscale</label>
+                <label style="font-size:12px;font-weight:600;display:flex;align-items:center;gap:4px;">
+                  <input type="checkbox" id="f-sepia" onchange="applyFilters()" /> Sepia</label>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="downloadFiltered()" style="margin-top:8px;" data-i18n="download">💾 Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 11: Image to Base64 -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-base64">
+        <h3 style="font-weight:700;font-size:1.2rem;">🔢 <span data-i18n="base64Title">Image to Base64</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="base64Desc">Convert image to Base64 data URL string</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="b64-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleB64Upload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <textarea class="form-input" id="b64-result" style="margin-top:1rem;display:none;min-height:120px;font-size:11px;" readonly></textarea>
+          <button class="btn btn-primary" onclick="copyText('b64-result')" style="margin-top:8px;display:none;" id="b64-copy-btn" data-i18n="copyBase64">📋 Copy Base64</button>
+        </div>
+      </div>
+
+      <!-- TOOL 12: Metadata Viewer -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-metadata">
+        <h3 style="font-weight:700;font-size:1.2rem;">📋 <span data-i18n="metadataTitle">Image Metadata Viewer</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="metadataDesc">View file name, size, dimensions, and more</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="meta-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleMetaUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="meta-preview" style="display:none;margin-top:1rem;max-height:150px;border-radius:8px;" alt="Metadata preview" />
+          <div id="meta-info" style="margin-top:1rem;display:none;font-size:13px;line-height:2;background:var(--bg3);padding:1rem;border-radius:8px;"></div>
+        </div>
+      </div>
+
+      <!-- TOOL 13: Color Picker -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;" id="tool-colorpicker">
+        <h3 style="font-weight:700;font-size:1.2rem;">🎯 <span data-i18n="colorPickerTitle">Color Picker</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="colorPickerDesc">Pick colors from any uploaded image</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="cpick-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleCPickUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <canvas id="cpick-canvas" style="display:none;margin-top:1rem;cursor:crosshair;" aria-label="Color picker preview"></canvas>
+          <div id="cpick-result" style="display:none;margin-top:1rem;align-items:center;gap:1rem;">
+            <div class="color-swatch" id="cpick-swatch"></div>
+            <div>
+              <p style="font-weight:700;" id="cpick-hex">#000000</p>
+              <p style="font-size:12px;color:var(--text2);" id="cpick-rgb">rgb(0, 0, 0)</p>
+            </div>
+            <button class="btn btn-primary" style="margin-left:auto;" onclick="copyCPickHex()" data-i18n="copyHex">📋 Copy Hex</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 14: AI Background Removal (Pro) -->
+      <div class="glass tool-card reveal" style="padding:1.5rem;position:relative;" id="tool-aibg">
+        <span class="badge badge-pro" style="position:absolute;top:12px;right:12px;">PRO</span>
+        <h3 style="font-weight:700;font-size:1.2rem;">🤖 <span data-i18n="aiBgTitle">AI Background Removal</span></h3>
+        <p style="color:var(--text2);font-size:13px;margin-top:4px;" data-i18n="aiBgDesc">AI-powered background removal (Pro feature)</p>
+        <div class="tool-demo">
+          <div class="upload-zone" id="aibg-upload">
+            <input type="file" accept="image/*" onchange="checkFile(this, handleAIBGUpload)" />
+            <p style="color:var(--text3);" data-i18n="dropImage">📁 Drop image or click to upload</p>
+          </div>
+          <img id="aibg-preview" style="display:none;margin-top:1rem;max-height:200px;border-radius:8px;" alt="AI background removal preview" />
+          <div class="progress-bar" style="margin-top:1rem;display:none;" id="aibg-progress-wrap">
+            <div class="progress-bar-fill" id="aibg-progress" style="width:0%;"></div>
+          </div>
+          <p id="aibg-status" style="font-size:12px;color:var(--text3);margin-top:4px;"></p>
+          <canvas id="aibg-canvas" style="display:none;margin-top:1rem;" aria-label="AI background removal result"></canvas>
+          <div style="margin-top:1rem;display:none;" id="aibg-controls">
+            <button class="btn btn-primary" onclick="processAIBG()" data-i18n="removeBg">🤖 Remove Background</button>
+            <button class="btn btn-success" onclick="downloadAIBG()" style="display:none;" id="aibg-dl" data-i18n="download">💾 Download</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FEATURES SECTION ======================== -->
+<section id="features" style="padding:4rem 1.5rem;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <h2 class="section-title reveal" data-i18n="featuresTitle">✨ Features</h2>
+    <p class="section-subtitle reveal" data-i18n="featuresSubtitle">Why professionals choose PixelKit for their image needs.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
+      <div class="glass reveal" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🔒</div>
+        <h3 style="font-weight:700;" data-i18n="feat1Title">100% Private</h3>
+        <p style="color:var(--text2);font-size:14px;margin-top:4px;" data-i18n="feat1Desc">All processing happens in your browser. No data leaves your device.</p>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">⚡</div>
+        <h3 style="font-weight:700;" data-i18n="feat2Title">Lightning Fast</h3>
+        <p style="color:var(--text2);font-size:14px;margin-top:4px;" data-i18n="feat2Desc">No upload waits. Instant processing using modern browser APIs.</p>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🌍</div>
+        <h3 style="font-weight:700;" data-i18n="feat3Title">Multi-Language</h3>
+        <p style="color:var(--text2);font-size:14px;margin-top:4px;" data-i18n="feat3Desc">Available in English and Spanish with easy language switching.</p>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">📱</div>
+        <h3 style="font-weight:700;" data-i18n="feat4Title">Fully Responsive</h3>
+        <p style="color:var(--text2);font-size:14px;margin-top:4px;" data-i18n="feat4Desc">Works perfectly on desktop, tablet, and mobile devices.</p>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🛠️</div>
+        <h3 style="font-weight:700;" data-i18n="feat5Title">14+ Tools</h3>
+        <p style="color:var(--text2);font-size:14px;margin-top:4px;" data-i18n="feat5Desc">Comprehensive toolkit covering OCR, compression, filters, and more.</p>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🌙</div>
+        <h3 style="font-weight:700;" data-i18n="feat6Title">Dark Mode</h3>
+        <p style="color:var(--text2);font-size:14px;margin-top:4px;" data-i18n="feat6Desc">Easy on the eyes with a beautiful dark mode toggle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== LIVE DASHBOARD ======================== -->
+<section id="dashboard" style="padding:4rem 1.5rem;background:var(--bg3);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <h2 class="section-title reveal" data-i18n="dashboardTitle">📊 Live Dashboard</h2>
+    <p class="section-subtitle reveal" data-i18n="dashboardSubtitle">Your session activity and statistics at a glance.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;">
+      <div class="glass reveal" style="padding:1.5rem;">
+        <h4 style="font-weight:700;margin-bottom:0.75rem;" data-i18n="uploadedFiles">📁 Uploaded Files</h4>
+        <div id="dash-files" style="font-size:13px;color:var(--text2);max-height:150px;overflow-y:auto;">None yet</div>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;">
+        <h4 style="font-weight:700;margin-bottom:0.75rem;" data-i18n="recentActivity">📝 Recent Activity</h4>
+        <div id="dash-activity" style="font-size:13px;color:var(--text2);max-height:150px;overflow-y:auto;">No activity</div>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;">
+        <h4 style="font-weight:700;margin-bottom:0.75rem;" data-i18n="sessionStats">📈 Session Stats</h4>
+        <p style="font-size:13px;color:var(--text2);"><span data-i18n="convertedFiles">Converted Files:</span> <strong id="dash-converted">0</strong></p>
+        <p style="font-size:13px;color:var(--text2);margin-top:4px;"><span data-i18n="storageUsed">Storage Used:</span> <strong id="dash-storage">0</strong> MB</p>
+        <div class="progress-bar" style="margin-top:8px;"><div class="progress-bar-fill" id="dash-storage-bar" style="width:0%;"></div></div>
+      </div>
+      <div class="glass reveal" style="padding:1.5rem;">
+        <h4 style="font-weight:700;margin-bottom:0.75rem;" data-i18n="toolUsageTitle">🔧 Tool Usage</h4>
+        <div id="dash-usage" style="font-size:13px;color:var(--text2);">No usage data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== STATS SECTION ======================== -->
+<section id="stats" style="padding:4rem 1.5rem;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center;">
+      <div class="reveal">
+        <div class="stat-number" data-target="125000">0</div>
+        <p style="color:var(--text2);font-weight:600;margin-top:4px;" data-i18n="statImages">Images Processed</p>
+      </div>
+      <div class="reveal">
+        <div class="stat-number" data-target="48000">0</div>
+        <p style="color:var(--text2);font-weight:600;margin-top:4px;" data-i18n="statUsers">Happy Users</p>
+      </div>
+      <div class="reveal">
+        <div class="stat-number" data-target="92">0</div>
+        <p style="color:var(--text2);font-weight:600;margin-top:4px;" data-i18n="statCountries">Countries</p>
+      </div>
+      <div class="reveal">
+        <div class="stat-number" data-target="99">0</div>
+        <p style="color:var(--text2);font-weight:600;margin-top:4px;" data-i18n="statUptime">% Uptime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== TESTIMONIALS ======================== -->
+<section id="testimonials" style="padding:4rem 1.5rem;">
+  <div style="max-width:800px;margin:0 auto;">
+    <h2 class="section-title reveal" data-i18n="testimonialsTitle">💬 Testimonials</h2>
+    <p class="section-subtitle reveal" data-i18n="testimonialsSubtitle">What our users are saying about PixelKit.</p>
+    <div style="overflow:hidden;border-radius:16px;" class="reveal">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide">
+          <div class="glass" style="padding:2rem;text-align:center;">
+            <p style="font-size:1.1rem;font-style:italic;color:var(--text2);line-height:1.7;" data-i18n="test1Quote">"PixelKit saved me hours of work. The OCR tool is incredibly accurate!"</p>
+            <p style="font-weight:700;margin-top:1rem;">⭐⭐⭐⭐⭐ — Sarah M.</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="glass" style="padding:2rem;text-align:center;">
+            <p style="font-size:1.1rem;font-style:italic;color:var(--text2);line-height:1.7;" data-i18n="test2Quote">"I love that everything is private. No uploads to unknown servers. Brilliant!"</p>
+            <p style="font-weight:700;margin-top:1rem;">⭐⭐⭐⭐⭐ — James K.</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="glass" style="padding:2rem;text-align:center;">
+            <p style="font-size:1.1rem;font-style:italic;color:var(--text2);line-height:1.7;" data-i18n="test3Quote">"The Pro plan with AI background removal is a game changer for my design work."</p>
+            <p style="font-weight:700;margin-top:1rem;">⭐⭐⭐⭐⭐ — Maria L.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:1rem;">
+        <button class="btn btn-secondary" style="padding:6px 12px;" onclick="moveCarousel(-1)">◀</button>
+        <button class="btn btn-secondary" style="padding:6px 12px;" onclick="moveCarousel(1)">▶</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FAQ ======================== -->
+<section id="faq" style="padding:4rem 1.5rem;background:var(--bg3);">
+  <div style="max-width:800px;margin:0 auto;">
+    <h2 class="section-title reveal" data-i18n="faqTitle">❓ FAQ</h2>
+    <p class="section-subtitle reveal" data-i18n="faqSubtitle">Frequently asked questions about PixelKit.</p>
+    <div class="reveal">
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq1Q">Is PixelKit really free?</span><span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" data-i18n="faq1A">Yes! All basic tools are completely free. The Pro plan unlocks advanced AI features like background removal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq2Q">Are my images uploaded to a server?</span><span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" data-i18n="faq2A">No. All processing happens entirely in your browser. Your images never leave your device.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq3Q">What image formats are supported?</span><span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" data-i18n="faq3A">We support JPG, PNG, WEBP, and more. You can also convert between these formats using our converter tool.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq4Q">How does the Pro plan work?</span><span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" data-i18n="faq4A">The Pro plan is a simulated upgrade in this demo. Click "Upgrade to Pro" after logging in to unlock AI Background Removal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq5Q">Can I use PixelKit on mobile?</span><span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer" data-i18n="faq5A">Absolutely! PixelKit is fully responsive and works on any device with a modern browser.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CONTACT ======================== -->
+<section id="contact" style="padding:4rem 1.5rem;">
+  <div style="max-width:600px;margin:0 auto;">
+    <h2 class="section-title reveal" data-i18n="contactTitle">📬 Contact Us</h2>
+    <p class="section-subtitle reveal" data-i18n="contactSubtitle">Have a question? We'd love to hear from you.</p>
+    <form class="glass reveal" style="padding:2rem;display:flex;flex-direction:column;gap:1rem;" onsubmit="handleContact(event)">
+      <input class="form-input" type="text" id="contact-name" placeholder="Your Name" required autocomplete="name" />
+      <input class="form-input" type="email" id="contact-email" placeholder="Your Email" required autocomplete="email" />
+      <input class="form-input" type="text" id="contact-subject" placeholder="Subject" required />
+      <textarea class="form-input" id="contact-message" placeholder="Your Message" rows="4" required></textarea>
+      <button class="btn btn-primary" type="submit" style="justify-content:center;" data-i18n="sendMessage">📤 Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<footer style="padding:2rem 1.5rem;background:var(--bg2);border-top:1px solid var(--border);text-align:center;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <p style="font-weight:800;font-size:1.2rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🎨 PixelKit</p>
+    <div style="display:flex;justify-content:center;gap:1.5rem;margin:1rem 0;font-size:1.3rem;">
+      <a href="#" title="Twitter">🐦</a>
+      <a href="#" title="GitHub">🐙</a>
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="LinkedIn">💼</a>
+    </div>
+    <p style="color:var(--text3);font-size:13px;">
+      © <span id="footer-year"></span> PixelKit. 
+      <a href="#" onclick="document.getElementById('privacy-modal').classList.add('active'); return false;">Privacy Policy</a> | 
+      <a href="#" onclick="document.getElementById('terms-modal').classList.add('active'); return false;">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ======================== BACK TO TOP & FLOATING CONTACT ======================== -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top" aria-label="Back to top">↑</button>
+<button id="floating-contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" title="Contact Us" aria-label="Contact">✉</button>
+
+<!-- ======================== JAVASCRIPT (All fixes applied) ======================== -->
 <script>
-const imgs = {};
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-function showToast(m){let t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-function switchTool(id){document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tool-tab').forEach(t=>t.classList.remove('active'));document.getElementById('tool-'+id).classList.add('active');let tab=Array.from(document.querySelectorAll('.tool-tab')).find(t=>t.innerText.includes(id==='ocr'?'Image to Text':(id==='qr'?'QR Scanner':id)));if(tab)tab.classList.add('active');}
-function handleHeroFile(i){let f=i.files[0];if(f){loadFileToTool(f,'ocr');switchTool('ocr');setTimeout(()=>document.getElementById('tools').scrollIntoView({behavior:'smooth'}),300);}}
-function loadImage(input,tool){if(input.files[0])loadFileToTool(input.files[0],tool);}
-function loadFileToTool(file,tool){let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{imgs[tool]={img,file,w:img.width,h:img.height,size:file.size};let prev=document.getElementById(tool+'-preview');if(prev){prev.src=e.target.result;prev.style.display='block';}
-let btn=document.getElementById(tool+'-btn');if(btn)btn.disabled=false;
-if(tool==='resize'){document.getElementById('resize-w').value=img.width;document.getElementById('resize-h').value=img.height;}
-if(tool==='crop'){document.getElementById('crop-w').value=img.width;document.getElementById('crop-h').value=img.height;}};img.src=e.target.result;};r.readAsDataURL(file);}
-function fmtSize(b){if(b<1024)return b+'B';if(b<1048576)return (b/1024).toFixed(1)+'KB';return (b/1048576).toFixed(2)+'MB';}
-function getCanvas(w,h){let c=document.getElementById('offscreen');c.width=w;c.height=h;return c;}
-function setDownload(id,c,ext,mime){let a=document.getElementById(id+'-dl'),res=document.getElementById(id+'-result'),url=c.toDataURL(mime||'image/jpeg',0.92);if(res){res.src=url;res.style.display='block';}
-a.href=url;a.download='pixelforge-'+id+'.'+ext;a.style.display='block';}
-function compressImage(){let d=imgs['compress'];if(!d)return;let q=document.getElementById('compress-quality').value/100,c=getCanvas(d.w,d.h);c.getContext('2d').drawImage(d.img,0,0);c.toBlob(b=>{let u=URL.createObjectURL(b);document.getElementById('compress-result').src=u;document.getElementById('compress-result').style.display='block';let a=document.getElementById('compress-dl');a.href=u;a.download='compressed.jpg';a.style.display='block';showToast('Compressed');},'image/jpeg',q);}
-function resizeImage(){let d=imgs['resize'];if(!d)return;let nw=parseInt(document.getElementById('resize-w').value)||d.w,nh=parseInt(document.getElementById('resize-h').value)||d.h;if(document.getElementById('resize-lock').checked){let r=d.w/d.h;if(nw!==d.w)nh=Math.round(nw/r);else nw=Math.round(nh*r);}
-let c=getCanvas(nw,nh);c.getContext('2d').drawImage(d.img,0,0,nw,nh);setDownload('resize',c,'jpg','image/jpeg');showToast('Resized');}
-function cropImage(){let d=imgs['crop'];if(!d)return;let x=+document.getElementById('crop-x').value||0,y=+document.getElementById('crop-y').value||0,w=+document.getElementById('crop-w').value||d.w,h=+document.getElementById('crop-h').value||d.h,c=getCanvas(w,h);c.getContext('2d').drawImage(d.img,x,y,w,h,0,0,w,h);setDownload('crop',c,'jpg','image/jpeg');showToast('Cropped');}
-function convertImage(){let d=imgs['convert'];if(!d)return;let fmt=document.getElementById('convert-format').value,ext=fmt.split('/')[1].replace('jpeg','jpg'),c=getCanvas(d.w,d.h);c.getContext('2d').drawImage(d.img,0,0);setDownload('convert',c,ext,fmt);showToast('Converted');}
-function applyGrayscale(){let d=imgs['grayscale'];if(!d)return;let mode=document.getElementById('grayscale-mode').value,c=getCanvas(d.w,d.h),ctx=c.getContext('2d');ctx.drawImage(d.img,0,0);let idata=ctx.getImageData(0,0,d.w,d.h),data=idata.data;for(let i=0;i<data.length;i+=4){let r=data[i],g=data[i+1],b=data[i+2];if(mode==='grayscale'){let gr=0.299*r+0.587*g+0.114*b;data[i]=data[i+1]=data[i+2]=gr;}
-else if(mode==='sepia'){data[i]=Math.min(255,r*0.393+g*0.769+b*0.189);data[i+1]=Math.min(255,r*0.349+g*0.686+b*0.168);data[i+2]=Math.min(255,r*0.272+g*0.534+b*0.131);}
-else if(mode==='invert'){data[i]=255-r;data[i+1]=255-g;data[i+2]=255-b;}}
-ctx.putImageData(idata,0,0);setDownload('grayscale',c,'jpg','image/jpeg');showToast('Effect applied');}
-function rotateImage(){let d=imgs['rotate'];if(!d)return;let angle=+document.getElementById('rotate-angle').value,flip=document.getElementById('flip-mode').value,nw=d.w,nh=d.h;if(angle===90||angle===-90){nw=d.h;nh=d.w;}
-let c=getCanvas(nw,nh),ctx=c.getContext('2d');ctx.translate(nw/2,nh/2);ctx.rotate(angle*Math.PI/180);if(flip==='h')ctx.scale(-1,1);if(flip==='v')ctx.scale(1,-1);ctx.drawImage(d.img,-d.w/2,-d.h/2);setDownload('rotate',c,'jpg','image/jpeg');showToast('Rotated');}
-function applyWatermark(){let d=imgs['watermark'];if(!d)return;let text=document.getElementById('wm-text').value||'PixelForge',pos=document.getElementById('wm-pos').value,c=getCanvas(d.w,d.h),ctx=c.getContext('2d');ctx.drawImage(d.img,0,0);ctx.font='bold 32px "DM Sans"';ctx.fillStyle='white';ctx.shadowBlur=0;let tw=ctx.measureText(text).width,th=32,pad=30,x,y;if(pos==='br'){x=d.w-tw-pad;y=d.h-pad;}else{x=pad;y=d.h-pad;}
-ctx.fillText(text,x,y);setDownload('watermark',c,'jpg','image/jpeg');showToast('Watermark added');}
-function adjustImage(){let d=imgs['brightness'];if(!d)return;let br=document.getElementById('br-slider').value/100,co=document.getElementById('co-slider').value/100,c=getCanvas(d.w,d.h),ctx=c.getContext('2d');ctx.drawImage(d.img,0,0);let idata=ctx.getImageData(0,0,d.w,d.h),data=idata.data;for(let i=0;i<data.length;i+=4){let r=data[i],g=data[i+1],b=data[i+2];r=Math.min(255,r*br);g=Math.min(255,g*br);b=Math.min(255,b*br);r=Math.min(255,Math.max(0,(r-128)*co+128));g=Math.min(255,Math.max(0,(g-128)*co+128));b=Math.min(255,Math.max(0,(b-128)*co+128));data[i]=r;data[i+1]=g;data[i+2]=b;}
-ctx.putImageData(idata,0,0);setDownload('brightness',c,'jpg','image/jpeg');showToast('Adjusted');}
-let ocrImageData=null;
-function loadOCRImage(i){let f=i.files[0];if(f){let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{ocrImageData=img;document.getElementById('ocr-preview').src=e.target.result;document.getElementById('ocr-preview').style.display='block';document.getElementById('ocr-btn').disabled=false;};img.src=e.target.result;};r.readAsDataURL(f);}}
-async function extractTextWithOCR(){if(!ocrImageData){showToast('Upload image first');return;}
-let btn=document.getElementById('ocr-btn'),prog=document.getElementById('ocr-progress'),statusSpan=document.getElementById('ocr-status');btn.disabled=true;prog.style.display='block';statusSpan.innerText='Loading...';try{let canvas=document.createElement('canvas');canvas.width=ocrImageData.width;canvas.height=ocrImageData.height;canvas.getContext('2d').drawImage(ocrImageData,0,0);let lang=document.getElementById('ocr-lang').value;statusSpan.innerText='Recognizing...';let result=await Tesseract.recognize(canvas,lang,{logger:m=>{if(m.status==='recognizing text')statusSpan.innerText=Math.round(m.progress*100)+'%';}});let text=result.data.text.trim();if(text){document.getElementById('ocr-text').value=text;document.getElementById('ocr-output').style.display='block';document.getElementById('ocr-copy').style.display='block';showToast('Text extracted');}else{document.getElementById('ocr-text').value='No text found';document.getElementById('ocr-output').style.display='block';}}catch(e){document.getElementById('ocr-text').value='Error: '+e.message;document.getElementById('ocr-output').style.display='block';}finally{btn.disabled=false;prog.style.display='none';}}
-function copyOCRText(){let t=document.getElementById('ocr-text').value;if(t){navigator.clipboard.writeText(t);showToast('Copied!');}}
-let qrImageData=null;
-function loadQRImage(i){let f=i.files[0];if(f){let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{qrImageData=img;document.getElementById('qr-preview').src=e.target.result;document.getElementById('qr-preview').style.display='block';document.getElementById('qr-btn').disabled=false;};img.src=e.target.result;};r.readAsDataURL(f);}}
-async function scanQRFromImage(){if(!qrImageData){showToast('Upload QR image');return;}
-let btn=document.getElementById('qr-btn'),prog=document.getElementById('qr-progress');btn.disabled=true;prog.style.display='block';try{let canvas=document.createElement('canvas');canvas.width=qrImageData.width;canvas.height=qrImageData.height;canvas.getContext('2d').drawImage(qrImageData,0,0);let idata=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height);let code=jsQR(idata.data,canvas.width,canvas.height);if(code){document.getElementById('qr-result-text').value=code.data;document.getElementById('qr-output').style.display='block';if(code.data.startsWith('http'))document.getElementById('qr-open').style.display='block';showToast('QR detected');}else{document.getElementById('qr-result-text').value='No QR code found';document.getElementById('qr-output').style.display='block';}}catch(e){document.getElementById('qr-result-text').value='Error';}finally{btn.disabled=false;prog.style.display='none';}}
-function openQRUrl(){let url=document.getElementById('qr-result-text').value;if(url.startsWith('http'))window.open(url,'_blank');}
-document.getElementById('resize-w')?.addEventListener('input',function(){if(!document.getElementById('resize-lock').checked)return;let d=imgs['resize'];if(d)document.getElementById('resize-h').value=Math.round(this.value*(d.h/d.w));});
-document.getElementById('resize-h')?.addEventListener('input',function(){if(!document.getElementById('resize-lock').checked)return;let d=imgs['resize'];if(d)document.getElementById('resize-w').value=Math.round(this.value*(d.w/d.h));});
+/* ================================================================
+   MAX FILE SIZE CHECK
+   ================================================================ */
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+function checkFile(input, callback) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > MAX_FILE_SIZE) {
+    showToast('error', 'File too large. Maximum size is 50MB.');
+    input.value = ''; // reset input
+    return;
+  }
+  callback(file);
+}
+
+/* ================================================================
+   COOKIE CONSENT
+   ================================================================ */
+function acceptCookies() {
+  localStorage.setItem('cookie_consent', 'true');
+  document.getElementById('cookie-consent').classList.remove('visible');
+}
+
+function initCookieConsent() {
+  if (!localStorage.getItem('cookie_consent')) {
+    document.getElementById('cookie-consent').classList.add('visible');
+  }
+}
+
+/* ================================================================
+   INTERNATIONALIZATION (i18n)
+   ================================================================ */
+const translations = {
+  en: {
+    loading: "Loading PixelKit...", login: "Login", signUp: "Sign Up", logout: "Logout",
+    navHome: "Home", navTools: "Tools", navFeatures: "Features", navPricing: "Pricing", navFAQ: "FAQ", navContact: "Contact",
+    heroBadge: "✨ All-in-One Image Platform", heroTitle: "Professional Image Tools",
+    heroSubtitle: "Transform, optimize, and enhance your images directly in the browser. No uploads to any server. 100% private & free.",
+    heroStart: "🚀 Get Started", heroLearn: "Learn More",
+    typingPhrases: ["in your browser.", "100% private.", "fast & free.", "no server needed."],
+    toolsTitle: "🛠️ Image Tools", toolsSubtitle: "Everything you need for image processing, right in your browser.",
+    dropImage: "📁 Drop image or click to upload",
+    ocrTitle: "OCR – Image to Text", ocrDesc: "Extract text from images using Tesseract.js",
+    copyText: "📋 Copy Text", downloadTxt: "💾 Download .txt", reset: "🔄 Reset",
+    qrTitle: "QR Code Scanner", qrDesc: "Scan QR codes from images or camera",
+    startCamera: "📷 Start Camera", stopCamera: "⏹ Stop Camera", copyResult: "📋 Copy", openUrl: "🔗 Open URL",
+    compressorTitle: "Image Compressor", compressorDesc: "Reduce image file size with quality control",
+    quality: "Quality:", compress: "📦 Compress & Download",
+    converterTitle: "Image Converter", converterDesc: "Convert images between PNG, JPEG, WEBP",
+    outputFormat: "Output Format:", convertDownload: "🔄 Convert & Download",
+    resizerTitle: "Image Resizer", resizerDesc: "Resize images to custom or preset dimensions",
+    resizeDownload: "📐 Resize & Download",
+    bgRemoveTitle: "Background Remover", bgRemoveDesc: "Remove a specific background color",
+    colorToRemove: "Color to Remove", tolerance: "Tolerance:", removeDownload: "🎨 Remove & Download",
+    watermarkTitle: "Watermark Tool", watermarkDesc: "Add text watermark to your images",
+    position: "Position", opacity: "Opacity:", applyDownload: "💧 Apply & Download",
+    cropTitle: "Crop Tool", cropDesc: "Crop images to custom or preset dimensions", cropDownload: "✂️ Crop & Download",
+    rotateTitle: "Rotate & Flip", rotateDesc: "Rotate and flip images with live preview",
+    rotLeft: "↶ Left 90°", rotRight: "↷ Right 90°", flipH: "↔ Flip H", flipV: "↕ Flip V", download: "💾 Download",
+    filtersTitle: "Image Filters", filtersDesc: "Apply brightness, contrast, blur, and more",
+    base64Title: "Image to Base64", base64Desc: "Convert image to Base64 data URL string", copyBase64: "📋 Copy Base64",
+    metadataTitle: "Image Metadata Viewer", metadataDesc: "View file name, size, dimensions, and more",
+    colorPickerTitle: "Color Picker", colorPickerDesc: "Pick colors from any uploaded image", copyHex: "📋 Copy Hex",
+    aiBgTitle: "AI Background Removal", aiBgDesc: "AI-powered background removal (Pro feature)", removeBg: "🤖 Remove Background",
+    featuresTitle: "✨ Features", featuresSubtitle: "Why professionals choose PixelKit for their image needs.",
+    feat1Title: "100% Private", feat1Desc: "All processing happens in your browser. No data leaves your device.",
+    feat2Title: "Lightning Fast", feat2Desc: "No upload waits. Instant processing using modern browser APIs.",
+    feat3Title: "Multi-Language", feat3Desc: "Available in English and Spanish with easy language switching.",
+    feat4Title: "Fully Responsive", feat4Desc: "Works perfectly on desktop, tablet, and mobile devices.",
+    feat5Title: "14+ Tools", feat5Desc: "Comprehensive toolkit covering OCR, compression, filters, and more.",
+    feat6Title: "Dark Mode", feat6Desc: "Easy on the eyes with a beautiful dark mode toggle.",
+    dashboardTitle: "📊 Live Dashboard", dashboardSubtitle: "Your session activity and statistics at a glance.",
+    uploadedFiles: "📁 Uploaded Files", recentActivity: "📝 Recent Activity",
+    sessionStats: "📈 Session Stats", convertedFiles: "Converted Files:", storageUsed: "Storage Used:",
+    toolUsageTitle: "🔧 Tool Usage",
+    statImages: "Images Processed", statUsers: "Happy Users", statCountries: "Countries", statUptime: "% Uptime",
+    testimonialsTitle: "💬 Testimonials", testimonialsSubtitle: "What our users are saying about PixelKit.",
+    test1Quote: '"PixelKit saved me hours of work. The OCR tool is incredibly accurate!"',
+    test2Quote: '"I love that everything is private. No uploads to unknown servers. Brilliant!"',
+    test3Quote: '"The Pro plan with AI background removal is a game changer for my design work."',
+    faqTitle: "❓ FAQ", faqSubtitle: "Frequently asked questions about PixelKit.",
+    faq1Q: "Is PixelKit really free?", faq1A: "Yes! All basic tools are completely free. The Pro plan unlocks advanced AI features like background removal.",
+    faq2Q: "Are my images uploaded to a server?", faq2A: "No. All processing happens entirely in your browser. Your images never leave your device.",
+    faq3Q: "What image formats are supported?", faq3A: "We support JPG, PNG, WEBP, and more. You can also convert between these formats using our converter tool.",
+    faq4Q: "How does the Pro plan work?", faq4A: 'The Pro plan is a simulated upgrade in this demo. Click "Upgrade to Pro" after logging in to unlock AI Background Removal.',
+    faq5Q: "Can I use PixelKit on mobile?", faq5A: "Absolutely! PixelKit is fully responsive and works on any device with a modern browser.",
+    contactTitle: "📬 Contact Us", contactSubtitle: "Have a question? We'd love to hear from you.",
+    sendMessage: "📤 Send Message", footerRights: "All rights reserved.",
+    noAccount: "Don't have an account?",
+    toastCopied: "Copied to clipboard!", toastLoginFirst: "Please log in first.", toastProRequired: "Pro plan required for this feature.",
+    toastUpgraded: "Upgraded to Pro! 🎉", toastLoggedIn: "Logged in successfully!", toastSignedUp: "Account created! You are now logged in.",
+    toastLoggedOut: "Logged out.", toastContactSent: "Message sent! We'll get back to you soon.",
+    toastInvalidCreds: "Invalid credentials.", toastFillFields: "Please fill all fields.",
+    toastUserExists: "User already exists.", toastCompressed: "Image compressed!", toastConverted: "Image converted!",
+    toastResized: "Image resized!", toastBgRemoved: "Background removed!", toastWatermarkAdded: "Watermark applied!",
+    toastCropped: "Image cropped!", toastRotated: "Transformation applied!", toastFilterApplied: "Filter applied!",
+    toastOcrDone: "OCR completed!", toastQrDecoded: "QR code decoded!",
+    toastCropOutOfBounds: "Crop area out of bounds!", toastInvalidEmail: "Please enter a valid email address.",
+    ocrProcessing: "Processing OCR...", ocrRecognizing: "Recognizing text..."
+  },
+  es: {
+    loading: "Cargando PixelKit...", login: "Iniciar Sesión", signUp: "Registrarse", logout: "Cerrar Sesión",
+    navHome: "Inicio", navTools: "Herramientas", navFeatures: "Características", navPricing: "Precios", navFAQ: "FAQ", navContact: "Contacto",
+    heroBadge: "✨ Plataforma de Imágenes Todo en Uno", heroTitle: "Herramientas Profesionales de Imagen",
+    heroSubtitle: "Transforma, optimiza y mejora tus imágenes directamente en el navegador. Sin subidas a ningún servidor. 100% privado y gratis.",
+    heroStart: "🚀 Comenzar", heroLearn: "Más Información",
+    typingPhrases: ["en tu navegador.", "100% privado.", "rápido y gratis.", "sin servidor."],
+    toolsTitle: "🛠️ Herramientas de Imagen", toolsSubtitle: "Todo lo que necesitas para procesar imágenes, directamente en tu navegador.",
+    dropImage: "📁 Arrastra una imagen o haz clic",
+    ocrTitle: "OCR – Imagen a Texto", ocrDesc: "Extrae texto de imágenes con Tesseract.js",
+    copyText: "📋 Copiar Texto", downloadTxt: "💾 Descargar .txt", reset: "🔄 Reiniciar",
+    qrTitle: "Escáner de Código QR", qrDesc: "Escanea códigos QR desde imágenes o cámara",
+    startCamera: "📷 Iniciar Cámara", stopCamera: "⏹ Detener Cámara", copyResult: "📋 Copiar", openUrl: "🔗 Abrir URL",
+    compressorTitle: "Compresor de Imágenes", compressorDesc: "Reduce el tamaño del archivo con control de calidad",
+    quality: "Calidad:", compress: "📦 Comprimir y Descargar",
+    converterTitle: "Convertidor de Imágenes", converterDesc: "Convierte imágenes entre PNG, JPEG, WEBP",
+    outputFormat: "Formato de Salida:", convertDownload: "🔄 Convertir y Descargar",
+    resizerTitle: "Redimensionador de Imágenes", resizerDesc: "Redimensiona a medidas personalizadas o predefinidas",
+    resizeDownload: "📐 Redimensionar y Descargar",
+    bgRemoveTitle: "Eliminar Fondo", bgRemoveDesc: "Elimina un color de fondo específico",
+    colorToRemove: "Color a Eliminar", tolerance: "Tolerancia:", removeDownload: "🎨 Eliminar y Descargar",
+    watermarkTitle: "Herramienta de Marca de Agua", watermarkDesc: "Agrega marca de agua de texto a tus imágenes",
+    position: "Posición", opacity: "Opacidad:", applyDownload: "💧 Aplicar y Descargar",
+    cropTitle: "Herramienta de Recorte", cropDesc: "Recorta imágenes a dimensiones personalizadas", cropDownload: "✂️ Recortar y Descargar",
+    rotateTitle: "Rotar y Voltear", rotateDesc: "Rota y voltea imágenes con vista previa",
+    rotLeft: "↶ Izq 90°", rotRight: "↷ Der 90°", flipH: "↔ Voltear H", flipV: "↕ Voltear V", download: "💾 Descargar",
+    filtersTitle: "Filtros de Imagen", filtersDesc: "Aplica brillo, contraste, desenfoque y más",
+    base64Title: "Imagen a Base64", base64Desc: "Convierte imagen a cadena Base64", copyBase64: "📋 Copiar Base64",
+    metadataTitle: "Visor de Metadatos", metadataDesc: "Ver nombre, tamaño, dimensiones y más",
+    colorPickerTitle: "Selector de Color", colorPickerDesc: "Selecciona colores de cualquier imagen", copyHex: "📋 Copiar Hex",
+    aiBgTitle: "Eliminación de Fondo con IA", aiBgDesc: "Eliminación de fondo con IA (función Pro)", removeBg: "🤖 Eliminar Fondo",
+    featuresTitle: "✨ Características", featuresSubtitle: "Por qué los profesionales eligen PixelKit.",
+    feat1Title: "100% Privado", feat1Desc: "Todo el procesamiento ocurre en tu navegador. Ningún dato sale de tu dispositivo.",
+    feat2Title: "Ultra Rápido", feat2Desc: "Sin esperas. Procesamiento instantáneo usando APIs modernas del navegador.",
+    feat3Title: "Multi-Idioma", feat3Desc: "Disponible en inglés y español con cambio fácil de idioma.",
+    feat4Title: "Totalmente Responsivo", feat4Desc: "Funciona perfectamente en escritorio, tableta y móvil.",
+    feat5Title: "14+ Herramientas", feat5Desc: "Kit completo que cubre OCR, compresión, filtros y más.",
+    feat6Title: "Modo Oscuro", feat6Desc: "Cómodo para los ojos con un hermoso modo oscuro.",
+    dashboardTitle: "📊 Panel en Vivo", dashboardSubtitle: "Tu actividad y estadísticas de sesión de un vistazo.",
+    uploadedFiles: "📁 Archivos Subidos", recentActivity: "📝 Actividad Reciente",
+    sessionStats: "📈 Estadísticas de Sesión", convertedFiles: "Archivos Convertidos:", storageUsed: "Almacenamiento Usado:",
+    toolUsageTitle: "🔧 Uso de Herramientas",
+    statImages: "Imágenes Procesadas", statUsers: "Usuarios Felices", statCountries: "Países", statUptime: "% Disponibilidad",
+    testimonialsTitle: "💬 Testimonios", testimonialsSubtitle: "Lo que dicen nuestros usuarios de PixelKit.",
+    test1Quote: '"PixelKit me ahorró horas de trabajo. ¡La herramienta OCR es increíblemente precisa!"',
+    test2Quote: '"Me encanta que todo sea privado. Sin subidas a servidores desconocidos. ¡Brillante!"',
+    test3Quote: '"El plan Pro con eliminación de fondo IA es un cambio total para mi trabajo de diseño."',
+    faqTitle: "❓ Preguntas Frecuentes", faqSubtitle: "Preguntas frecuentes sobre PixelKit.",
+    faq1Q: "¿PixelKit es realmente gratis?", faq1A: "¡Sí! Todas las herramientas básicas son gratis. El plan Pro desbloquea funciones avanzadas de IA.",
+    faq2Q: "¿Se suben mis imágenes a un servidor?", faq2A: "No. Todo el procesamiento ocurre en tu navegador. Tus imágenes nunca salen de tu dispositivo.",
+    faq3Q: "¿Qué formatos de imagen se admiten?", faq3A: "Admitimos JPG, PNG, WEBP y más. También puedes convertir entre estos formatos.",
+    faq4Q: "¿Cómo funciona el plan Pro?", faq4A: 'El plan Pro es una mejora simulada en esta demo. Haz clic en "Mejorar a Pro" después de iniciar sesión.',
+    faq5Q: "¿Puedo usar PixelKit en el móvil?", faq5A: "¡Por supuesto! PixelKit es responsivo y funciona en cualquier dispositivo con un navegador moderno.",
+    contactTitle: "📬 Contáctanos", contactSubtitle: "¿Tienes alguna pregunta? Nos encantaría saber de ti.",
+    sendMessage: "📤 Enviar Mensaje", footerRights: "Todos los derechos reservados.",
+    noAccount: "¿No tienes una cuenta?",
+    toastCopied: "¡Copiado al portapapeles!", toastLoginFirst: "Por favor inicia sesión primero.", toastProRequired: "Se requiere plan Pro para esta función.",
+    toastUpgraded: "¡Mejorado a Pro! 🎉", toastLoggedIn: "¡Sesión iniciada!", toastSignedUp: "¡Cuenta creada! Ya estás conectado.",
+    toastLoggedOut: "Sesión cerrada.", toastContactSent: "¡Mensaje enviado! Te responderemos pronto.",
+    toastInvalidCreds: "Credenciales inválidas.", toastFillFields: "Por favor completa todos los campos.",
+    toastUserExists: "El usuario ya existe.", toastCompressed: "¡Imagen comprimida!", toastConverted: "¡Imagen convertida!",
+    toastResized: "¡Imagen redimensionada!", toastBgRemoved: "¡Fondo eliminado!", toastWatermarkAdded: "¡Marca de agua aplicada!",
+    toastCropped: "¡Imagen recortada!", toastRotated: "¡Transformación aplicada!", toastFilterApplied: "¡Filtro aplicado!",
+    toastOcrDone: "¡OCR completado!", toastQrDecoded: "¡Código QR decodificado!",
+    toastCropOutOfBounds: "¡Área de recorte fuera de los límites!", toastInvalidEmail: "Por favor ingrese un email válido.",
+    ocrProcessing: "Procesando OCR...", ocrRecognizing: "Reconociendo texto..."
+  }
+};
+
+let currentLang = localStorage.getItem('pixelkit_lang') || 'en';
+
+function t(key) { return (translations[currentLang] && translations[currentLang][key]) || translations.en[key] || key; }
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    if (el.hasAttribute('data-i18n-dynamic')) return; // skip dynamic content
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val) {
+      el.textContent = val;
+    }
+  });
+}
+
+function switchLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('pixelkit_lang', lang);
+  applyTranslations();
+  startTypingEffect();
+  showToast('info', lang === 'en' ? 'Language: English' : 'Idioma: Español');
+}
+
+/* ================================================================
+   DARK MODE
+   ================================================================ */
+function toggleDarkMode() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('pixelkit_theme', isDark ? 'light' : 'dark');
+  document.getElementById('dark-toggle').textContent = isDark ? '🌙' : '☀️';
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('pixelkit_theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('dark-toggle').textContent = '☀️';
+  }
+}
+
+/* ================================================================
+   TOAST NOTIFICATIONS (XSS-safe)
+   ================================================================ */
+function showToast(type, message) {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  const icons = { success: '✅', error: '❌', info: 'ℹ️' };
+  const iconSpan = document.createElement('span');
+  iconSpan.textContent = icons[type] || '';
+  toast.appendChild(iconSpan);
+  toast.appendChild(document.createTextNode(' ' + message));
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(100%)'; setTimeout(() => toast.remove(), 300); }, 3500);
+}
+
+/* ================================================================
+   USER ACCOUNTS (Simulated) – now with password hashing
+   ================================================================ */
+let authMode = 'login';
+
+// Simple SHA-256 hash (demo only)
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem('pixelkit_users')) || []; } catch { return []; }
+}
+function saveUsers(users) { localStorage.setItem('pixelkit_users', JSON.stringify(users)); }
+function getCurrentUser() {
+  try { return JSON.parse(localStorage.getItem('pixelkit_current_user')); } catch { return null; }
+}
+function setCurrentUser(user) { localStorage.setItem('pixelkit_current_user', JSON.stringify(user)); updateAuthUI(); }
+function clearCurrentUser() { localStorage.removeItem('pixelkit_current_user'); updateAuthUI(); }
+
+function updateAuthUI() {
+  const user = getCurrentUser();
+  const btn = document.getElementById('auth-btn');
+  if (user) {
+    btn.textContent = t('logout');
+    btn.onclick = () => { clearCurrentUser(); showToast('info', t('toastLoggedOut')); };
+  } else {
+    btn.textContent = t('login');
+    btn.onclick = openAuthModal;
+  }
+}
+
+function openAuthModal() {
+  authMode = 'login';
+  document.getElementById('auth-modal').classList.add('active');
+  document.getElementById('auth-title').textContent = t('login');
+  document.getElementById('auth-submit-btn').textContent = t('login');
+  document.getElementById('auth-toggle-text').textContent = t('noAccount');
+  document.getElementById('auth-toggle-link').textContent = t('signUp');
+  document.getElementById('auth-email').value = '';
+  document.getElementById('auth-password').value = '';
+}
+
+function closeAuthModal() { document.getElementById('auth-modal').classList.remove('active'); }
+
+function toggleAuthMode(e) {
+  e.preventDefault();
+  authMode = authMode === 'login' ? 'signup' : 'login';
+  document.getElementById('auth-title').textContent = t(authMode === 'login' ? 'login' : 'signUp');
+  document.getElementById('auth-submit-btn').textContent = t(authMode === 'login' ? 'login' : 'signUp');
+  document.getElementById('auth-toggle-text').textContent = authMode === 'login' ? t('noAccount') : '';
+  document.getElementById('auth-toggle-link').textContent = authMode === 'login' ? t('signUp') : t('login');
+}
+
+async function handleAuth() {
+  const email = document.getElementById('auth-email').value.trim();
+  const password = document.getElementById('auth-password').value.trim();
+  if (!email || !password) { showToast('error', t('toastFillFields')); return; }
+  const users = getUsers();
+  if (authMode === 'signup') {
+    if (users.find(u => u.email === email)) { showToast('error', t('toastUserExists')); return; }
+    const hashed = await hashPassword(password);
+    const newUser = { email, password: hashed, plan: 'free' };
+    users.push(newUser);
+    saveUsers(users);
+    setCurrentUser(newUser);
+    closeAuthModal();
+    showToast('success', t('toastSignedUp'));
+  } else {
+    const hashed = await hashPassword(password);
+    const user = users.find(u => u.email === email && u.password === hashed);
+    if (!user) { showToast('error', t('toastInvalidCreds')); return; }
+    setCurrentUser(user);
+    closeAuthModal();
+    showToast('success', t('toastLoggedIn'));
+  }
+}
+
+function upgradeToPro() {
+  const user = getCurrentUser();
+  if (!user) { showToast('error', t('toastLoginFirst')); openAuthModal(); return; }
+  user.plan = 'pro';
+  setCurrentUser(user);
+  const users = getUsers();
+  const idx = users.findIndex(u => u.email === user.email);
+  if (idx >= 0) { users[idx].plan = 'pro'; saveUsers(users); }
+  showToast('success', t('toastUpgraded'));
+}
+
+/* ================================================================
+   GLOBAL STATE & DASHBOARD
+   ================================================================ */
+const state = {
+  uploadedFiles: [],
+  activities: [],
+  convertedCount: 0,
+  storageUsed: 0,
+  toolUsage: {}
+};
+
+function addActivity(msg) { state.activities.unshift(`${new Date().toLocaleTimeString()} — ${msg}`); if (state.activities.length > 20) state.activities.pop(); updateDashboard(); }
+function addUploadedFile(name) { state.uploadedFiles.unshift(name); if (state.uploadedFiles.length > 20) state.uploadedFiles.pop(); updateDashboard(); }
+function incrementConverted() { state.convertedCount++; updateDashboard(); }
+function addStorage(mb) { state.storageUsed = Math.round((state.storageUsed + mb) * 100) / 100; updateDashboard(); }
+function recordToolUsage(toolName) {
+  state.toolUsage[toolName] = (state.toolUsage[toolName] || 0) + 1;
+  let usage = {};
+  try { usage = JSON.parse(localStorage.getItem('pixelkit_usage')) || {}; } catch {}
+  usage[toolName] = (usage[toolName] || 0) + 1;
+  localStorage.setItem('pixelkit_usage', JSON.stringify(usage));
+  updateDashboard();
+}
+
+function updateDashboard() {
+  const filesEl = document.getElementById('dash-files');
+  filesEl.innerHTML = state.uploadedFiles.length ? state.uploadedFiles.map(f => `<div style="padding:2px 0;">📄 ${f}</div>`).join('') : '<span style="color:var(--text3);">None yet</span>';
+  const actEl = document.getElementById('dash-activity');
+  actEl.innerHTML = state.activities.length ? state.activities.map(a => `<div style="padding:2px 0;">• ${a}</div>`).join('') : '<span style="color:var(--text3);">No activity</span>';
+  document.getElementById('dash-converted').textContent = state.convertedCount;
+  document.getElementById('dash-storage').textContent = state.storageUsed.toFixed(2);
+  const pct = Math.min(state.storageUsed / 100 * 100, 100);
+  document.getElementById('dash-storage-bar').style.width = pct + '%';
+  let usage = {};
+  try { usage = JSON.parse(localStorage.getItem('pixelkit_usage')) || {}; } catch {}
+  const usageEl = document.getElementById('dash-usage');
+  const keys = Object.keys(usage);
+  usageEl.innerHTML = keys.length ? keys.map(k => `<div style="padding:2px 0;">🔹 ${k}: <strong>${usage[k]}</strong></div>`).join('') : '<span style="color:var(--text3);">No usage data</span>';
+}
+
+/* ================================================================
+   UPLOAD ZONE HELPER
+   ================================================================ */
+function setupUploadZone(zoneId, callback) {
+  const zone = document.getElementById(zoneId);
+  if (!zone) return;
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.classList.remove('dragover');
+    if (e.dataTransfer.files.length) {
+      const file = e.dataTransfer.files[0];
+      if (file.size > MAX_FILE_SIZE) {
+        showToast('error', 'File too large. Maximum size is 50MB.');
+        return;
+      }
+      callback(file);
+    }
+  });
+}
+
+/* ================================================================
+   MEMORY-SAFE URL MANAGEMENT FOR PREVIEWS
+   ================================================================ */
+const previewUrlMap = new Map(); // elementId -> blobURL
+
+function setPreviewImage(elementId, file) {
+  const img = document.getElementById(elementId);
+  if (!img) return;
+  // Revoke old URL if exists
+  if (previewUrlMap.has(elementId)) {
+    URL.revokeObjectURL(previewUrlMap.get(elementId));
+  }
+  const url = URL.createObjectURL(file);
+  previewUrlMap.set(elementId, url);
+  img.src = url;
+  img.style.display = 'block';
+}
+
+// Also call this when resetting a tool to revoke its preview URL
+function revokePreview(elementId) {
+  if (previewUrlMap.has(elementId)) {
+    URL.revokeObjectURL(previewUrlMap.get(elementId));
+    previewUrlMap.delete(elementId);
+  }
+}
+
+/* ================================================================
+   HELPER: Load Image from File -> returns Promise<HTMLImageElement>
+   ================================================================ */
+function loadImageFromFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function loadImageFromUrl(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
+/* ================================================================
+   HELPER: Download canvas as file
+   ================================================================ */
+function downloadCanvas(canvas, filename, mimeType = 'image/png', quality = 0.92) {
+  canvas.toBlob(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    incrementConverted();
+  }, mimeType, quality);
+}
+
+/* ================================================================
+   HELPER: Copy text from element
+   ================================================================ */
+function copyText(elementId) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const text = el.value || el.textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('success', t('toastCopied'))).catch(() => {
+    el.select && el.select(); document.execCommand('copy'); showToast('success', t('toastCopied'));
+  });
+}
+
+function downloadText(elementId) {
+  const el = document.getElementById(elementId);
+  const text = el.value || el.textContent;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'ocr-result.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  incrementConverted();
+}
+
+/* ================================================================
+   TOOL 1: OCR – FIXED with reliable Tesseract.recognize()
+   ================================================================ */
+let ocrFile = null;
+function handleOCRUpload(file) {
+  if (!file) return;
+  ocrFile = file;
+  setPreviewImage('ocr-preview', file);
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+  startOCR(file);
+}
+
+async function startOCR(file) {
+  recordToolUsage('OCR');
+  const progressWrap = document.getElementById('ocr-progress-wrap');
+  const progressBar = document.getElementById('ocr-progress');
+  const statusEl = document.getElementById('ocr-status');
+  const resultEl = document.getElementById('ocr-result');
+  const actionsEl = document.getElementById('ocr-actions');
+  progressWrap.style.display = 'block';
+  statusEl.textContent = t('ocrProcessing');
+  progressBar.style.width = '10%';
+
+  try {
+    // Load Tesseract.js v4 (reliable UMD) with proper load detection
+    if (!window.Tesseract) {
+      statusEl.textContent = 'Loading OCR engine...';
+      await new Promise((resolve, reject) => {
+        // Avoid loading duplicate
+        if (document.querySelector('script[src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.3/dist/tesseract.min.js"]')) {
+          // Already loading? wait for Tesseract
+          const check = setInterval(() => {
+            if (window.Tesseract) { clearInterval(check); resolve(); }
+          }, 100);
+          return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@4.1.3/dist/tesseract.min.js';
+        script.onload = () => {
+          if (window.Tesseract) resolve();
+          else reject(new Error('Tesseract not defined after load'));
+        };
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    const Tesseract = window.Tesseract;
+    statusEl.textContent = t('ocrRecognizing');
+    progressBar.style.width = '30%';
+
+    // Use the simple recognize() method
+    const { data: { text } } = await Tesseract.recognize(file, 'eng', {
+      logger: m => {
+        if (m.progress) progressBar.style.width = (30 + m.progress * 60) + '%';
+      }
+    });
+
+    progressBar.style.width = '100%';
+    resultEl.value = text || '(No text found)';
+    resultEl.style.display = 'block';
+    actionsEl.classList.remove('hidden');
+    statusEl.textContent = '';
+    addActivity(t('toastOcrDone'));
+    showToast('success', t('toastOcrDone'));
+  } catch (err) {
+    statusEl.textContent = 'OCR Error: ' + err.message;
+    showToast('error', 'OCR failed: ' + err.message);
+  }
+}
+
+function resetOCR() {
+  document.getElementById('ocr-preview').style.display = 'none';
+  document.getElementById('ocr-result').style.display = 'none';
+  document.getElementById('ocr-result').value = '';
+  document.getElementById('ocr-actions').classList.add('hidden');
+  document.getElementById('ocr-progress-wrap').style.display = 'none';
+  document.getElementById('ocr-status').textContent = '';
+  const input = document.getElementById('ocr-upload')?.querySelector('input[type="file"]');
+  if (input) input.value = '';
+  revokePreview('ocr-preview');
+  ocrFile = null;
+}
+
+/* ================================================================
+   TOOL 2: QR SCANNER
+   ================================================================ */
+let qrScanner = null;
+let qrHistory = JSON.parse(localStorage.getItem('pixelkit_qr_history') || '[]');
+
+async function handleQRUpload(file) {
+  if (!file) return;
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+  recordToolUsage('QR Scanner');
+
+  if (!window.Html5Qrcode) {
+    await loadScript('https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js');
+  }
+
+  const tempDiv = document.createElement('div');
+  tempDiv.id = 'qr-temp-' + Date.now();
+  tempDiv.style.display = 'none';
+  document.body.appendChild(tempDiv);
+
+  try {
+    const html5QrCode = new Html5Qrcode(tempDiv.id);
+    const result = await html5QrCode.scanFile(file, true);
+    showQRResult(result);
+    html5QrCode.clear();
+  } catch (err) {
+    showToast('error', 'No QR code found in image');
+  } finally {
+    tempDiv.remove();
+  }
+}
+
+async function startQRCamera() {
+  recordToolUsage('QR Scanner');
+  if (!window.Html5Qrcode) {
+    await loadScript('https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js');
+  }
+  const readerDiv = document.getElementById('qr-reader');
+  readerDiv.style.display = 'block';
+  readerDiv.innerHTML = '';
+  document.getElementById('qr-cam-btn').style.display = 'none';
+  document.getElementById('qr-cam-stop').style.display = 'inline-flex';
+
+  qrScanner = new Html5Qrcode("qr-reader");
+  try {
+    await qrScanner.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: { width: 250, height: 250 } },
+      (decodedText) => {
+        showQRResult(decodedText);
+        stopQRCamera();
+      },
+      () => {}
+    );
+  } catch (err) {
+    showToast('error', 'Camera error: ' + err);
+    stopQRCamera();
+  }
+}
+
+async function stopQRCamera() {
+  if (qrScanner) {
+    try { await qrScanner.stop(); } catch {}
+    try { qrScanner.clear(); } catch {}
+    qrScanner = null;
+  }
+  const readerDiv = document.getElementById('qr-reader');
+  readerDiv.innerHTML = '';
+  readerDiv.style.display = 'none';
+  document.getElementById('qr-cam-btn').style.display = 'inline-flex';
+  document.getElementById('qr-cam-stop').style.display = 'none';
+}
+
+function showQRResult(text) {
+  const resultEl = document.getElementById('qr-result');
+  resultEl.value = text;
+  resultEl.style.display = 'block';
+  document.getElementById('qr-actions').classList.remove('hidden');
+  qrHistory.unshift({ text, time: new Date().toLocaleString() });
+  if (qrHistory.length > 10) qrHistory.pop();
+  localStorage.setItem('pixelkit_qr_history', JSON.stringify(qrHistory));
+  renderQRHistory();
+  addActivity(t('toastQrDecoded'));
+  showToast('success', t('toastQrDecoded'));
+}
+
+function openQRUrl() {
+  const url = document.getElementById('qr-result').value;
+  if (url && (url.startsWith('http://') || url.startsWith('https://'))) {
+    window.open(url, '_blank');
+  } else {
+    showToast('info', 'Result is not a URL');
+  }
+}
+
+function renderQRHistory() {
+  const el = document.getElementById('qr-history');
+  if (!qrHistory.length) { el.innerHTML = ''; return; }
+  el.innerHTML = '<p style="font-weight:600;font-size:12px;margin-bottom:4px;">History:</p>' +
+    qrHistory.slice(0, 5).map(h => `<div style="font-size:11px;color:var(--text3);padding:2px 0;">🕐 ${h.time}: ${h.text.substring(0, 40)}...</div>`).join('');
+}
+
+/* ================================================================
+   TOOL 3: IMAGE COMPRESSOR
+   ================================================================ */
+let compFile = null, compImg = null;
+async function handleCompUpload(file) {
+  if (!file) return;
+  compFile = file;
+  compImg = await loadImageFromFile(file);
+  setPreviewImage('comp-preview', file);
+  document.getElementById('comp-controls').style.display = 'block';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function compressImage() {
+  if (!compImg) return;
+  recordToolUsage('Compressor');
+  const quality = parseInt(document.getElementById('comp-quality').value) / 100;
+  const canvas = document.createElement('canvas');
+  canvas.width = compImg.naturalWidth;
+  canvas.height = compImg.naturalHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(compImg, 0, 0);
+  canvas.toBlob(blob => {
+    const origSize = compFile.size;
+    const newSize = blob.size;
+    document.getElementById('comp-status').textContent =
+      `Original: ${(origSize/1024).toFixed(1)}KB → Compressed: ${(newSize/1024).toFixed(1)}KB (${((1 - newSize/origSize)*100).toFixed(1)}% smaller)`;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'compressed-' + (compFile.name || 'image.jpg');
+    a.click();
+    URL.revokeObjectURL(a.href);
+    incrementConverted();
+    addActivity(t('toastCompressed'));
+    showToast('success', t('toastCompressed'));
+  }, 'image/jpeg', quality);
+}
+
+/* ================================================================
+   TOOL 4: IMAGE CONVERTER
+   ================================================================ */
+let convImg = null, convFile = null;
+async function handleConvUpload(file) {
+  if (!file) return;
+  convFile = file;
+  convImg = await loadImageFromFile(file);
+  setPreviewImage('conv-preview', file);
+  document.getElementById('conv-controls').style.display = 'block';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function convertImage() {
+  if (!convImg) return;
+  recordToolUsage('Converter');
+  const format = document.getElementById('conv-format').value;
+  const ext = format.split('/')[1];
+  const canvas = document.createElement('canvas');
+  canvas.width = convImg.naturalWidth;
+  canvas.height = convImg.naturalHeight;
+  canvas.getContext('2d').drawImage(convImg, 0, 0);
+  downloadCanvas(canvas, `converted.${ext}`, format);
+  addActivity(t('toastConverted'));
+  showToast('success', t('toastConverted'));
+}
+
+/* ================================================================
+   TOOL 5: IMAGE RESIZER
+   ================================================================ */
+let resizeImg = null;
+async function handleResizeUpload(file) {
+  if (!file) return;
+  resizeImg = await loadImageFromFile(file);
+  setPreviewImage('resize-preview', file);
+  document.getElementById('resize-controls').style.display = 'block';
+  document.getElementById('resize-w').value = resizeImg.naturalWidth;
+  document.getElementById('resize-h').value = resizeImg.naturalHeight;
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function setResizePreset(w, h) {
+  document.getElementById('resize-w').value = w;
+  document.getElementById('resize-h').value = h;
+}
+
+function resizeImage() {
+  if (!resizeImg) return;
+  recordToolUsage('Resizer');
+  const w = parseInt(document.getElementById('resize-w').value) || 100;
+  const h = parseInt(document.getElementById('resize-h').value) || 100;
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  canvas.getContext('2d').drawImage(resizeImg, 0, 0, w, h);
+  downloadCanvas(canvas, `resized-${w}x${h}.png`);
+  addActivity(t('toastResized'));
+  showToast('success', t('toastResized'));
+}
+
+/* ================================================================
+   TOOL 6: BACKGROUND REMOVER (Color-Based)
+   ================================================================ */
+let bgrImg = null;
+async function handleBGRUpload(file) {
+  if (!file) return;
+  bgrImg = await loadImageFromFile(file);
+  const canvas = document.getElementById('bgr-canvas');
+  canvas.width = bgrImg.naturalWidth;
+  canvas.height = bgrImg.naturalHeight;
+  canvas.getContext('2d').drawImage(bgrImg, 0, 0);
+  canvas.style.display = 'block';
+  document.getElementById('bgr-controls').style.display = 'block';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function removeBG() {
+  if (!bgrImg) return;
+  recordToolUsage('BG Remover');
+  const canvas = document.getElementById('bgr-canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(bgrImg, 0, 0);
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  const colorHex = document.getElementById('bgr-color').value;
+  const tolerance = parseInt(document.getElementById('bgr-tolerance').value);
+  const r0 = parseInt(colorHex.slice(1,3), 16);
+  const g0 = parseInt(colorHex.slice(3,5), 16);
+  const b0 = parseInt(colorHex.slice(5,7), 16);
+  for (let i = 0; i < data.length; i += 4) {
+    const dist = Math.sqrt((data[i]-r0)**2 + (data[i+1]-g0)**2 + (data[i+2]-b0)**2);
+    if (dist <= tolerance * 4.41) {
+      data[i+3] = 0;
+    }
+  }
+  ctx.putImageData(imageData, 0, 0);
+  downloadCanvas(canvas, 'bg-removed.png');
+  addActivity(t('toastBgRemoved'));
+  showToast('success', t('toastBgRemoved'));
+}
+
+/* ================================================================
+   TOOL 7: WATERMARK
+   ================================================================ */
+let wmImg = null;
+async function handleWMUpload(file) {
+  if (!file) return;
+  wmImg = await loadImageFromFile(file);
+  const canvas = document.getElementById('wm-canvas');
+  canvas.width = wmImg.naturalWidth;
+  canvas.height = wmImg.naturalHeight;
+  canvas.getContext('2d').drawImage(wmImg, 0, 0);
+  canvas.style.display = 'block';
+  document.getElementById('wm-controls').style.display = 'block';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function applyWatermark() {
+  if (!wmImg) return;
+  recordToolUsage('Watermark');
+  const canvas = document.getElementById('wm-canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(wmImg, 0, 0);
+  const text = document.getElementById('wm-text').value || 'PixelKit';
+  const position = document.getElementById('wm-position').value;
+  const opacity = parseInt(document.getElementById('wm-opacity').value) / 100;
+  const fontSize = Math.max(canvas.width / 20, 16);
+  ctx.font = `bold ${fontSize}px sans-serif`;
+  ctx.globalAlpha = opacity;
+  ctx.fillStyle = 'rgba(255,255,255,1)';
+  ctx.shadowColor = 'rgba(0,0,0,0.5)';
+  ctx.shadowBlur = 4;
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 2;
+  const metrics = ctx.measureText(text);
+  const tw = metrics.width;
+  const th = fontSize;
+  const pad = 20;
+  let x, y;
+  switch(position) {
+    case 'top-left': x = pad; y = th + pad; break;
+    case 'top-center': x = (canvas.width - tw) / 2; y = th + pad; break;
+    case 'top-right': x = canvas.width - tw - pad; y = th + pad; break;
+    case 'center': x = (canvas.width - tw) / 2; y = (canvas.height + th) / 2; break;
+    case 'bottom-left': x = pad; y = canvas.height - pad; break;
+    case 'bottom-center': x = (canvas.width - tw) / 2; y = canvas.height - pad; break;
+    case 'bottom-right': x = canvas.width - tw - pad; y = canvas.height - pad; break;
+    default: x = (canvas.width - tw) / 2; y = canvas.height - pad;
+  }
+  ctx.fillText(text, x, y);
+  ctx.globalAlpha = 1;
+  ctx.shadowColor = 'transparent';
+  downloadCanvas(canvas, 'watermarked.png');
+  addActivity(t('toastWatermarkAdded'));
+  showToast('success', t('toastWatermarkAdded'));
+}
+
+/* ================================================================
+   TOOL 8: CROP
+   ================================================================ */
+let cropImg = null;
+async function handleCropUpload(file) {
+  if (!file) return;
+  cropImg = await loadImageFromFile(file);
+  setPreviewImage('crop-preview', file);
+  document.getElementById('crop-controls').style.display = 'block';
+  document.getElementById('crop-w').value = Math.min(200, cropImg.naturalWidth);
+  document.getElementById('crop-h').value = Math.min(200, cropImg.naturalHeight);
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function setCropPreset(w, h) {
+  document.getElementById('crop-x').value = 0;
+  document.getElementById('crop-y').value = 0;
+  document.getElementById('crop-w').value = w;
+  document.getElementById('crop-h').value = h;
+}
+
+function cropImage() {
+  if (!cropImg) return;
+  recordToolUsage('Crop');
+  const x = parseInt(document.getElementById('crop-x').value) || 0;
+  const y = parseInt(document.getElementById('crop-y').value) || 0;
+  const w = parseInt(document.getElementById('crop-w').value) || 200;
+  const h = parseInt(document.getElementById('crop-h').value) || 200;
+  if (x + w > cropImg.naturalWidth || y + h > cropImg.naturalHeight || x < 0 || y < 0) {
+    showToast('error', t('toastCropOutOfBounds'));
+    return;
+  }
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  canvas.getContext('2d').drawImage(cropImg, x, y, w, h, 0, 0, w, h);
+  downloadCanvas(canvas, 'cropped.png');
+  addActivity(t('toastCropped'));
+  showToast('success', t('toastCropped'));
+}
+
+/* ================================================================
+   TOOL 9: ROTATE & FLIP
+   ================================================================ */
+let rotImg = null, rotAngle = 0, rotFlipH = false, rotFlipV = false;
+async function handleRotUpload(file) {
+  if (!file) return;
+  rotImg = await loadImageFromFile(file);
+  rotAngle = 0; rotFlipH = false; rotFlipV = false;
+  drawRotCanvas();
+  document.getElementById('rot-canvas').style.display = 'block';
+  document.getElementById('rot-controls').style.display = 'block';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function drawRotCanvas() {
+  if (!rotImg) return;
+  const canvas = document.getElementById('rot-canvas');
+  const ctx = canvas.getContext('2d');
+  const rad = rotAngle * Math.PI / 180;
+  const absAngle = Math.abs(rotAngle % 360);
+  let w, h;
+  if (absAngle === 90 || absAngle === 270) {
+    w = rotImg.naturalHeight; h = rotImg.naturalWidth;
+  } else {
+    w = rotImg.naturalWidth; h = rotImg.naturalHeight;
+  }
+  canvas.width = w; canvas.height = h;
+  ctx.save();
+  ctx.translate(w / 2, h / 2);
+  ctx.rotate(rad);
+  if (rotFlipH) ctx.scale(-1, 1);
+  if (rotFlipV) ctx.scale(1, -1);
+  ctx.drawImage(rotImg, -rotImg.naturalWidth / 2, -rotImg.naturalHeight / 2);
+  ctx.restore();
+}
+
+function rotateImg(deg) {
+  rotAngle = (rotAngle + deg) % 360;
+  drawRotCanvas();
+  addActivity(t('toastRotated'));
+  recordToolUsage('Rotate/Flip');
+}
+
+function flipImg(dir) {
+  if (dir === 'h') rotFlipH = !rotFlipH;
+  else rotFlipV = !rotFlipV;
+  drawRotCanvas();
+  addActivity(t('toastRotated'));
+  recordToolUsage('Rotate/Flip');
+}
+
+function downloadRotated() {
+  const canvas = document.getElementById('rot-canvas');
+  downloadCanvas(canvas, 'rotated.png');
+  showToast('success', t('toastRotated'));
+}
+
+/* ================================================================
+   TOOL 10: IMAGE FILTERS
+   ================================================================ */
+let filterImg = null;
+async function handleFilterUpload(file) {
+  if (!file) return;
+  filterImg = await loadImageFromFile(file);
+  applyFilters();
+  document.getElementById('filter-canvas').style.display = 'block';
+  document.getElementById('filter-controls').style.display = 'block';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+function updateFilterVal(input, spanId) {
+  document.getElementById(spanId).textContent = input.value;
+}
+
+function applyFilters() {
+  if (!filterImg) return;
+  const canvas = document.getElementById('filter-canvas');
+  canvas.width = filterImg.naturalWidth;
+  canvas.height = filterImg.naturalHeight;
+  const ctx = canvas.getContext('2d');
+  const brightness = document.getElementById('f-brightness').value;
+  const contrast = document.getElementById('f-contrast').value;
+  const saturate = document.getElementById('f-saturate').value;
+  const blur = document.getElementById('f-blur').value;
+  const grayscale = document.getElementById('f-grayscale').checked;
+  const sepia = document.getElementById('f-sepia').checked;
+  let filterStr = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturate}%) blur(${blur}px)`;
+  if (grayscale) filterStr += ' grayscale(100%)';
+  if (sepia) filterStr += ' sepia(100%)';
+  ctx.filter = filterStr;
+  ctx.drawImage(filterImg, 0, 0);
+  ctx.filter = 'none';
+}
+
+function downloadFiltered() {
+  recordToolUsage('Filters');
+  const canvas = document.getElementById('filter-canvas');
+  downloadCanvas(canvas, 'filtered.png');
+  addActivity(t('toastFilterApplied'));
+  showToast('success', t('toastFilterApplied'));
+}
+
+/* ================================================================
+   TOOL 11: IMAGE TO BASE64
+   ================================================================ */
+function handleB64Upload(file) {
+  if (!file) return;
+  recordToolUsage('Base64');
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('b64-result').value = e.target.result;
+    document.getElementById('b64-result').style.display = 'block';
+    document.getElementById('b64-copy-btn').style.display = 'inline-flex';
+  };
+  reader.readAsDataURL(file);
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+  addActivity('Base64 conversion');
+}
+
+/* ================================================================
+   TOOL 12: METADATA VIEWER
+   ================================================================ */
+async function handleMetaUpload(file) {
+  if (!file) return;
+  recordToolUsage('Metadata');
+  const img = await loadImageFromFile(file);
+  setPreviewImage('meta-preview', file);
+  const infoEl = document.getElementById('meta-info');
+  infoEl.style.display = 'block';
+  infoEl.innerHTML = `
+    <div><strong>📄 File Name:</strong> ${file.name}</div>
+    <div><strong>📦 Size:</strong> ${(file.size / 1024).toFixed(2)} KB</div>
+    <div><strong>📐 Dimensions:</strong> ${img.naturalWidth} × ${img.naturalHeight} px</div>
+    <div><strong>🏷️ MIME Type:</strong> ${file.type}</div>
+    <div><strong>📅 Last Modified:</strong> ${new Date(file.lastModified).toLocaleString()}</div>
+  `;
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+  addActivity('Viewed metadata for ' + file.name);
+}
+
+/* ================================================================
+   TOOL 13: COLOR PICKER
+   ================================================================ */
+let cpickImg = null;
+async function handleCPickUpload(file) {
+  if (!file) return;
+  recordToolUsage('Color Picker');
+  cpickImg = await loadImageFromFile(file);
+  const canvas = document.getElementById('cpick-canvas');
+  canvas.width = cpickImg.naturalWidth;
+  canvas.height = cpickImg.naturalHeight;
+  canvas.getContext('2d').drawImage(cpickImg, 0, 0);
+  canvas.style.display = 'block';
+  document.getElementById('cpick-result').style.display = 'flex';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+
+  canvas.onclick = function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = Math.floor((e.clientX - rect.left) * scaleX);
+    const y = Math.floor((e.clientY - rect.top) * scaleY);
+    const ctx = canvas.getContext('2d');
+    const pixel = ctx.getImageData(x, y, 1, 1).data;
+    const hex = '#' + [pixel[0], pixel[1], pixel[2]].map(v => v.toString(16).padStart(2, '0')).join('');
+    document.getElementById('cpick-swatch').style.background = hex;
+    document.getElementById('cpick-hex').textContent = hex;
+    document.getElementById('cpick-rgb').textContent = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
+  };
+}
+
+function copyCPickHex() {
+  const hex = document.getElementById('cpick-hex').textContent;
+  navigator.clipboard.writeText(hex).then(() => showToast('success', t('toastCopied')));
+}
+
+/* ================================================================
+   TOOL 14: AI BACKGROUND REMOVAL (Pro) – FIXED
+   ================================================================ */
+let aibgFile = null, aibgLibLoaded = false;
+async function handleAIBGUpload(file) {
+  if (!file) return;
+  aibgFile = file;
+  setPreviewImage('aibg-preview', file);
+  document.getElementById('aibg-controls').style.display = 'block';
+  document.getElementById('aibg-dl').style.display = 'none';
+  document.getElementById('aibg-canvas').style.display = 'none';
+  addUploadedFile(file.name);
+  addStorage(file.size / 1024 / 1024);
+}
+
+async function processAIBG() {
+  const user = getCurrentUser();
+  if (!user) { showToast('error', t('toastLoginFirst')); openAuthModal(); return; }
+  if (user.plan !== 'pro') { showToast('error', t('toastProRequired')); return; }
+  if (!aibgFile) return;
+  recordToolUsage('AI BG Removal');
+
+  const progressWrap = document.getElementById('aibg-progress-wrap');
+  const progressBar = document.getElementById('aibg-progress');
+  const statusEl = document.getElementById('aibg-status');
+  progressWrap.style.display = 'block';
+  progressBar.style.width = '10%';
+  statusEl.textContent = 'Loading AI model...';
+
+  if (!aibgLibLoaded) {
+    try {
+      await loadScript('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/index.umd.js');
+      // The UMD exposes window.removeBackground
+      aibgLibLoaded = true;
+    } catch (err) {
+      statusEl.textContent = 'Failed to load AI library. Using fallback...';
+      progressBar.style.width = '100%';
+      await fallbackBGRemoval();
+      return;
+    }
+  }
+
+  statusEl.textContent = 'Processing AI background removal...';
+  progressBar.style.width = '30%';
+
+  try {
+    const removeFn = window.removeBackground;
+    if (!removeFn) throw new Error('Could not find removeBackground function');
+    const blob = await removeFn(aibgFile, {
+      progress: (key, current, total) => {
+        const pct = total > 0 ? (current / total) * 70 + 30 : 50;
+        progressBar.style.width = pct + '%';
+        statusEl.textContent = `Processing: ${key}...`;
+      }
+    });
+    progressBar.style.width = '100%';
+    statusEl.textContent = 'Done!';
+    setTimeout(() => { progressWrap.style.display = 'none'; }, 2000);
+    const resultUrl = URL.createObjectURL(blob);
+    const img = await loadImageFromUrl(resultUrl);
+    URL.revokeObjectURL(resultUrl);
+    const canvas = document.getElementById('aibg-canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    canvas.getContext('2d').drawImage(img, 0, 0);
+    canvas.style.display = 'block';
+    document.getElementById('aibg-dl').style.display = 'inline-flex';
+    addActivity('AI Background Removal completed');
+    showToast('success', t('toastBgRemoved'));
+  } catch (err) {
+    statusEl.textContent = 'AI Error: ' + err.message + '. Using fallback...';
+    await fallbackBGRemoval();
+  }
+}
+
+async function fallbackBGRemoval() {
+  const img = await loadImageFromFile(aibgFile);
+  const canvas = document.getElementById('aibg-canvas');
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0);
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const brightness = (data[i] + data[i+1] + data[i+2]) / 3;
+    if (brightness > 220) data[i+3] = 0;
+  }
+  ctx.putImageData(imageData, 0, 0);
+  canvas.style.display = 'block';
+  document.getElementById('aibg-dl').style.display = 'inline-flex';
+  document.getElementById('aibg-progress').style.width = '100%';
+  document.getElementById('aibg-status').textContent = 'Fallback removal complete.';
+  document.getElementById('aibg-progress-wrap').style.display = 'none';
+  addActivity('AI BG Removal (fallback) completed');
+  showToast('success', t('toastBgRemoved'));
+}
+
+function downloadAIBG() {
+  const canvas = document.getElementById('aibg-canvas');
+  downloadCanvas(canvas, 'ai-bg-removed.png');
+}
+
+/* ================================================================
+   LAZY SCRIPT LOADER (for non-module scripts)
+   ================================================================ */
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+/* ================================================================
+   TYPING EFFECT
+   ================================================================ */
+let typingTimeout = null;
+function startTypingEffect() {
+  if (typingTimeout) clearTimeout(typingTimeout);
+  const phrases = t('typingPhrases') || translations.en.typingPhrases;
+  const el = document.getElementById('typing-text');
+  if (!el) return;
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  function tick() {
+    const phrase = phrases[phraseIdx];
+    if (!deleting) {
+      el.textContent = phrase.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx >= phrase.length) { deleting = true; typingTimeout = setTimeout(tick, 1500); return; }
+      typingTimeout = setTimeout(tick, 80);
+    } else {
+      el.textContent = phrase.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx <= 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; typingTimeout = setTimeout(tick, 400); return; }
+      typingTimeout = setTimeout(tick, 40);
+    }
+  }
+  tick();
+}
+
+/* ================================================================
+   CAROUSEL
+   ================================================================ */
+let carouselIndex = 0;
+let carouselInterval = setInterval(() => moveCarousel(1), 5000);
+function moveCarousel(dir) {
+  const track = document.getElementById('carousel-track');
+  const slides = track.children.length;
+  carouselIndex = (carouselIndex + dir + slides) % slides;
+  track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+}
+const carouselObserver = new IntersectionObserver(entries => {
+  const section = document.getElementById('testimonials');
+  if (!section) return;
+  if (entries[0].isIntersecting) {
+    carouselInterval = setInterval(() => moveCarousel(1), 5000);
+  } else {
+    clearInterval(carouselInterval);
+  }
+}, { threshold: 0.1 });
+setTimeout(() => {
+  const sec = document.getElementById('testimonials');
+  if (sec) carouselObserver.observe(sec);
+}, 2000);
+
+/* ================================================================
+   SCROLL ANIMATIONS
+   ================================================================ */
+function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+/* ================================================================
+   ANIMATED COUNTERS
+   ================================================================ */
+function initCounters() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = 'true';
+        const target = parseInt(entry.target.dataset.target);
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(interval); }
+          entry.target.textContent = current.toLocaleString();
+        }, 30);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
+}
+
+/* ================================================================
+   BACK TO TOP
+   ================================================================ */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 500);
+  });
+}
+
+/* ================================================================
+   CONTACT FORM (with email validation)
+   ================================================================ */
+function handleContact(e) {
+  e.preventDefault();
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+  if (!name || !email || !subject || !message) { showToast('error', t('toastFillFields')); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('error', t('toastInvalidEmail')); return; }
+  showToast('success', t('toastContactSent'));
+  e.target.reset();
+  addActivity('Contact form submitted by ' + name);
+}
+
+/* ================================================================
+   HIDDEN TEST RUNNER (Ctrl+T / Cmd+T)
+   ================================================================ */
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+    e.preventDefault();
+    runTests();
+  }
+});
+
+function runTests() {
+  let passed = 0, failed = 0;
+
+  function assert(name, condition) {
+    if (condition) { passed++; console.log(`✅ ${name}`); }
+    else { failed++; console.log(`❌ ${name}`); }
+  }
+
+  switchLang('es');
+  assert('i18n: Spanish switch', currentLang === 'es');
+  assert('i18n: Spanish translation exists', t('heroTitle') === 'Herramientas Profesionales de Imagen');
+  switchLang('en');
+  assert('i18n: English switch', currentLang === 'en');
+  assert('i18n: English translation exists', t('heroTitle') === 'Professional Image Tools');
+
+  const testEmail = 'test_' + Date.now() + '@test.com';
+  const users = getUsers();
+  const prevLen = users.length;
+  document.getElementById('auth-email').value = testEmail;
+  document.getElementById('auth-password').value = 'test123';
+  authMode = 'signup';
+  handleAuth().then(() => {
+    assert('User signup: user created', getUsers().length === prevLen + 1);
+    assert('User signup: user is logged in', getCurrentUser() && getCurrentUser().email === testEmail);
+    assert('User signup: default plan is free', getCurrentUser().plan === 'free');
+    upgradeToPro();
+    assert('Upgrade: plan changed to pro', getCurrentUser().plan === 'pro');
+    recordToolUsage('TestTool');
+    let usage = JSON.parse(localStorage.getItem('pixelkit_usage') || '{}');
+    assert('Analytics: tool usage recorded', usage['TestTool'] >= 1);
+    clearCurrentUser();
+    assert('Logout: user cleared', getCurrentUser() === null);
+    const allUsers = getUsers().filter(u => u.email !== testEmail);
+    saveUsers(allUsers);
+    delete usage['TestTool'];
+    localStorage.setItem('pixelkit_usage', JSON.stringify(usage));
+    console.log(`\nTest Results: ${passed} passed, ${failed} failed`);
+    showToast(failed === 0 ? 'success' : 'error', `Tests: ${passed}✅ ${failed}❌`);
+  });
+}
+
+/* ================================================================
+   SETUP UPLOAD ZONES
+   ================================================================ */
+function initUploadZones() {
+  setupUploadZone('ocr-upload', handleOCRUpload);
+  setupUploadZone('qr-upload', handleQRUpload);
+  setupUploadZone('comp-upload', handleCompUpload);
+  setupUploadZone('conv-upload', handleConvUpload);
+  setupUploadZone('resize-upload', handleResizeUpload);
+  setupUploadZone('bgr-upload', handleBGRUpload);
+  setupUploadZone('wm-upload', handleWMUpload);
+  setupUploadZone('crop-upload', handleCropUpload);
+  setupUploadZone('rot-upload', handleRotUpload);
+  setupUploadZone('filter-upload', handleFilterUpload);
+  setupUploadZone('b64-upload', handleB64Upload);
+  setupUploadZone('meta-upload', handleMetaUpload);
+  setupUploadZone('cpick-upload', handleCPickUpload);
+  setupUploadZone('aibg-upload', handleAIBGUpload);
+}
+
+/* ================================================================
+   INIT
+   ================================================================ */
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+  initTheme();
+  applyTranslations();
+  updateAuthUI();
+  initUploadZones();
+  startTypingEffect();
+  initReveal();
+  initCounters();
+  initBackToTop();
+  renderQRHistory();
+  updateDashboard();
+  initCookieConsent();
+  setTimeout(() => {
+    document.getElementById('loading-screen').classList.add('hidden');
+  }, 600);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.matches('a[href^="#"]')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.nav-links')?.classList.remove('open');
+    }
+  }
+});
 </script>
 </body>
 </html>
